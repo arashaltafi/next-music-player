@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     }
   ],
   icons: {
-    icon: "/icons/logo.png",
+    icon: "/images/logo.png",
   },
   themeColor: '#f8f8f8',
   appleWebApp: {

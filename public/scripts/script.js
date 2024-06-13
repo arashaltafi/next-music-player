@@ -1,6 +1,6 @@
-document.addEventListener("contextmenu", (event) =>
-    event.preventDefault()
-);
+// document.addEventListener("contextmenu", (event) =>
+//     event.preventDefault()
+// );
 
 document.onkeydown = (e) => {
     if (e.key === "F12") {

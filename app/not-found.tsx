@@ -35,6 +35,6 @@ export const metadata: Metadata = {
     title: "یافت نشد",
     description: "این صفحه یافت نشد!",
     icons: {
-        icon: "/icons/logo-grayscale.png",
+        icon: "/images/logo-grayscale.png",
     }
 }
