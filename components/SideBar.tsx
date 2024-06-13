@@ -16,7 +16,7 @@ import { FaUserCheck } from "react-icons/fa";
 const SideBar = () => {
 
     return (
-        <aside className="select-none py-4 px-4 *:px-4 *:py-4 w-80 flex flex-col gap-10 items-center justify-start bg-slate-900">
+        <aside className="hidden sm:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-slate-900">
             <div className='w-full flex items-center justify-between cursor-pointer rounded-xl hover:bg-slate-800 hover:scale-[101%] active:scale-[99%] transition-all duration-200'>
                 <h1 className='text-2xl'>موزیک پلیر آنلاین</h1>
                 <Image
@@ -85,7 +85,6 @@ const SideBar = () => {
                     <h3 className='sideBar__item__items'>خوانندگان برتر</h3>
                 </div>
             </div>
-
         </aside>
     )
 }
