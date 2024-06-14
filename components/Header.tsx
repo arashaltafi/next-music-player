@@ -1,9 +1,10 @@
 import React from 'react'
+import Slider from './Slider'
 
 const Header = () => {
     return (
-        <header>
-            1
+        <header className='w-full'>
+            <Slider />
         </header>
     )
 }

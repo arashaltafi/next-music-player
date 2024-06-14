@@ -15,8 +15,18 @@ const pwa = withPWAInit({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
-    compiler: {
-        removeConsole: true
+    // compiler: {
+    //     removeConsole: true
+    // },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'arashaltafi.ir',
+                port: '',
+                pathname: '/**',
+            },
+        ],
     }
 };
 

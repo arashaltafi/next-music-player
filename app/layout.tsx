@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.css";
+import "./globals.scss";
 import 'react-toastify/dist/ReactToastify.css';
 import localFont from "next/font/local";
 import Script from "next/script";

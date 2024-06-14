@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 
 const config: Config = {
   content: [
@@ -14,7 +14,8 @@ const config: Config = {
         'maxW': '1600px'
       },
       backgroundImage: {
-        gradient1 : 'linear-gradient(0deg, #474bff 0%, #bc48ff 100%)'
+        gradient1: 'linear-gradient(0deg, #474bff 0%, #bc48ff 100%)',
+        sliderBg: 'linear-gradient(0deg, #020617 5%, rgba(0, 0, 0, 0) 95%)'
       },
       dropShadow: {
         dropShadow1: '3px 3px 10px 1px #bc48ff'
