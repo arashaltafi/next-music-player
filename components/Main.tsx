@@ -5,7 +5,7 @@ import Article from './Article'
 
 const Main = () => {
     return (
-        <div className="flex-1 flex flex-col gap-28 items-center justify-start bg-slate-800">
+        <div className="flex-1 flex flex-col items-center justify-start bg-slate-800">
             <Header />
             <Article />
             <Footer />

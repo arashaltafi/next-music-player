@@ -1,8 +1,20 @@
 import React from 'react'
 
-const Divider = () => {
+interface PropsType {
+    isVerticaly?: boolean
+}
+
+const Divider = (props: PropsType) => {
     return (
-        <span className='w-full h-px bg-slate-600' style={{ padding: 0 }} />
+        <>
+            {
+                props.isVerticaly ? (
+                    <span className='w-px h-full bg-slate-600' style={{ padding: 0 }} />
+                ) : (
+                    <span className='w-full h-px bg-slate-600' style={{ padding: 0 }} />
+                )
+            }
+        </>
     )
 }
 

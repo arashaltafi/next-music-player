@@ -148,12 +148,16 @@
       }
     }
 
-    .swiper-button-prev {
+    .swiper-button-next {
       top: 60%;
     }
 
-    .swiper-button-next {
+    .swiper-button-prev {
       top: 72%;
     }
+  }
+
+  .icon-music {
+    @apply text-xl hover:text-rose-500 hover:scale-125 active:scale-90 cursor-pointer transition-all duration-200;
   }
 }
