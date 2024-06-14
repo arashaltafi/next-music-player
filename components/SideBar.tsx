@@ -34,7 +34,7 @@ const SideBar = () => {
 
     return (
         <>
-            <aside className="hidden sm:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-slate-900">
+            <aside className="overflow-y-auto hidden sm:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-slate-900">
                 <MenuItems />
             </aside>
 
@@ -46,7 +46,7 @@ const SideBar = () => {
 
             <div
                 id='menu'
-                className='py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 right-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 sm:hidden transition-all duration-300 translate-x-[1000px]'>
+                className='overflow-y-auto py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 right-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 sm:hidden transition-all duration-300 translate-x-[1000px]'>
                 <MenuItems />
             </div>
 
