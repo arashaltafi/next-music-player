@@ -95,10 +95,15 @@
   }
 
   .sideBar__item {
-    @apply w-full flex items-center justify-start gap-4 cursor-pointer rounded-lg hover:bg-slate-800 hover:scale-[101%] active:scale-[99%] transition-all duration-150;
+    @apply w-full flex items-center justify-start gap-3 sm:gap-4 cursor-pointer rounded-lg hover:scale-[101%] active:scale-[99%] transition-all duration-150;
+  }
+
+  .sideBar__item:hover {
+    box-shadow: 4px 4px 10px 1px #f43f5e;
+    background: linear-gradient(0deg, #f857a6 0%, #ff5858 100%);
   }
 
   .sideBar__item__items {
-    @apply text-base transition-all duration-150 group-hover:text-rose-300;
+    @apply text-sm sm:text-base transition-all duration-150 group-hover:text-rose-100;
   }
 }
