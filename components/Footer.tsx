@@ -14,19 +14,20 @@ import { FaPlayCircle } from "react-icons/fa";
 import { FaPauseCircle } from "react-icons/fa";
 import { MusicType } from '@/types/Music';
 import { convertSecondToTime } from '@/utils/Global';
+import { GoUnmute } from "react-icons/go";
+import { IoVolumeMuteOutline } from "react-icons/io5";
 
 const Footer = () => {
     const [isFav, setIsFav] = useState<boolean>(false)
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
+    const [isMute, setIsMute] = useState<boolean>(false)
     const [isRepeat, setIsRepeat] = useState<boolean>(false)
     const [currentTime, setCurrentTime] = useState<number>(0)
     const [musics, setMusics] = useState<MusicType[]>([])
     const [duration, setDuration] = useState<number>(0)
     const audioRef = useRef<HTMLAudioElement>(null)
     const timerRef = useRef<NodeJS.Timeout | null>(null)
-    const [autoplay, setAutoplay] = useState<boolean>(false)
     const [indexNo, setIndexNo] = useState<number>(0)
-    const [volume, setVolume] = useState<number>(90)
 
     // get musics
     useEffect(() => {
@@ -125,7 +126,9 @@ const Footer = () => {
 
         if (audioRef.current && audioRef.current.ended) {
             setIsPlaying(false)
-            if (autoplay) {
+            if (isRepeat) {
+                playMusic()
+            } else {
                 nextMusic()
             }
         }
@@ -138,7 +141,6 @@ const Footer = () => {
 
     const handleRepeat = () => {
         setIsRepeat(!isRepeat)
-        console.log('isRepeat', isRepeat)
     }
 
     const handleNavigateMusic = (isSkipNext: boolean) => {
@@ -156,23 +158,11 @@ const Footer = () => {
         console.log('handleShuffleMusic')
     }
 
-    const handleAutoPlay = () => {
-        setAutoplay(!autoplay)
-    }
-
     const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newTime = parseFloat(event.target.value)
         setCurrentTime(newTime)
         if (audioRef.current) {
             audioRef.current.currentTime = newTime
-        }
-    }
-
-    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newVolume = parseFloat(e.target.value)
-        setVolume(newVolume)
-        if (audioRef.current) {
-            audioRef.current.volume = newVolume / 100
         }
     }
 
@@ -196,7 +186,9 @@ const Footer = () => {
         } else {
             setIndexNo(0)
         }
-        playMusic()
+        setTimeout(() => {
+            playMusic()
+        }, 100);
     }
 
     const previousMusic = () => {
@@ -205,14 +197,23 @@ const Footer = () => {
         } else {
             setIndexNo(musics.length - 1)
         }
-        playMusic()
+        setTimeout(() => {
+            playMusic()
+        }, 100);
     }
 
     const handleMuteSound = () => {
-        if (audioRef.current) {
-            audioRef.current.volume = 0
+        if (isMute) {
+            if (audioRef.current) {
+                audioRef.current.volume = 1
+            }
+            setIsMute(false)
+        } else {
+            if (audioRef.current) {
+                audioRef.current.volume = 0
+            }
+            setIsMute(true)
         }
-        setVolume(0)
     }
 
     return (
@@ -292,6 +293,16 @@ const Footer = () => {
                             <TbRepeat className='icon-music' />
                         ) : (
                             <TbRepeatOff className='icon-music' />
+                        )
+                    }
+                </div>
+
+                <div onClick={handleMuteSound}>
+                    {
+                        isMute ? (
+                            <IoVolumeMuteOutline className='icon-music' />
+                        ) : (
+                            <GoUnmute className='icon-music' />
                         )
                     }
                 </div>
