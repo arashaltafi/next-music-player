@@ -155,7 +155,10 @@ const Footer = () => {
     }
 
     const handleShuffleMusic = () => {
-        console.log('handleShuffleMusic')
+        setIndexNo(Math.floor(Math.random() * musics.length))
+        setTimeout(() => {
+            playMusic()
+        }, 100);
     }
 
     const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
