@@ -16,6 +16,7 @@ import { MusicType } from '@/types/Music';
 import { convertSecondToTime } from '@/utils/Global';
 import { GoUnmute } from "react-icons/go";
 import { IoVolumeMuteOutline } from "react-icons/io5";
+import { FiDownloadCloud } from "react-icons/fi";
 
 const Footer = () => {
     const [isFav, setIsFav] = useState<boolean>(false)
@@ -33,34 +34,34 @@ const Footer = () => {
     useEffect(() => {
         setMusics([
             {
-                name: "first song",
-                path: "https://dls.music-fa.com/tagdl/1402/Yousef%20Zamani%20-%20Az%20To%20Behtar%20(320).mp3",
-                img: "https://arashaltafi.ir/Social_Media/story-02.jpg",
+                name: "آمد بهار جان ها",
+                path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
+                img: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
+                singer: "محسن چاوشی"
+            },
+            {
+                name: "شیک",
+                path: "https://dls.music-fa.com/tagdl/downloads/Yousef%20Zamani%20-%20Shik%20(128).mp3",
+                img: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg",
+                singer: "یوسف زمانی"
+            },
+            {
+                name: "بهت قول میدم",
+                path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Yeganeh%20-%20Behet%20Ghol%20Midam%20(128).mp3",
+                img: "https://music-fa.com/wp-content/uploads/2018/12/M-yegane83658723567456837456986745867509673452355.jpg",
                 singer: "محسن یگانه"
             },
             {
-                name: "second song",
-                path: "https://dls.music-fa.com/song/alibz/1403/Yousef%20Zamani%20-%20Jange%20Jahani%20(320).mp3",
-                img: "https://arashaltafi.ir/Social_Media/story-03.jpg",
+                name: "نشکن دلمو",
+                path: "https://dls.music-fa.com/tagdl/downloads/Yegane%20Chavoshi%20Hakan%20-%20Nashkan%20Delamo%20(128).mp3",
+                img: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg",
                 singer: "محسن یگانه"
             },
             {
-                name: "third song",
-                path: "https://dls.music-fa.com/tagdl/1402/Yousef%20Zamani%20-%20Malakeye%20Ehsas%20(320).mp3",
-                img: "https://arashaltafi.ir/Social_Media/story-04.jpg",
-                singer: "محسن یگانه"
-            },
-            {
-                name: "fourth song",
-                path: "https://dls.music-fa.com/tagdl/1402/Yousef%20Zamani%20-%20In%20Nafas%20(320).mp3",
-                img: "https://arashaltafi.ir/Social_Media/story-05.jpg",
-                singer: "محسن یگانه"
-            },
-            {
-                name: "fifth song",
-                path: "https://dls.music-fa.com/tagdl/1402/Farshad%20Azadi%20-%20Divanam%20Nako%20(320).mp3",
-                img: "https://arashaltafi.ir/Social_Media/story-01.jpg",
-                singer: "محسن یگانه"
+                name: "آخرش قشنگه",
+                path: "https://dls.music-fa.com/tagdl/downloads/Alireza%20Talischi%20-%20Akharesh%20Ghashange%20(128).mp3",
+                img: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg",
+                singer: "علیرضا طلیسچی"
             },
         ])
     }, [])
@@ -219,9 +220,25 @@ const Footer = () => {
         }
     }
 
+    const handleDownload = () => {
+        const url = musics[indexNo].path
+        const name = musics[indexNo].singer + '___' + musics[indexNo].name + '.mp3'
+        const link = document.createElement('a')
+        link.href = url
+        link.download = name
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
+
     return (
         <footer className='w-full bg-slate-800 flex items-center justify-center gap-8 py-4 px-8'>
             <div className='flex items-center justify-center gap-4'>
+                <FiDownloadCloud
+                    onClick={handleDownload}
+                    className='cursor-pointer text-2xl'
+                />
+
                 <div onClick={handleFav} className='cursor-pointer'>
                     {
                         isFav ? (
@@ -233,11 +250,11 @@ const Footer = () => {
                 </div>
 
                 <div className='max-w-24 flex flex-col items-center justify-center gap-1'>
-                    <h4 className='text-base font-medium'>محسن یگانه</h4>
-                    <h5 className='text-sm font-light'>سرگرمی تو</h5>
+                    <h4 className='text-base font-medium'>{musics && musics[indexNo] && musics[indexNo].singer}</h4>
+                    <h5 className='text-sm font-light'>{musics && musics[indexNo] && musics[indexNo].name}</h5>
                 </div>
                 <Avatar
-                    src="https://arashaltafi.ir/arash.jpg"
+                    src={musics && musics[indexNo] && musics[indexNo].img}
                     name='arash'
                     className='size-14 sm:size-16 md:size-18 bg-slate-700 p-px border-2 border-rose-500'
                 />
