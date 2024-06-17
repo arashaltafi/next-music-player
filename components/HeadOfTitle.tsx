@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { RiArrowLeftSFill } from "react-icons/ri";
 import Link from 'next/link';
 
 interface PropsType {
@@ -9,8 +10,12 @@ interface PropsType {
 const HeadOfTitle = (props: PropsType) => {
     return (
         <div className='w-full flex items-center justify-between mt-8'>
-            <h2 className='text-2xl'>{props.title}</h2>
+            <div className='flex items-center justify-center gap-2'>
+                <RiArrowLeftSFill className='text-xl text-rose-500' />
+                <h2 className='text-2xl'>{props.title}</h2>
+            </div>
             <Link
+                prefetch={false}
                 href={`/music/${props.title.replaceAll(' ', '-')}`}
                 className='text-base flex items-center justify-center gap-2 cursor-pointer text-white hover:bg-rose-500 hover:text-rose-50 px-4 py-2 rounded-xl transition-all duration-200'
             >

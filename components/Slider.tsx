@@ -61,7 +61,7 @@ const Slider = () => {
     return (
         <div className='flex flex-col items-center justify-start w-full gap-8'>
             <Swiper
-                className={`w-full h-[400px] trend-slider rounded-b-xl`}
+                className={`w-full h-[300px] trend-slider rounded-b-xl`}
                 slidesPerView={1}
                 centeredSlides={true}
                 centeredSlidesBounds={true}

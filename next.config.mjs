@@ -26,6 +26,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'music-fa.com',
+                port: '',
+                pathname: '/**',
+            },
         ],
     }
 };
