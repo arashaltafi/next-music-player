@@ -2,7 +2,7 @@ import React from 'react'
 
 const Article = () => {
     return (
-        <article className='w-full flex-1 bg-red-500 flex flex-col gap-16 items-center justify-start'>
+        <article className='w-full flex-1 overflow-y-auto bg-red-500 flex flex-col gap-16 items-center justify-start'>
             <p>1</p>
             <p>2</p>
             <p>3</p>
