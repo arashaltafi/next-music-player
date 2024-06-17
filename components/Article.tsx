@@ -1,18 +1,10 @@
 import React from 'react'
+import HeadOfTitle from './HeadOfTitle'
 
 const Article = () => {
     return (
-        <article className='w-full flex-1 overflow-y-auto bg-red-500 flex flex-col gap-16 items-center justify-start'>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-            <p>9</p>
-            <p>10</p>
+        <article className='select-none w-full flex-1 overflow-y-auto flex flex-col gap-16 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
+            <HeadOfTitle title="تمامی آهنگ ها" />
         </article>
     )
 }

@@ -232,7 +232,7 @@ const Footer = () => {
     }
 
     return (
-        <div className='w-full flex flex-col gap-4 items-center justify-center py-4 px-1 sm:px-4 md:px-8'>
+        <div className='w-full flex flex-col gap-4 items-center justify-center py-4 px-1 sm:px-4 md:px-8 bg-slate-700 rounded-t-xl'>
             <div className='flex xl:hidden w-full gap-4 items-center justify-center'>
                 <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(duration)}</h4>
                 <input
@@ -249,7 +249,7 @@ const Footer = () => {
                 <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(currentTime)}</h4>
                 <audio ref={audioRef} />
             </div>
-            <footer className='w-full bg-slate-800 flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-4'>
+            <footer className='w-full bg-slate-700 flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-4'>
                 <div className='flex w-full xl:w-auto items-center justify-center gap-4'>
                     <FiDownloadCloud
                         onClick={handleDownload}
