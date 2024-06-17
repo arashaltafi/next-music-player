@@ -232,37 +232,8 @@ const Footer = () => {
     }
 
     return (
-        <footer className='w-full bg-slate-800 flex items-center justify-center gap-8 py-4 px-8'>
-            <div className='flex items-center justify-center gap-4'>
-                <FiDownloadCloud
-                    onClick={handleDownload}
-                    className='cursor-pointer text-2xl'
-                />
-
-                <div onClick={handleFav} className='cursor-pointer'>
-                    {
-                        isFav ? (
-                            <MdFavoriteBorder className='text-2xl' />
-                        ) : (
-                            <MdFavorite className='text-2xl' />
-                        )
-                    }
-                </div>
-
-                <div className='max-w-24 flex flex-col items-center justify-center gap-1'>
-                    <h4 className='text-base font-medium'>{musics && musics[indexNo] && musics[indexNo].singer}</h4>
-                    <h5 className='text-sm font-light'>{musics && musics[indexNo] && musics[indexNo].name}</h5>
-                </div>
-                <Avatar
-                    src={musics && musics[indexNo] && musics[indexNo].img}
-                    name='arash'
-                    className='size-14 sm:size-16 md:size-18 bg-slate-700 p-px border-2 border-rose-500'
-                />
-            </div>
-
-            <Divider isVerticaly />
-
-            <div className='flex-1 flex gap-4 items-center justify-center'>
+        <div className='w-full flex flex-col gap-4 items-center justify-center py-4 px-1 sm:px-4 md:px-8'>
+            <div className='flex xl:hidden w-full gap-4 items-center justify-center'>
                 <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(duration)}</h4>
                 <input
                     dir='ltr'
@@ -278,56 +249,104 @@ const Footer = () => {
                 <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(currentTime)}</h4>
                 <audio ref={audioRef} />
             </div>
+            <footer className='w-full bg-slate-800 flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-4'>
+                <div className='flex w-full xl:w-auto items-center justify-center gap-4'>
+                    <FiDownloadCloud
+                        onClick={handleDownload}
+                        className='cursor-pointer text-2xl'
+                    />
 
-            <Divider isVerticaly />
+                    <div onClick={handleFav} className='cursor-pointer'>
+                        {
+                            isFav ? (
+                                <MdFavoriteBorder className='text-2xl' />
+                            ) : (
+                                <MdFavorite className='text-2xl' />
+                            )
+                        }
+                    </div>
 
-            <div className='flex gap-3 items-center justify-center'>
-                <FaShuffle
-                    onClick={handleShuffleMusic}
-                    className='icon-music'
-                />
+                    <div className='max-w-24 flex flex-col items-center justify-center gap-1 text-center'>
+                        <h4 className='text-base font-medium'>{musics && musics[indexNo] && musics[indexNo].singer}</h4>
+                        <h5 className='text-sm font-light'>{musics && musics[indexNo] && musics[indexNo].name}</h5>
+                    </div>
 
-                <IoPlaySkipForward
-                    onClick={() => handleNavigateMusic(true)}
-                    className='icon-music'
-                />
-
-                <>
-                    {
-                        isPlaying ? (
-                            <FaPauseCircle onClick={pauseMusic} className='icon-music text-5xl hover:scale-110 active:scale-90' />
-                        ) : (
-                            <FaPlayCircle onClick={playMusic} className='icon-music text-5xl hover:scale-110 active:scale-90' />
-                        )
-                    }
-                </>
-
-                <IoPlaySkipBack
-                    onClick={() => handleNavigateMusic(false)}
-                    className='icon-music'
-                />
-
-                <div onClick={handleRepeat}>
-                    {
-                        isRepeat ? (
-                            <TbRepeat className='icon-music' />
-                        ) : (
-                            <TbRepeatOff className='icon-music' />
-                        )
-                    }
+                    <Avatar
+                        src={musics && musics[indexNo] && musics[indexNo].img}
+                        name='arash'
+                        className='size-14 sm:size-16 md:size-18 bg-slate-700 p-px border-2 border-rose-500'
+                    />
                 </div>
 
-                <div onClick={handleMuteSound}>
-                    {
-                        isMute ? (
-                            <IoVolumeMuteOutline className='icon-music' />
-                        ) : (
-                            <GoUnmute className='icon-music' />
-                        )
-                    }
+                <Divider className='hidden xl:block' isVerticaly />
+
+                <div className='hidden xl:flex flex-1 gap-4 items-center justify-center'>
+                    <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(duration)}</h4>
+                    <input
+                        dir='ltr'
+                        type="range"
+                        min="0"
+                        max={duration}
+                        step={1}
+                        value={currentTime}
+                        style={{ background: `linear-gradient(to right, #FB7185 ${(currentTime / duration) * 100}%, #E2E8F0 ${(currentTime / duration) * 100}%)` }}
+                        className={`w-full disabled:opacity-30`}
+                        onChange={handleTimeChange}
+                    />
+                    <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(currentTime)}</h4>
+                    <audio ref={audioRef} />
                 </div>
-            </div>
-        </footer>
+
+                <Divider className='hidden sm:block' isVerticaly />
+
+                <div className='flex w-full xl:w-auto gap-3 items-center justify-center'>
+                    <FaShuffle
+                        onClick={handleShuffleMusic}
+                        className='icon-music'
+                    />
+
+                    <IoPlaySkipForward
+                        onClick={() => handleNavigateMusic(true)}
+                        className='icon-music'
+                    />
+
+                    <>
+                        {
+                            isPlaying ? (
+                                <FaPauseCircle onClick={pauseMusic} className='icon-music text-5xl hover:scale-110 active:scale-90' />
+                            ) : (
+                                <FaPlayCircle onClick={playMusic} className='icon-music text-5xl hover:scale-110 active:scale-90' />
+                            )
+                        }
+                    </>
+
+                    <IoPlaySkipBack
+                        onClick={() => handleNavigateMusic(false)}
+                        className='icon-music'
+                    />
+
+                    <div onClick={handleRepeat}>
+                        {
+                            isRepeat ? (
+                                <TbRepeat className='icon-music' />
+                            ) : (
+                                <TbRepeatOff className='icon-music' />
+                            )
+                        }
+                    </div>
+
+                    <div onClick={handleMuteSound}>
+                        {
+                            isMute ? (
+                                <IoVolumeMuteOutline className='icon-music' />
+                            ) : (
+                                <GoUnmute className='icon-music' />
+                            )
+                        }
+                    </div>
+                </div>
+            </footer>
+        </div>
     )
 }
 

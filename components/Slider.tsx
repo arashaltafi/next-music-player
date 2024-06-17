@@ -99,7 +99,7 @@ const Slider = () => {
 
                                 <span id={`slider-${slide.id}`} className='absolute inset-0 bg-sliderBg' />
 
-                                <div className='w-full py-8 pl-8 ps-16 absolute right-0 bottom-0 flex flex-col gap-8'>
+                                <div className='w-full py-8 pl-8 ps-4 sm:ps-8 md:ps-16 absolute right-0 bottom-0 flex flex-col gap-8'>
                                     <div className='w-full ps-8 flex items-center justify-between'>
                                         <h2 className='text-lg line-clamp-1 text-justify font-semibold'>
                                             خواننده: {slide.singer}

@@ -34,11 +34,11 @@ const SideBar = () => {
 
     return (
         <>
-            <aside className="overflow-y-auto hidden sm:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-slate-900">
+            <aside className="overflow-y-auto hidden lg:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-slate-900">
                 <MenuItems />
             </aside>
 
-            <div className='absolute top-4 right-4 sm:hidden z-20 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-150'>
+            <div className='absolute top-4 right-4 lg:hidden z-20 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-150'>
                 <HiMenu
                     onClick={handleMenu}
                 />
@@ -46,14 +46,14 @@ const SideBar = () => {
 
             <div
                 id='menu'
-                className='overflow-y-auto py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 right-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 sm:hidden transition-all duration-300 translate-x-[1000px]'>
+                className='overflow-y-auto py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 right-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 lg:hidden transition-all duration-300 translate-x-[1000px]'>
                 <MenuItems />
             </div>
 
             <div
                 id='blur'
                 onClick={handleBlur}
-                className='z-40 fixed hidden sm:hidden inset-0 backdrop-blur-sm bg-brown-900/50 dark:bg-slate-800/50'
+                className='z-40 fixed hidden lg:hidden inset-0 backdrop-blur-sm bg-brown-900/50 dark:bg-slate-800/50'
             />
         </>
     )

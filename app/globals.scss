@@ -125,10 +125,14 @@
   .trend-slider {
     .swiper-pagination {
       top: 35% !important;
-      right: 40px !important;
+      right: 22px !important;
       display: flex;
       flex-direction: column;
       gap: 15px;
+
+      @media screen and (min-width: 640px) {
+        right: 40px !important;
+      }
 
       .swiper-pagination-bullet {
         width: 5.5px !important;
@@ -148,13 +152,17 @@
     .swiper-button-next {
       bottom: auto !important;
       left: auto !important;
-      right: 20px !important;
+      right: 2px !important;
       width: 45px;
       height: 45px;
       padding: 10px;
       border-radius: 50%;
       background-color: var(--card-background-2);
       color: var(--text-color);
+
+      @media screen and (min-width: 640px) {
+        right: 20px !important;
+      }
 
       &:after {
         display: block;
