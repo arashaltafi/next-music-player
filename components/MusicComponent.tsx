@@ -5,7 +5,7 @@ const MusicComponent = () => {
     return (
         <div className='relative w-full flex flex-col items-center justify-center gap-2 px-2 group'>
             <Image
-                className='absolute inset-0 z-0 w-full h-full blur-[4px] rounded-lg border border-rose-500 border-solid delay-100 group-hover:brightness-90 group-hover:blur-[6px] group-hover:rounded-xl transition-all duration-300'
+                className='absolute inset-0 z-0 w-full h-full blur-[3px] rounded-lg border border-rose-500 border-solid delay-100 group-hover:brightness-90 group-hover:blur-[4px] group-hover:rounded-xl transition-all duration-300'
                 src={'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg'}
                 alt='test'
                 width={1000}
@@ -18,7 +18,7 @@ const MusicComponent = () => {
             </h3>
 
             <Image
-                className='cursor-pointer my-3 z-10 w-[calc(100%-64px)] rounded-full border border-slate-500 shadow-sm shadow-slate-500 border-solid delay-100 group-hover:scale-105 group-hover:brightness-125 transition-all duration-300'
+                className='cursor-pointer my-3 z-10 w-[calc(100%-64px)] rounded-full border border-slate-500 shadow-sm shadow-slate-500 border-solid group-hover:scale-105 group-active:scale-95 group-hover:brightness-125 transition-all duration-300'
                 src={'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg'}
                 alt='test'
                 width={500}

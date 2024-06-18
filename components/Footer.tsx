@@ -232,7 +232,7 @@ const Footer = () => {
     }
 
     return (
-        <div className='w-full flex flex-col gap-4 items-center justify-center py-4 px-1 sm:px-4 md:px-8 bg-slate-700 rounded-t-xl'>
+        <div className='fixed bottom-0 left-0 right-0 z-30 w-full flex flex-col gap-4 items-center justify-center py-4 px-1 sm:px-4 md:px-8 bg-slate-700 rounded-t-xl'>
             <div className='flex xl:hidden w-full gap-4 items-center justify-center'>
                 <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(duration)}</h4>
                 <input
