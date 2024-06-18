@@ -9,10 +9,10 @@ interface PropsType {
 
 const HeadOfTitle = (props: PropsType) => {
     return (
-        <div className='w-full flex items-center justify-between mt-8'>
+        <div className='w-full flex items-center justify-between'>
             <div className='flex items-center justify-center gap-2'>
                 <RiArrowLeftSFill className='text-xl text-rose-500' />
-                <h2 className='text-2xl'>{props.title}</h2>
+                <h2 className='text-2xl font-bold'>{props.title}</h2>
             </div>
             <Link
                 prefetch={false}

@@ -9,6 +9,9 @@ const MusicsComponent = () => {
             <MusicComponent />
             <MusicComponent />
             <MusicComponent />
+            <MusicComponent />
+            <MusicComponent />
+            <MusicComponent />
         </div>
     )
 }
