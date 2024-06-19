@@ -8,19 +8,19 @@ import MusicVideosComponent from './MusicVideosComponent';
 const Article = () => {
     return (
         <article className='mt-8 select-none w-full h-full flex flex-col gap-6 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
-            <HeadOfTitle title="تمامی موزیک ها" />
+            <HeadOfTitle fileType='music' title="تمامی موزیک ها" />
             <MusicsComponent />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
 
-            <HeadOfTitle title="برترین موزیک ها" />
+            <HeadOfTitle fileType='music' title="برترین موزیک ها" />
             <MusicsComponent />
             <DividerImage src='/images/music-divider-2.png' className='my-8' />
 
-            <HeadOfTitle title="آخرین موزیک ها" />
+            <HeadOfTitle fileType='music' title="آخرین موزیک ها" />
             <MusicsComponent />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
 
-            <HeadOfTitle title="موزیک های پیشنهادی" />
+            <HeadOfTitle fileType='music' title="موزیک های پیشنهادی" />
             <MusicsComponent />
 
             <Image
@@ -32,19 +32,19 @@ const Article = () => {
             />
 
             {/* Music Video */}
-            <HeadOfTitle title="تمامی موزیک ویدیوها" />
+            <HeadOfTitle fileType='video' title="تمامی موزیک ویدیوها" />
             <MusicVideosComponent />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
 
-            <HeadOfTitle title="برترین موزیک ویدیوها" />
+            <HeadOfTitle fileType='video' title="برترین موزیک ویدیوها" />
             <MusicVideosComponent />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
 
-            <HeadOfTitle title="آخرین موزیک ویدیوها" />
+            <HeadOfTitle fileType='video' title="آخرین موزیک ویدیوها" />
             <MusicVideosComponent />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
 
-            <HeadOfTitle title="موزیک ویدیوهای پیشنهادی" />
+            <HeadOfTitle fileType='video' title="موزیک ویدیوهای پیشنهادی" />
             <MusicVideosComponent />
 
         </article>
