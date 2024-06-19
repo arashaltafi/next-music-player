@@ -46,7 +46,7 @@ const Article = () => {
 
             <HeadOfTitle title="موزیک ویدیوهای پیشنهادی" />
             <MusicVideosComponent />
-            <DividerImage src='/images/music-divider-1.png' className='my-8' />
+
         </article>
     )
 }
