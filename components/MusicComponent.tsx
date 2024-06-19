@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { IoMusicalNote } from "react-icons/io5";
 
 const MusicComponent = () => {
     return (
@@ -25,6 +26,8 @@ const MusicComponent = () => {
                 height={500}
                 loading='lazy'
             />
+
+            <IoMusicalNote className='absolute opacity-0 transition-all duration-300 group-hover:opacity-100 text-rose-600 text-4xl z-10 bg-rose-300 rounded-full p-2' />
 
             <h4 className='mb-2 w-full bg-slate-800/70 border border-dotted border-slate-500 text-end z-10 text-sm self-end px-6 py-2 line-clamp-1 rounded-lg'>
                 محسن چاوشی

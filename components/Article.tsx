@@ -1,27 +1,52 @@
 import React from 'react'
 import HeadOfTitle from './HeadOfTitle'
 import MusicsComponent from './MusicsComponent';
-import Divider from './Divider';
+import DividerImage from './DividerImage';
+import Image from 'next/image';
+import MusicVideosComponent from './MusicVideosComponent';
 
 const Article = () => {
     return (
         <article className='mt-8 select-none w-full h-full flex flex-col gap-6 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
             <HeadOfTitle title="تمامی موزیک ها" />
             <MusicsComponent />
-            <Divider className='my-8' />
+            <DividerImage src='/images/music-divider-1.png' className='my-8' />
 
             <HeadOfTitle title="برترین موزیک ها" />
             <MusicsComponent />
-            <Divider className='my-8' />
+            <DividerImage src='/images/music-divider-2.png' className='my-8' />
 
             <HeadOfTitle title="آخرین موزیک ها" />
             <MusicsComponent />
-            <Divider className='my-8' />
+            <DividerImage src='/images/music-divider-1.png' className='my-8' />
 
             <HeadOfTitle title="موزیک های پیشنهادی" />
             <MusicsComponent />
-            <Divider className='my-8' />
 
+            <Image
+                className='w-2/3 my-8 opacity-40 rounded-b-[48px]'
+                src={'/icons/svg-wave-1.svg'}
+                width={100}
+                height={100}
+                alt='background wave'
+            />
+
+            {/* Music Video */}
+            <HeadOfTitle title="تمامی موزیک ویدیوها" />
+            <MusicVideosComponent />
+            <DividerImage src='/images/music-divider-1.png' className='my-8' />
+
+            <HeadOfTitle title="برترین موزیک ویدیوها" />
+            <MusicVideosComponent />
+            <DividerImage src='/images/music-divider-1.png' className='my-8' />
+
+            <HeadOfTitle title="آخرین موزیک ویدیوها" />
+            <MusicVideosComponent />
+            <DividerImage src='/images/music-divider-1.png' className='my-8' />
+
+            <HeadOfTitle title="موزیک ویدیوهای پیشنهادی" />
+            <MusicVideosComponent />
+            <DividerImage src='/images/music-divider-1.png' className='my-8' />
         </article>
     )
 }
