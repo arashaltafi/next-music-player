@@ -26,7 +26,7 @@ const Article = () => {
             <MusicsComponent category={MusicCategory.SUGGESTED} />
 
             <Image
-                className='w-2/3 my-8 opacity-40 rounded-b-[48px]'
+                className='w-2/3 my-8 opacity-60 rounded-b-[48px]'
                 src={'/icons/svg-wave-1.svg'}
                 width={100}
                 height={100}
