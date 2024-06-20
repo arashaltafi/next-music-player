@@ -17,8 +17,11 @@ const config: Config = {
         gradient1: 'linear-gradient(0deg, #474bff 0%, #bc48ff 100%)',
         sliderBg: 'linear-gradient(0deg, #020617 5%, rgba(0, 0, 0, 0) 95%)'
       },
+      boxShadow: {
+        musicShadow: '10px 10px 20px 4px #000000',
+      },
       dropShadow: {
-        dropShadow1: '3px 3px 10px 1px #bc48ff'
+        dropShadow1: '3px 3px 10px 1px #bc48ff',
       },
       borderRadius: {
         'xLarge': '0% 0% 50% 50% / 0% 0% 10% 10%',
@@ -27,7 +30,8 @@ const config: Config = {
         'small': '0% 0% 50% 50% / 0% 0% 3% 3%',
         'xSmall': '0% 0% 50% 50% / 0% 0% 1% 1%',
         'video': '50% 50% 50% 50% / 10% 10% 10% 10%',
-        'videoHover': '50% 50% 50% 50% / 5% 5% 5% 5%'
+        'videoHover': '50% 50% 50% 50% / 5% 5% 5% 5%',
+        'musicHover': '40% 40% 40% 40% / 40% 40% 40% 40%', 
       }
     },
   },
