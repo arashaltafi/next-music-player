@@ -6,6 +6,8 @@ import Script from "next/script";
 import ReduxProvider from "@/libs/Provider";
 import { NextUIProviders } from "@/provider/NextUIProviders";
 import NProgressProvider from "@/provider/NProgressProvider";
+import SideBar from "@/components/SideBar";
+import SideBarSinger from "@/components/SideBarSinger";
 
 export const metadata: Metadata = {
   title: {
@@ -72,7 +74,13 @@ export default function RootLayout({
         <ReduxProvider>
           <NextUIProviders>
             <NProgressProvider>
-              {children}
+              <main className="w-full min-h-screen overflow-x-hidden bg-slate-900 border-x-[1px] border-solid border-slate-700/50 flex">
+                <SideBar />
+                <div className="flex-1 pb-64 w-full flex flex-col items-center justify-start bg-slate-800">
+                  {children}
+                </div>
+                <SideBarSinger />
+              </main>
             </NProgressProvider>
           </NextUIProviders>
         </ReduxProvider>

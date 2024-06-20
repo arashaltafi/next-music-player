@@ -1,6 +1,7 @@
 
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import RoutesAddress from './utils/Routes';
 const rateLimitMap = new Map();
 
 export function middleware(request: NextRequest) {
@@ -36,5 +37,8 @@ export function middleware(request: NextRequest) {
         }
 
         ipData.count += 1;
+    }
+    if (request.nextUrl.pathname === '/singer') {
+        return NextResponse.redirect(new URL(RoutesAddress.SINGER_ALL, request.url))
     }
 }
