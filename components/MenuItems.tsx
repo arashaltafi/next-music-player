@@ -39,7 +39,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <FaMusic className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>تمامی موزیک ها</h3>
+                    <h3 className='sideBar__item__items flex-1'>تمامی موزیک ها</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_BEST}
@@ -47,7 +47,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <GiMusicalNotes className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>برترین موزیک ها</h3>
+                    <h3 className='sideBar__item__items flex-1'>برترین موزیک ها</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_NEW}
@@ -55,7 +55,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <BsMusicNoteList className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>آخرین موزیک ها</h3>
+                    <h3 className='sideBar__item__items flex-1'>آخرین موزیک ها</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_SUGGESTED}
@@ -63,7 +63,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <TbMusicHeart className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>موزیک های پیشنهادی</h3>
+                    <h3 className='sideBar__item__items flex-1'>موزیک های پیشنهادی</h3>
                 </Link>
 
                 <Divider />
@@ -74,7 +74,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <FaVideo className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>تمامی موزیک ویدیوها</h3>
+                    <h3 className='sideBar__item__items flex-1'>تمامی موزیک ویدیوها</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_BEST}
@@ -82,7 +82,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <AiFillVideoCamera className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>برترین موزیک ویدیوها</h3>
+                    <h3 className='sideBar__item__items flex-1'>برترین موزیک ویدیوها</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_NEW}
@@ -90,7 +90,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <BiSolidVideoRecording className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>آخرین موزیک ویدیوها</h3>
+                    <h3 className='sideBar__item__items flex-1'>آخرین موزیک ویدیوها</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_SUGGESTED}
@@ -98,7 +98,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <ImVideoCamera className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>موزیک ویدیوهای پیشنهادی</h3>
+                    <h3 className='sideBar__item__items flex-1'>موزیک ویدیوهای پیشنهادی</h3>
                 </Link>
 
                 <Divider />
@@ -109,7 +109,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <MdFavorite className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>موزیک های مورد علاقه</h3>
+                    <h3 className='sideBar__item__items flex-1'>موزیک های مورد علاقه</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_FAV}
@@ -117,7 +117,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <MdFavorite className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>موزیک ویدیوهای مورد علاقه</h3>
+                    <h3 className='sideBar__item__items flex-1'>موزیک ویدیوهای مورد علاقه</h3>
                 </Link>
 
                 <Divider />
@@ -128,7 +128,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <FaUser className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>تمامی خوانندگان</h3>
+                    <h3 className='sideBar__item__items flex-1'>تمامی خوانندگان</h3>
                 </Link>
                 <Link
                     href={RoutesAddress.SINGER_BEST}
@@ -136,7 +136,7 @@ const MenuItems = () => {
                     prefetch={false}
                 >
                     <FaUserCheck className='sideBar__item__items' />
-                    <h3 className='sideBar__item__items'>خوانندگان برتر</h3>
+                    <h3 className='sideBar__item__items flex-1'>خوانندگان برتر</h3>
                 </Link>
             </div>
         </>

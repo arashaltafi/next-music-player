@@ -27,7 +27,7 @@ const MusicComponent = (props: PropsType) => {
             </h3>
 
             <Image
-                className='cursor-pointer my-3 z-10 w-[calc(100%-64px)] rounded-full hover:rounded-musicHover border border-slate-500 shadow-musicShadow border-solid group-hover:scale-105 group-active:scale-95 group-hover:brightness-125 transition-all duration-300'
+                className='cursor-pointer my-3 z-10 w-[calc(100%-64px)] rounded-full border border-slate-500 shadow-musicShadow border-solid group-hover:scale-105 group-active:scale-95 group-hover:brightness-125 transition-all duration-300'
                 src={props.image}
                 alt={props.name}
                 width={500}

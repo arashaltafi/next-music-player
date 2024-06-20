@@ -13,3 +13,8 @@ export enum MusicVideoCategory {
     SUGGESTED = 'Suggested',
     FAVORITE = 'Favorite'
 }
+
+export type SingerType = {
+    id: number
+    name: string
+}

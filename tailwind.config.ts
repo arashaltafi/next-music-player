@@ -15,6 +15,7 @@ const config: Config = {
       },
       backgroundImage: {
         gradient1: 'linear-gradient(0deg, #474bff 0%, #bc48ff 100%)',
+        gradient2: 'linear-gradient(0deg, #cc99ff 0%, #b337a9 100%)',
         sliderBg: 'linear-gradient(0deg, #020617 5%, rgba(0, 0, 0, 0) 95%)'
       },
       boxShadow: {

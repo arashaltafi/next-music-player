@@ -114,12 +114,21 @@
   }
 
   .sideBar__item:hover {
-    box-shadow: 4px 4px 10px 1px #f43f5e;
+    box-shadow: 2px 2px 10px 1px #f43f5e;
     background: linear-gradient(0deg, #f857a6 0%, #ff5858 100%);
   }
 
+  .sideBar__singer__item {
+    @apply w-full flex items-center justify-start gap-3 sm:gap-4 cursor-pointer rounded-lg hover:scale-[101%] active:scale-[99%] transition-all duration-150;
+  }
+
+  .sideBar__singer__item:hover {
+    box-shadow: 2px 2px 10px 1px #b22d7c;
+    background: linear-gradient(0deg, #efaade 0%, #b22d7c 100%);
+  }
+
   .sideBar__item__items {
-    @apply text-sm sm:text-base transition-all duration-150 group-hover:text-rose-100;
+    @apply text-sm sm:text-base transition-all duration-150 group-hover:text-rose-100 line-clamp-1;
   }
 
   .trend-slider {
