@@ -5,7 +5,8 @@ import Link from 'next/link';
 
 interface PropsType {
     title: string,
-    fileType: 'video' | 'music'
+    fileType: 'video' | 'music',
+    route: string
 }
 
 const HeadOfTitle = (props: PropsType) => {
@@ -17,7 +18,7 @@ const HeadOfTitle = (props: PropsType) => {
             </div>
             <Link
                 prefetch={false}
-                href={`${props.fileType === 'video' ? '/video' : '/music'}/${props.title.replaceAll(' ', '-')}`}
+                href={props.route}
                 className='text-base flex items-center justify-center gap-2 cursor-pointer text-white hover:bg-rose-500 hover:text-rose-50 px-4 py-2 rounded-xl transition-all duration-200'
             >
                 <h6>مشاهده همه</h6>

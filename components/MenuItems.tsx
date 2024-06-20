@@ -12,6 +12,8 @@ import { BiSolidVideoRecording } from "react-icons/bi";
 import { MdFavorite } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
+import Link from 'next/link';
+import RoutesAddress from '@/utils/Routes';
 
 const MenuItems = () => {
     return (
@@ -31,63 +33,111 @@ const MenuItems = () => {
             </div>
 
             <div className='w-full flex flex-col items-start justify-start gap-4 sm:gap-6 *:px-2 *:py-2'>
-                <div className='group sideBar__item'>
+                <Link
+                    href={RoutesAddress.MUSIC_ALL}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <FaMusic className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>تمامی موزیک ها</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.MUSIC_BEST}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <GiMusicalNotes className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>برترین موزیک ها</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.MUSIC_NEW}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <BsMusicNoteList className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>آخرین موزیک ها</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.MUSIC_SUGGESTED}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <TbMusicHeart className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>موزیک های پیشنهادی</h3>
-                </div>
+                </Link>
 
                 <Divider />
 
-                <div className='group sideBar__item'>
+                <Link
+                    href={RoutesAddress.MUSIC_VIDEO_ALL}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <FaVideo className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>تمامی موزیک ویدیوها</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.MUSIC_VIDEO_BEST}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <AiFillVideoCamera className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>برترین موزیک ویدیوها</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.MUSIC_VIDEO_NEW}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <BiSolidVideoRecording className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>آخرین موزیک ویدیوها</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.MUSIC_VIDEO_SUGGESTED}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <ImVideoCamera className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>موزیک ویدیوهای پیشنهادی</h3>
-                </div>
+                </Link>
 
                 <Divider />
 
-                <div className='group sideBar__item'>
+                <Link
+                    href={RoutesAddress.MUSIC_FAV}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <MdFavorite className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>موزیک های مورد علاقه</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.MUSIC_VIDEO_FAV}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <MdFavorite className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>موزیک ویدیوهای مورد علاقه</h3>
-                </div>
+                </Link>
 
                 <Divider />
 
-                <div className='group sideBar__item'>
+                <Link
+                    href={RoutesAddress.SINGER_ALL}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <FaUser className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>تمامی خوانندگان</h3>
-                </div>
-                <div className='group sideBar__item'>
+                </Link>
+                <Link
+                    href={RoutesAddress.SINGER_BEST}
+                    className='group sideBar__item'
+                    prefetch={false}
+                >
                     <FaUserCheck className='sideBar__item__items' />
                     <h3 className='sideBar__item__items'>خوانندگان برتر</h3>
-                </div>
+                </Link>
             </div>
         </>
     )
