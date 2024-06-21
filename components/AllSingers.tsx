@@ -1,4 +1,3 @@
-"use client"
 
 import React from 'react'
 import Singer from './Singer'
@@ -25,22 +24,8 @@ const AllSingers = () => {
         }
     ]
 
-    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        const target = e.target as HTMLDivElement
-        const targetDiv = target.closest('img')
-        if (!targetDiv) return
-
-        const key = targetDiv.getAttribute('data-key')
-        if (!key) return
-
-        console.log('clicked key:', key)
-    }
-
     return (
-        <div
-            className='pt-12 w-full h-full grid grid-cols-3 items-center justify-center gap-8 overflow-hidden'
-            onClick={(e) => handleClick(e)}
-        >
+        <div className='pt-12 w-full h-full grid grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
             {
                 data.map((item) => (
                     <Singer
