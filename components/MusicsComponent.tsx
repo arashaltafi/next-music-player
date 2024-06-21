@@ -9,8 +9,6 @@ interface PropsType {
 }
 
 const MusicsComponent = (props: PropsType) => {
-    // const data1 = use(fetchData())
-
     const data = [
         {
             id: 1,

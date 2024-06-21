@@ -8,7 +8,6 @@ const Main = () => {
         <>
             <Header />
             <Article />
-            <Footer />
         </>
     )
 }

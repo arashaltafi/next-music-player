@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import MusicVideoComponent from './MusicVideoComponent'
 import { MusicVideoCategory } from '@/utils/Type'
@@ -6,35 +8,8 @@ interface PropsType {
     category: MusicVideoCategory
 }
 
-const MusicVideosComponent = async (props: PropsType) => {
-    const data = await fetchData(props.category)
-
-    return (
-        <div className='w-full h-full grid grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden'>
-            {
-                data.map((item) => (
-                    <MusicVideoComponent
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        singer={item.singer}
-                        path={item.path}
-                        image={item.image}
-                    />
-                ))
-            }
-        </div>
-    )
-}
-
-export default MusicVideosComponent
-
-const fetchData = async (type: MusicVideoCategory) => {
-    console.log('PropsType', type)
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-    const data = await response.json()
-
-    const list = [
+const MusicVideosComponent = (props: PropsType) => {
+    const data = [
         {
             id: 1,
             name: "آمد بهار جان ها",
@@ -72,5 +47,42 @@ const fetchData = async (type: MusicVideoCategory) => {
         }
     ]
 
-    return list
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const target = e.target as HTMLDivElement
+        const targetDiv = target.closest('div')
+        if (!targetDiv) return
+
+        const key = targetDiv.getAttribute('data-key')
+        if (!key) return
+
+        console.log('clicked key:', key)
+    }
+
+    return (
+        <div
+            className='w-full h-full grid grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden'
+            onClick={(e) => handleClick(e)}
+        >
+            {
+                data.map((item) => (
+                    <MusicVideoComponent
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        singer={item.singer}
+                        path={item.path}
+                        image={item.image}
+                    />
+                ))
+            }
+        </div>
+    )
 }
+
+// const fetchData = async () => {
+//     // console.log('PropsType', props.category)
+//     const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+//     return response.json()
+// }
+
+export default MusicVideosComponent
