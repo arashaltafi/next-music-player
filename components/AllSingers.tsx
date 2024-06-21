@@ -1,9 +1,12 @@
-
 import React from 'react'
 import Singer from './Singer'
 import { SingerType } from '@/utils/Type'
 
-const AllSingers = () => {
+interface PropsType {
+    isFav?: boolean
+}
+
+const AllSingers = (props: PropsType) => {
     const data: SingerType[] = [
         {
             id: 1,
@@ -33,6 +36,7 @@ const AllSingers = () => {
                         id={item.id}
                         name={item.name}
                         image={item.image}
+                        isFav={props.isFav}
                     />
                 ))
             }

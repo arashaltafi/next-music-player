@@ -216,4 +216,11 @@
   .btn-yellow {
     @apply bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-600 hover:scale-[101%] active:scale-[99%];
   }
+
+  .bg-pattern-1 {
+    background-image: repeating-conic-gradient(#e11d48 0% 25%, #475569 0% 50%);
+    background-position: 0 0, 28px 28px;
+    background-size: 56px 56px;
+    background-color: #475569;
+  }
 }

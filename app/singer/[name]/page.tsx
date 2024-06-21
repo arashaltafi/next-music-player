@@ -1,3 +1,4 @@
+import AllSingers from '@/components/AllSingers'
 import DividerImage from '@/components/DividerImage'
 import MusicsComponent from '@/components/MusicsComponent'
 import MusicVideosComponent from '@/components/MusicVideosComponent'
@@ -6,26 +7,36 @@ import { MusicCategory, MusicVideoCategory } from '@/utils/Type'
 import React from 'react'
 
 const Singer = async ({ params }: { params: { name: string } }) => {
-    const data = await fetchData(params.name)
+    const name = decodeURIComponent(params.name).replaceAll('-', ' ')
+    const data = await fetchData(name)
 
-    return (
-        <div className='mt-8 w-full flex flex-col gap-8 items-center justify-start px-8'>
-            <SingerImage name='arash' src='https://arashaltafi.ir/arash.jpg' />
-            <h3 className='self-start font-bold text-4xl'>نام:</h3>
-            <h2 className='self-start font-medium text-xl'>{decodeURIComponent(params.name).replaceAll('-', ' ')}</h2>
+    if (name === 'برترین خواننده ها') {
+        return (
+            <>
+                <h2 className='mt-10 px-8 self-start font-bold text-4xl'>خوانندگان برتر:</h2>
+                <AllSingers isFav />
+            </>
+        )
+    } else {
+        return (
+            <div className='mt-8 w-full flex flex-col gap-8 items-center justify-start px-8'>
+                <SingerImage name='arash' src='https://arashaltafi.ir/arash.jpg' />
+                <h3 className='self-start font-bold text-4xl'>نام:</h3>
+                <h2 className='self-start font-medium text-xl'>{name}</h2>
 
-            <h3 className='mt-12 self-start font-bold text-4xl'>بیوگرافی:</h3>
-            <p className='self-start font-medium text-xl text-justify'>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                <h3 className='mt-12 self-start font-bold text-4xl'>بیوگرافی:</h3>
+                <p className='self-start font-medium text-xl text-justify'>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
 
-            <h3 className='mt-16 self-start font-bold text-4xl'>موزیک ها:</h3>
-            <MusicsComponent category={MusicCategory.ALL} />
+                <h3 className='mt-16 self-start font-bold text-4xl'>موزیک ها:</h3>
+                <MusicsComponent category={MusicCategory.ALL} />
 
-            <DividerImage src='/images/music-divider-1.png' className='my-20' />
+                <DividerImage src='/images/music-divider-1.png' className='my-20' />
 
-            <h3 className='self-start font-bold text-4xl'>موزیک ویدیوها:</h3>
-            <MusicVideosComponent category={MusicVideoCategory.ALL} />
-        </div>
-    )
+                <h3 className='self-start font-bold text-4xl'>موزیک ویدیوها:</h3>
+                <MusicVideosComponent category={MusicVideoCategory.ALL} />
+            </div>
+        )
+    }
 }
 
 export const generateMetadata = ({ params }: { params: { name: string } }) => {
