@@ -18,7 +18,7 @@ import RoutesAddress from '@/utils/Routes';
 const MenuItems = () => {
     return (
         <>
-            <div className='w-full flex items-center justify-between cursor-pointer rounded-xl hover:scale-[101%] hover:bg-gradient1 active:scale-[99%] transition-all duration-200'>
+            <Link href={RoutesAddress.HOME} className='w-full flex items-center justify-between cursor-pointer rounded-xl hover:scale-[101%] hover:bg-gradient1 active:scale-[99%] transition-all duration-200'>
                 <h1 className='text-lg sm:text-xl md:text-2xl'>موزیک پلیر آنلاین</h1>
                 <Image
                     className='size-12 sm:size-14 md:size-16'
@@ -30,7 +30,7 @@ const MenuItems = () => {
                     priority
                     loading='eager'
                 />
-            </div>
+            </Link>
 
             <div className='w-full flex flex-col items-start justify-start gap-4 sm:gap-6 *:px-2 *:py-2'>
                 <Link

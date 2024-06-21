@@ -4,7 +4,11 @@ import { SingerType } from '@/utils/Type';
 import { LuMic2 } from "react-icons/lu";
 import Image from 'next/image';
 
-const SingerItems = async () => {
+interface PropsType {
+    activeSinger: string
+}
+
+const SingerItems = async (props: PropsType) => {
     const data: SingerType[] = await fetchData()
 
     return (
@@ -29,7 +33,7 @@ const SingerItems = async () => {
                         <Link
                             key={item.id}
                             href={'/singer/' + item.name.replaceAll(' ', '-')}
-                            className='group sideBar__singer__item'
+                            className={`group sideBar__singer__item ${props.activeSinger.replaceAll('-', ' ') === item.name && 'text-rose-400'}`}
                             prefetch={false}
                         >
                             <LuMic2 className='sideBar__item__items' />
