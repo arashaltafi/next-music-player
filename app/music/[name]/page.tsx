@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Music = async ({ params }: { params: { name: string } }) => {
-    const data = await fetchData()
+    const data = await fetchData(decodeURIComponent(params.name).replaceAll('-', ' '))
 
     return (
         <div className='mt-10 w-full flex flex-col gap-8 items-center justify-start px-8'>
-            <h2 className='self-start font-bold text-4xl'>{decodeURIComponent(params.name).replaceAll('-', ' ')}:</h2>
+            <h2 className='self-start font-bold text-4xl'>{data.name}:</h2>
             <div className='w-full bg-red-500'>{data.singer}</div>
         </div>
     )
@@ -20,7 +20,7 @@ export const generateMetadata = ({ params }: { params: { name: string } }) => {
     }
 }
 
-const fetchData = async () => {
+const fetchData = async (name: string) => {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
     const data = await response.json()
 
