@@ -1,3 +1,4 @@
+import DividerImage from '@/components/DividerImage'
 import MusicsComponent from '@/components/MusicsComponent'
 import MusicVideosComponent from '@/components/MusicVideosComponent'
 import SingerImage from '@/components/SingerImage'
@@ -19,7 +20,9 @@ const Singer = async ({ params }: { params: { name: string } }) => {
             <h3 className='mt-16 self-start font-bold text-4xl'>موزیک ها:</h3>
             <MusicsComponent category={MusicCategory.ALL} />
 
-            <h3 className='mt-16 self-start font-bold text-4xl'>موزیک ویدیوها:</h3>
+            <DividerImage src='/images/music-divider-1.png' className='my-20' />
+
+            <h3 className='self-start font-bold text-4xl'>موزیک ویدیوها:</h3>
             <MusicVideosComponent category={MusicVideoCategory.ALL} />
         </div>
     )
