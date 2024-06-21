@@ -1,11 +1,11 @@
 import React from 'react'
 
-const MusicVideo = async ({ params }: { params: { name: string } }) => {
+const Musics = async ({ params }: { params: { category: string } }) => {
     const data = await fetchData()
 
     return (
         <div className='mt-10 w-full flex flex-col gap-8 items-center justify-start px-8'>
-            <h2 className='self-start font-bold text-4xl'>{decodeURIComponent(params.name).replaceAll('-', ' ')}:</h2>
+            <h2 className='self-start font-bold text-4xl'>{decodeURIComponent(params.category).replaceAll('-', ' ')}:</h2>
 
             {
                 data.map((item: any) => (
@@ -18,12 +18,12 @@ const MusicVideo = async ({ params }: { params: { name: string } }) => {
     )
 }
 
-export const generateMetadata = ({ params }: { params: { name: string } }) => {
-    const musicVideo = decodeURIComponent(params.name).replaceAll('-', ' ')
+export const generateMetadata = ({ params }: { params: { category: string } }) => {
+    const music = decodeURIComponent(params.category).replaceAll('-', ' ')
 
     return {
-        title: musicVideo,
-        description: `صفحه موزیک ویدیو: ${musicVideo}`,
+        title: music,
+        description: `صفحه موزیک: ${music}`,
     }
 }
 
@@ -73,4 +73,4 @@ const fetchData = async () => {
     return data
 }
 
-export default MusicVideo
+export default Musics

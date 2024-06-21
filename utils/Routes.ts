@@ -4,6 +4,9 @@ const RoutesAddress = {
     MUSICS: '/musics',
     MUSIC_VIDEOS: '/music-videos',
 
+    MUSIC: '/music',
+    MUSIC_VIDEO: '/music-video',
+
     MUSIC_ALL: '/musics/تمامی-موزیک-ها',
     MUSIC_BEST: '/musics/برترین-موزیک-ها',
     MUSIC_SUGGESTED: '/musics/موزیک-های-پیشنهادی',

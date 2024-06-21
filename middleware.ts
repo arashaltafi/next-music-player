@@ -38,10 +38,10 @@ export function middleware(request: NextRequest) {
 
         ipData.count += 1;
     }
-    if (request.nextUrl.pathname === RoutesAddress.MUSICS) {
+    if (request.nextUrl.pathname === RoutesAddress.MUSICS || request.nextUrl.pathname === RoutesAddress.MUSIC) {
         return NextResponse.redirect(new URL(RoutesAddress.MUSIC_ALL, request.url))
     }
-    if (request.nextUrl.pathname === RoutesAddress.MUSIC_VIDEOS) {
+    if (request.nextUrl.pathname === RoutesAddress.MUSIC_VIDEOS || request.nextUrl.pathname === RoutesAddress.MUSIC_VIDEO) {
         return NextResponse.redirect(new URL(RoutesAddress.MUSIC_VIDEO_ALL, request.url))
     }
 }

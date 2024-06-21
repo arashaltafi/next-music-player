@@ -3,12 +3,16 @@
 import React from 'react'
 import MusicVideoComponent from './MusicVideoComponent'
 import { MusicVideoCategory } from '@/utils/Type'
+import { useRouter } from 'next-nprogress-bar'
+import RoutesAddress from '@/utils/Routes'
 
 interface PropsType {
     category: MusicVideoCategory
 }
 
 const MusicVideosComponent = (props: PropsType) => {
+    const router = useRouter()
+
     const data = [
         {
             id: 1,
@@ -55,7 +59,7 @@ const MusicVideosComponent = (props: PropsType) => {
         const key = targetDiv.getAttribute('data-key')
         if (!key) return
 
-        console.log('clicked key:', key)
+        router.push(RoutesAddress.MUSIC_VIDEO + "/" + key.replaceAll(' ', '-'))
     }
 
     return (
