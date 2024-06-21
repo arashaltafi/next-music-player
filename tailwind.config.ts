@@ -18,6 +18,7 @@ const config: Config = {
       },
       boxShadow: {
         musicShadow: '10px 10px 20px 4px #000000',
+        boxShadow: '3px 3px 10px 3px #000000',
       },
       dropShadow: {
         dropShadow1: '3px 3px 10px 1px #bc48ff',
@@ -31,6 +32,7 @@ const config: Config = {
         'video': '50% 50% 50% 50% / 10% 10% 10% 10%',
         'videoHover': '50% 50% 50% 50% / 5% 5% 5% 5%',
         'musicHover': '40% 40% 40% 40% / 40% 40% 40% 40%', 
+        'boxRadius': '50% 50% 50% 50% / 10% 10% 10% 10%',
       }
     },
   },
