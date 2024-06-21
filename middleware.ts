@@ -38,4 +38,7 @@ export function middleware(request: NextRequest) {
 
         ipData.count += 1;
     }
+    if (request.nextUrl.pathname === '/music') {
+        return NextResponse.redirect(new URL(RoutesAddress.MUSIC_ALL, request.url))
+    }
 }
