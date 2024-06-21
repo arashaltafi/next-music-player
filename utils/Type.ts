@@ -16,5 +16,6 @@ export enum MusicVideoCategory {
 
 export type SingerType = {
     id: number
-    name: string
+    name: string,
+    image?: string
 }

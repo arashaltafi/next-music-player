@@ -1,9 +1,13 @@
+import AllSingers from '@/components/AllSingers'
 import React from 'react'
 
-const AllSingers = () => {
+const Singers = () => {
     return (
-        <div>AllSingers</div>
+        <>
+            <h2 className='mt-10 px-8 self-start font-bold text-4xl'>تمامی خوانندگان:</h2>
+            <AllSingers />
+        </>
     )
 }
 
-export default AllSingers
+export default Singers
