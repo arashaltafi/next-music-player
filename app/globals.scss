@@ -83,12 +83,12 @@
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    @apply bg-slate-400 hover:bg-slate-500 border-1 border-solid border-rose-700 size-5 rounded-full cursor-pointer transition-all;
+    @apply bg-slate-400 hover:bg-slate-500 border border-solid border-rose-700 size-5 rounded-full cursor-pointer transition-all;
     -webkit-appearance: none;
   }
 
   input[type="range"]::-moz-range-thumb {
-    @apply bg-slate-400 hover:bg-slate-500 border-1 border-solid border-rose-700 size-5 rounded-full cursor-pointer transition-all;
+    @apply bg-slate-400 hover:bg-slate-500 border border-solid border-rose-700 size-5 rounded-full cursor-pointer transition-all;
   }
 }
 

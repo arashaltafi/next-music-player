@@ -6,7 +6,6 @@ import { IoPlaySkipBack } from "react-icons/io5";
 import { TbRepeatOff } from "react-icons/tb";
 import { TbRepeat } from "react-icons/tb";
 import { FaShuffle } from "react-icons/fa6";
-import { Avatar } from '@nextui-org/react';
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import Divider from './Divider';
@@ -17,6 +16,7 @@ import { convertSecondToTime } from '@/utils/Global';
 import { GoUnmute } from "react-icons/go";
 import { IoVolumeMuteOutline } from "react-icons/io5";
 import { FiDownloadCloud } from "react-icons/fi";
+import Image from 'next/image';
 
 const Footer = () => {
     const [isFav, setIsFav] = useState<boolean>(false)
@@ -271,10 +271,12 @@ const Footer = () => {
                         <h5 className='text-sm font-light'>{musics && musics[indexNo] && musics[indexNo].name}</h5>
                     </div>
 
-                    <Avatar
-                        src={musics && musics[indexNo] && musics[indexNo].img}
-                        name='arash'
-                        className='size-14 sm:size-16 md:size-18 bg-slate-700 p-px border-2 border-rose-500'
+                    <Image
+                        src={(musics && musics[indexNo]) && musics[indexNo].img}
+                        alt='arash'
+                        className='size-14 sm:size-16 md:size-18 bg-slate-700 p-px border-2 border-rose-500 rounded-full'
+                        width={200}
+                        height={200}
                     />
                 </div>
 

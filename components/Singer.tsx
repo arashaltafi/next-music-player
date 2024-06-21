@@ -8,7 +8,7 @@ const Singer = (props: SingerType) => {
         <div className='select-none w-full flex flex-col gap-7 items-center justify-center px-2'>
             <Link
                 href={'/singer/' + props.name.replaceAll(' ', '-')}
-                className='flex items-center justify-center'
+                className='w-full flex items-center justify-center'
             >
                 <Image
                     data-key={props.id}
