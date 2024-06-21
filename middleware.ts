@@ -38,7 +38,4 @@ export function middleware(request: NextRequest) {
 
         ipData.count += 1;
     }
-    if (request.nextUrl.pathname === '/singer') {
-        return NextResponse.redirect(new URL(RoutesAddress.SINGER_ALL, request.url))
-    }
 }

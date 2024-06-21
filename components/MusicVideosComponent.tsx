@@ -10,7 +10,7 @@ const MusicVideosComponent = async (props: PropsType) => {
     const data = await fetchData(props.category)
 
     return (
-        <div className='w-full h-full grid grid-cols-4 items-center justify-center gap-x-8 gap-y-6 overflow-hidden'>
+        <div className='w-full h-full grid grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden'>
             {
                 data.map((item) => (
                     <MusicVideoComponent
