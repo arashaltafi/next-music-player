@@ -9,7 +9,7 @@ const NotFound = () => {
                 <div className='flex flex-row gap-4 items-center justify-center shake2'>
                     <h2 className='text-7xl sm:text-8xl md:text-9xl text-brown-200'>4</h2>
                     <Image
-                        className='size-28 sm:size-40 md:size-48 brightness-150'
+                        className='size-28 sm:size-40 md:size-48 brightness-150 rounded-full grayscale'
                         src='/images/logo.png'
                         alt='404-notFound'
                         width={500}
