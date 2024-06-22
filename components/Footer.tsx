@@ -5,66 +5,39 @@ import { IoPlaySkipForward } from "react-icons/io5";
 import { IoPlaySkipBack } from "react-icons/io5";
 import { TbRepeatOff } from "react-icons/tb";
 import { TbRepeat } from "react-icons/tb";
-import { FaShuffle } from "react-icons/fa6";
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import Divider from './Divider';
 import { FaPlayCircle } from "react-icons/fa";
 import { FaPauseCircle } from "react-icons/fa";
-import { MusicType } from '@/types/Music';
 import { convertSecondToTime } from '@/utils/Global';
 import { GoUnmute } from "react-icons/go";
 import { IoVolumeMuteOutline } from "react-icons/io5";
 import { FiDownloadCloud } from "react-icons/fi";
 import Image from 'next/image';
 
-const Footer = () => {
+interface PropsType {
+    src: string
+    singer: string
+    name: string
+    img: string,
+    onNextClick: () => void,
+    onBackClick: () => void
+}
+
+const Footer = (props: PropsType) => {
     const [isFav, setIsFav] = useState<boolean>(false)
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [isMute, setIsMute] = useState<boolean>(false)
     const [isRepeat, setIsRepeat] = useState<boolean>(false)
     const [currentTime, setCurrentTime] = useState<number>(0)
-    const [musics, setMusics] = useState<MusicType[]>([])
     const [duration, setDuration] = useState<number>(0)
     const audioRef = useRef<HTMLAudioElement>(null)
     const timerRef = useRef<NodeJS.Timeout | null>(null)
-    const [indexNo, setIndexNo] = useState<number>(0)
 
-    // get musics
     useEffect(() => {
-        setMusics([
-            {
-                name: "آمد بهار جان ها",
-                path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
-                img: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
-                singer: "محسن چاوشی"
-            },
-            {
-                name: "شیک",
-                path: "https://dls.music-fa.com/tagdl/downloads/Yousef%20Zamani%20-%20Shik%20(128).mp3",
-                img: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg",
-                singer: "یوسف زمانی"
-            },
-            {
-                name: "بهت قول میدم",
-                path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Yeganeh%20-%20Behet%20Ghol%20Midam%20(128).mp3",
-                img: "https://music-fa.com/wp-content/uploads/2018/12/M-yegane83658723567456837456986745867509673452355.jpg",
-                singer: "محسن یگانه"
-            },
-            {
-                name: "نشکن دلمو",
-                path: "https://dls.music-fa.com/tagdl/downloads/Yegane%20Chavoshi%20Hakan%20-%20Nashkan%20Delamo%20(128).mp3",
-                img: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg",
-                singer: "محسن یگانه"
-            },
-            {
-                name: "آخرش قشنگه",
-                path: "https://dls.music-fa.com/tagdl/downloads/Alireza%20Talischi%20-%20Akharesh%20Ghashange%20(128).mp3",
-                img: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg",
-                singer: "علیرضا طلیسچی"
-            },
-        ])
-    }, [])
+        loadTrack()
+    }, [props.src])
 
     // update time video
     useEffect(() => {
@@ -94,22 +67,9 @@ const Footer = () => {
         }
     }, [])
 
-    // load track
-    useEffect(() => {
-        if (musics && musics.length > 0) {
-            loadTrack(indexNo)
-        }
-        return () => {
-            if (timerRef.current) {
-                clearInterval(timerRef.current)
-            }
-        }
-    }, [indexNo, musics])
-
-    const loadTrack = (index: number) => {
+    const loadTrack = () => {
         if (audioRef.current) {
-            audioRef.current.src = musics[index].path
-            console.log('musics[index].path:', musics[index].path)
+            audioRef.current.src = props.src
             audioRef.current.load()
             setCurrentTime(0)
         }
@@ -129,8 +89,6 @@ const Footer = () => {
             setIsPlaying(false)
             if (isRepeat) {
                 playMusic()
-            } else {
-                nextMusic()
             }
         }
     }
@@ -142,24 +100,6 @@ const Footer = () => {
 
     const handleRepeat = () => {
         setIsRepeat(!isRepeat)
-    }
-
-    const handleNavigateMusic = (isSkipNext: boolean) => {
-        const stateMusic = isSkipNext ? 'next' : 'prev'
-        if (audioRef.current) {
-            if (stateMusic === 'next') {
-                nextMusic()
-            } else {
-                previousMusic()
-            }
-        }
-    }
-
-    const handleShuffleMusic = () => {
-        setIndexNo(Math.floor(Math.random() * musics.length))
-        setTimeout(() => {
-            playMusic()
-        }, 100);
     }
 
     const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -184,28 +124,6 @@ const Footer = () => {
         setIsPlaying(false)
     }
 
-    const nextMusic = () => {
-        if (indexNo < musics.length - 1) {
-            setIndexNo(indexNo + 1)
-        } else {
-            setIndexNo(0)
-        }
-        setTimeout(() => {
-            playMusic()
-        }, 100);
-    }
-
-    const previousMusic = () => {
-        if (indexNo > 0) {
-            setIndexNo(indexNo - 1)
-        } else {
-            setIndexNo(musics.length - 1)
-        }
-        setTimeout(() => {
-            playMusic()
-        }, 100);
-    }
-
     const handleMuteSound = () => {
         if (isMute) {
             if (audioRef.current) {
@@ -221,8 +139,8 @@ const Footer = () => {
     }
 
     const handleDownload = () => {
-        const url = musics[indexNo].path
-        const name = musics[indexNo].singer + '___' + musics[indexNo].name + '.mp3'
+        const url = props.src
+        const name = props.singer + '___' + props.name + '.mp3'
         const link = document.createElement('a')
         link.href = url
         link.download = name
@@ -232,7 +150,7 @@ const Footer = () => {
     }
 
     return (
-        <div className='fixed bottom-0 left-0 right-0 z-30 w-full hidden 1flex flex-col gap-4 items-center justify-center py-4 px-1 sm:px-4 md:px-8 bg-slate-700 rounded-t-xl'>
+        <div className='fixed bottom-0 left-0 right-0 z-30 w-full hidden1 flex flex-col gap-4 items-center justify-center py-4 px-1 sm:px-4 md:px-8 bg-slate-700 rounded-t-xl'>
             <div className='flex xl:hidden w-full gap-4 items-center justify-center'>
                 <h4 className='text-base w-14 text-center text-nowrap line-clamp-1'>{convertSecondToTime(duration)}</h4>
                 <input
@@ -267,13 +185,13 @@ const Footer = () => {
                     </div>
 
                     <div className='max-w-24 flex flex-col items-center justify-center gap-1 text-center'>
-                        <h4 className='text-base font-medium'>{musics && musics[indexNo] && musics[indexNo].singer}</h4>
-                        <h5 className='text-sm font-light'>{musics && musics[indexNo] && musics[indexNo].name}</h5>
+                        <h4 className='text-base font-medium'>{props.singer}</h4>
+                        <h5 className='text-sm font-light'>{props.name}</h5>
                     </div>
 
                     <Image
-                        src={(musics && musics[indexNo]) && musics[indexNo].img}
-                        alt='arash'
+                        src={props.img}
+                        alt={props.name}
                         className='size-14 sm:size-16 md:size-18 bg-slate-700 p-px border-2 border-rose-500 rounded-full'
                         width={200}
                         height={200}
@@ -302,13 +220,18 @@ const Footer = () => {
                 <Divider className='hidden sm:block' isVerticaly />
 
                 <div className='flex w-full xl:w-auto gap-3 items-center justify-center'>
-                    <FaShuffle
-                        onClick={handleShuffleMusic}
-                        className='icon-music'
-                    />
+                    <div onClick={handleRepeat}>
+                        {
+                            isRepeat ? (
+                                <TbRepeat className='icon-music' />
+                            ) : (
+                                <TbRepeatOff className='icon-music' />
+                            )
+                        }
+                    </div>
 
                     <IoPlaySkipForward
-                        onClick={() => handleNavigateMusic(true)}
+                        onClick={() => props.onNextClick()}
                         className='icon-music'
                     />
 
@@ -323,19 +246,9 @@ const Footer = () => {
                     </>
 
                     <IoPlaySkipBack
-                        onClick={() => handleNavigateMusic(false)}
+                        onClick={() => props.onBackClick()}
                         className='icon-music'
                     />
-
-                    <div onClick={handleRepeat}>
-                        {
-                            isRepeat ? (
-                                <TbRepeat className='icon-music' />
-                            ) : (
-                                <TbRepeatOff className='icon-music' />
-                            )
-                        }
-                    </div>
 
                     <div onClick={handleMuteSound}>
                         {

@@ -7,7 +7,6 @@ import ReduxProvider from "@/libs/Provider";
 import NProgressProvider from "@/provider/NProgressProvider";
 import SideBar from "@/components/SideBar";
 import SideBarSinger from "@/components/SideBarSinger";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -79,7 +78,6 @@ export default function RootLayout({
                 {children}
               </div>
               <SideBarSinger />
-              <Footer />
             </main>
           </NProgressProvider>
         </ReduxProvider>
