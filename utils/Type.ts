@@ -20,3 +20,20 @@ export type SingerType = {
     image?: string,
     isFav?: boolean
 }
+
+export type MusicType = {
+    id: number,
+    name: string
+    path: string
+    image: string
+    singer: string,
+    text: string
+}
+
+export type MusicVideoType = {
+    id: number,
+    name: string
+    path: string
+    image: string
+    singer: string
+}

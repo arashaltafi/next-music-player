@@ -1,11 +1,12 @@
 import MusicItem from '@/components/MusicItem'
 import RoutesAddress from '@/utils/Routes'
+import { MusicType } from '@/utils/Type'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const Musics = ({ data, category }: { data: any, category: string }) => {
+const Musics = ({ data, category }: { data: MusicType[], category: string }) => {
     const router = useRouter()
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -68,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const category = typeof (params?.category) === 'string' ? decodeURIComponent(params.category).replaceAll('-', ' ') : ''
 
-    const list = [
+    const list: MusicType[] = [
         {
             id: 1,
             name: "آمد بهار جان ها",

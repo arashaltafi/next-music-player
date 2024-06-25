@@ -1,22 +1,32 @@
 import MusicVideoItem from '@/components/MusicVideoItem'
 import RoutesAddress from '@/utils/Routes'
+import { MusicVideoType } from '@/utils/Type'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const MusicVideos = ({ data, category }: { data: any, category: string }) => {
+const MusicVideos = ({ data, category }: { data: MusicVideoType[], category: string }) => {
     const router = useRouter()
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLDivElement
-        const targetDiv = target.closest('div')
-        if (!targetDiv) return
+        const targetBtn = target.closest('button')
+        if (!targetBtn) return
 
-        const key = targetDiv.getAttribute('data-key')
-        if (!key) return
+        const click = targetBtn.getAttribute('data-click')
+        const download = targetBtn.getAttribute('data-download')
+        const play = targetBtn.getAttribute('data-play')
 
-        router.push(RoutesAddress.MUSIC_VIDEO + "/" + key.replaceAll(' ', '-'))
+        if (click) {
+            router.push(RoutesAddress.MUSIC_VIDEO + "/" + click.replaceAll(' ', '-'))
+        } else if (download) {
+
+        } else if (play) {
+            router.push(RoutesAddress.MUSIC_VIDEO + "/" + play.replaceAll(' ', '-'))
+        } else {
+            return
+        }
     }
 
     return (
@@ -25,7 +35,7 @@ const MusicVideos = ({ data, category }: { data: any, category: string }) => {
                 <title>{category} | موزیک آنلاین</title>
                 <meta name="description" content={`${category} موزیک آنلاین`} />
             </Head>
-            <div className='mt-10 w-full flex flex-col gap-8 items-center justify-start px-8'>
+            <div onClick={(e) => handleClick(e)} className='mt-10 w-full flex flex-col gap-12 items-center justify-start px-8'>
                 <h2 className='self-start font-bold text-4xl'>{category}:</h2>
 
                 {
@@ -59,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const category = typeof (params?.category) === 'string' ? decodeURIComponent(params.category).replaceAll('-', ' ') : ''
 
-    const list = [
+    const list: MusicVideoType[] = [
         {
             id: 1,
             name: "آمد بهار جان ها",

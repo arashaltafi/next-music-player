@@ -1,17 +1,9 @@
+import { MusicType } from '@/utils/Type';
 import Image from 'next/image'
 import React from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 
-interface PropsType {
-    id: number,
-    name: string,
-    singer: string,
-    image: string,
-    path: string
-    text: string
-}
-
-const MusicItem = (props: PropsType) => {
+const MusicItem = (props: MusicType) => {
     return (
         <div className='w-full flex flex-col gap-4 items-center justify-between px-8 py-4 rounded-xl bg-slate-600 shadow-boxShadow'>
             <div className='mt-6 mb-8 w-full flex gap-16 items-center justify-between'>
