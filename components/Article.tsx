@@ -6,10 +6,13 @@ import Image from 'next/image';
 import MusicVideosComponent from './MusicVideosComponent';
 import { MusicCategory, MusicVideoCategory } from '@/utils/Type';
 import RoutesAddress from '@/utils/Routes';
+import CategoryComponent from './CategoryComponent';
 
 const Article = () => {
     return (
         <article className='mt-8 select-none w-full h-full flex flex-col gap-6 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
+            <CategoryComponent />
+            
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_ALL} title="تمامی موزیک ها" />
             <MusicsComponent category={MusicCategory.ALL} />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
