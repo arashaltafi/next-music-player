@@ -1,11 +1,18 @@
+import { showConfetti } from '@/utils/Animation';
 import { MusicType } from '@/utils/Type';
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 
 const MusicItem = (props: MusicType) => {
+    useEffect(() => {
+        if (props.isFav) {
+            showConfetti()
+        }
+    }, [])
+
     return (
-        <div className='w-full flex flex-col gap-4 items-center justify-between px-8 py-4 rounded-xl bg-slate-600 shadow-boxShadow'>
+        <div className={`w-full flex flex-col gap-4 items-center justify-between px-8 py-4 rounded-xl bg-slate-600 shadow-boxShadow ${props.isFav && 'bg-pattern-2 rounded-boxRadius py-4'}`}>
             <div className='mt-6 mb-8 w-full flex gap-16 items-center justify-between'>
                 <div className='w-full h-full flex flex-col gap-4 items-stretch justify-between'>
                     <h5 className='text-lg'>موزیک: <span className='text-xl'>{props.name}</span></h5>

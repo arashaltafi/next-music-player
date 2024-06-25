@@ -27,7 +27,8 @@ export type MusicType = {
     path: string
     image: string
     singer: string,
-    text: string
+    text: string,
+    isFav?: boolean
 }
 
 export type MusicVideoType = {
@@ -35,5 +36,6 @@ export type MusicVideoType = {
     name: string
     path: string
     image: string
-    singer: string
+    singer: string,
+    isFav?: boolean
 }

@@ -48,6 +48,7 @@ const Musics = ({ data, category }: { data: MusicType[], category: string }) => 
                             image={item.image}
                             text={item.text}
                             path={item.path}
+                            isFav={category === 'موزیک های مورد علاقه'}
                         />
                     ))
                 }

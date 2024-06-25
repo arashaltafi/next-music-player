@@ -47,6 +47,7 @@ const MusicVideos = ({ data, category }: { data: MusicVideoType[], category: str
                             singer={item.singer}
                             image={item.image}
                             path={item.path}
+                            isFav={category === 'موزیک ویدیوهای مورد علاقه'}
                         />
                     ))
                 }
