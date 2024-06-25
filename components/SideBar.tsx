@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect } from 'react'
 import { HiMenu } from "react-icons/hi";
 import MenuItems from './MenuItems';

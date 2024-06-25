@@ -3,8 +3,8 @@
 import React from 'react'
 import MusicComponent from './MusicComponent'
 import { MusicCategory } from '@/utils/Type'
-import { useRouter } from 'next-nprogress-bar'
 import RoutesAddress from '@/utils/Routes'
+import { useRouter } from 'next/navigation'
 
 interface PropsType {
     category: MusicCategory
@@ -82,11 +82,5 @@ const MusicsComponent = (props: PropsType) => {
         </div>
     )
 }
-
-// const fetchData = async () => {
-//     // console.log('PropsType', props.category)
-//     const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-//     return response.json()
-// }
 
 export default MusicsComponent
