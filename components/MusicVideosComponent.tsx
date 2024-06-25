@@ -1,5 +1,3 @@
-"use client"
-
 import React from 'react'
 import MusicVideoComponent from './MusicVideoComponent'
 import { MusicVideoCategory } from '@/utils/Type'

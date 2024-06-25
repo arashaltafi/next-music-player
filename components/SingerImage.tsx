@@ -1,5 +1,3 @@
-"use client"
-
 import { showConfetti } from '@/utils/Animation'
 import Image from 'next/image'
 import React from 'react'

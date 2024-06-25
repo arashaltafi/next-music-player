@@ -1,5 +1,3 @@
-"use client"
-
 import { showConfetti } from '@/utils/Animation'
 import { SingerType } from '@/utils/Type'
 import Image from 'next/image'
