@@ -35,7 +35,7 @@ const SideBarSinger = () => {
 
     return (
         <>
-            <aside className="overflow-y-auto hidden lg:flex select-none py-4 px-2 *:px-4 *:py-4 w-60 flex-col gap-8 items-center justify-start bg-slate-900">
+            <aside className="overflow-y-auto hidden lg:flex select-none py-4 px-2 *:px-4 *:py-4 w-60 flex-col gap-8 items-center justify-start bg-gradient-to-b from-slate-900 to-slate-800">
                 <SingerItems activeSinger={typeof (params?.name) === 'string' ? decodeURIComponent(params?.name) : ''} />
             </aside>
 
