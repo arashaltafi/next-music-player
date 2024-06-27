@@ -24,8 +24,8 @@ const Music = ({ data, name }: { data: any, name: string }) => {
             <div className='mt-10 w-full flex flex-col gap-8 items-center justify-start px-8'>
                 <h2 className='self-start font-normal text-3xl'>موزیک <span className='font-bold text-4xl'>{data.name}</span></h2>
                 <h6 className='self-end font-normal text-lg'>{new Date().toLocaleDateString('fa-IR')}</h6>
-                <div className='my-4 w-full flex items-center justify-between p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
-                    <div className='h-full flex flex-col gap-4 items-stretch justify-between'>
+                <div className='relative overflow-hidden my-4 w-full flex items-center justify-between p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
+                    <div className='h-full flex flex-col gap-4 items-stretch justify-between z-10'>
                         <h5 className='text-lg'>خواننده: <span className='text-xl'>{data.singer}</span></h5>
                         <h5 className='text-lg'>موزیک: <span className='text-xl'>{data.name}</span></h5>
 
@@ -41,11 +41,18 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                         </button>
                     </div>
                     <Image
-                        className='w-1/3 h-auto rounded-boxRadius border border-dashed border-rose-500 shadow-musicShadow'
+                        className='w-1/3 h-auto rounded-boxRadius border border-dashed border-rose-500 shadow-musicShadow z-10'
                         src={data.image}
                         alt={data.name}
                         width={500}
                         height={500}
+                    />
+                    <Image
+                        className='absolute top-0 left-0 right-0 w-full opacity-60 z-0'
+                        src={'/icons/svg-wave-2.svg'}
+                        width={100}
+                        height={100}
+                        alt='background wave'
                     />
                 </div>
 
