@@ -10,22 +10,22 @@ const CategoryComponent = () => {
     const data = [
         {
             id: 1,
-            type: "شاد"
-        },
-        {
-            id: 2,
-            type: "غمگین"
-        },
-        {
-            id: 3,
+            image: 'https://arashaltafi.ir//melodyo/media/app/cat_pop.jpg',
             type: "پاپ"
         },
         {
-            id: 4,
+            id: 2,
+            image: 'https://arashaltafi.ir//melodyo/media/app/cat_rap.jpg',
             type: "رپ"
         },
         {
-            id: 5,
+            id: 3,
+            image: 'https://arashaltafi.ir//melodyo/media/app/cat_traditional.jpg',
+            type: "سنتی"
+        },
+        {
+            id: 4,
+            image: 'https://arashaltafi.ir//melodyo/media/app/cat_old.jpg',
             type: "قدیمی"
         }
     ]
@@ -50,9 +50,16 @@ const CategoryComponent = () => {
                 data.map((item) => (
                     <div
                         key={item.id}
-                        className='flex items-center justify-center size-36 rounded-full p-1 border-2 border-rose-500 hover:border-white border-solid hover:bg-rose-500 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer'
+                        className='flex flex-col gap-2 items-center justify-center cursor-pointer group *:transition-all *:duration-200'
                     >
-                        <h3 className='text-2xl'>{item.type}</h3>
+                        <Image
+                            className='size-36 rounded-full p-1 border-2 border-rose-500 group-hover:border-white group-hover:scale-105 group-active:scale-95 border-solid'
+                            src={item.image}
+                            width={500}
+                            height={500}
+                            alt={item.type}
+                        />
+                        <h3 className='text-2xl group-hover:text-rose-500'>{item.type}</h3>
                     </div>
                 ))
             }
