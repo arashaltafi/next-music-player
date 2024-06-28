@@ -17,10 +17,13 @@ const Article = () => {
             <ImageHomePageComponent src='/images/music_3.png' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg' 
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg' 
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg' 
-                isReverce
+                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
+                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
+                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
+                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
+                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
+                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                isReverce={false}
             />
 
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_ALL} title="تمامی موزیک ها" />
@@ -28,15 +31,45 @@ const Article = () => {
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_1.png' />
 
+            <BannerHomePage
+                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
+                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
+                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
+                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
+                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
+                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                isReverce={true}
+            />
+
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_BEST} title="برترین موزیک ها" />
             <MusicsComponent category={MusicCategory.BEST} />
             <DividerImage src='/images/music-divider-2.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_2.png' />
 
+            <BannerHomePage
+                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
+                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
+                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
+                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
+                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
+                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                isReverce={false}
+            />
+
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_NEW} title="آخرین موزیک ها" />
             <MusicsComponent category={MusicCategory.NEW} />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_4.png' />
+
+            <BannerHomePage
+                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
+                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
+                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
+                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
+                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
+                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                isReverce={true}
+            />
 
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_SUGGESTED} title="موزیک های پیشنهادی" />
             <MusicsComponent category={MusicCategory.SUGGESTED} />
@@ -55,19 +88,48 @@ const Article = () => {
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_video_1.png' />
 
+            <BannerHomePage
+                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
+                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
+                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
+                link1={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 1'}
+                link2={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 2'}
+                link3={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 3'}
+                isReverce={false}
+            />
+
             <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_VIDEO_BEST} title="برترین موزیک ویدیوها" />
             <MusicVideosComponent category={MusicVideoCategory.BEST} />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_video_2.png' className='w-1/3' />
+
+            <BannerHomePage
+                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
+                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
+                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
+                link1={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 1'}
+                link2={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 2'}
+                link3={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 3'}
+                isReverce={true}
+            />
 
             <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_VIDEO_NEW} title="آخرین موزیک ویدیوها" />
             <MusicVideosComponent category={MusicVideoCategory.NEW} />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
             <ImageHomePageComponent src='/images/dj3.png' className='w-1/3 mb-4' />
 
+            <BannerHomePage
+                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
+                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
+                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
+                link1={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 1'}
+                link2={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 2'}
+                link3={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 3'}
+                isReverce={false}
+            />
+
             <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_VIDEO_SUGGESTED} title="موزیک ویدیوهای پیشنهادی" />
             <MusicVideosComponent category={MusicVideoCategory.SUGGESTED} />
-            <ImageHomePageComponent src='/images/dj4.png' className='w-1/3 mt-4' />
         </article>
     )
 }
