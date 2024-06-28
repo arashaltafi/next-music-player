@@ -11,6 +11,9 @@ const config: Config = {
       screens: {
         'maxW': '1600px'
       },
+      spacing: {
+        '98': '24.75rem',
+      },
       backgroundImage: {
         gradient1: 'linear-gradient(0deg, #474bff 0%, #bc48ff 100%)',
         gradient2: 'linear-gradient(0deg, #cc99ff 0%, #b337a9 100%)',
