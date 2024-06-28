@@ -32,7 +32,7 @@ const SideBar = () => {
 
     return (
         <>
-            <aside className="overflow-y-auto hidden lg:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-gradient-to-b from-slate-900 to-slate-800">
+            <aside className="overflow-y-auto hidden lg:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-pattern-5">
                 <MenuItems />
             </aside>
 
