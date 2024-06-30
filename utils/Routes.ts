@@ -6,6 +6,7 @@ const RoutesAddress = {
 
     MUSIC: '/music',
     MUSIC_VIDEO: '/music-video',
+    CATEGORY: '/category',
 
     MUSIC_ALL: '/musics/تمامی-موزیک-ها',
     MUSIC_BEST: '/musics/برترین-موزیک-ها',

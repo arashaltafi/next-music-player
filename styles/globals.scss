@@ -265,21 +265,21 @@
 
   .bg-pattern-5 {
     background:
-      radial-gradient(farthest-side at -33.33% 50%, #0000 52%, #1e293b 54% 57%, #0000 59%) 0 calc(128px/2),
-      radial-gradient(farthest-side at 50% 133.33%, #0000 52%, #1e293b 54% 57%, #0000 59%) calc(128px/2) 0,
-      radial-gradient(farthest-side at 133.33% 50%, #0000 52%, #1e293b 54% 57%, #0000 59%),
-      radial-gradient(farthest-side at 50% -33.33%, #0000 52%, #1e293b 54% 57%, #0000 59%),
+      radial-gradient(farthest-side at -33.33% 50%, #0000 52%, #020617 54% 57%, #0000 59%) 0 calc(128px/2),
+      radial-gradient(farthest-side at 50% 133.33%, #0000 52%, #020617 54% 57%, #0000 59%) calc(128px/2) 0,
+      radial-gradient(farthest-side at 133.33% 50%, #0000 52%, #020617 54% 57%, #0000 59%),
+      radial-gradient(farthest-side at 50% -33.33%, #0000 52%, #020617 54% 57%, #0000 59%),
       #0f172a;
     background-size: calc(128px/4.667) 128px, 128px calc(128px/4.667);
   }
 
   .bg-pattern-6 {
     background:
-      radial-gradient(35.36% 35.36% at 100% 25%, #0000 66%, #1e293b 68% 70%, #0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
-      radial-gradient(35.36% 35.36% at 0 75%, #0000 66%, #1e293b 68% 70%, #0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
-      radial-gradient(35.36% 35.36% at 100% 25%, #0000 66%, #1e293b 68% 70%, #0000 72%) 0 0/calc(2*32px) calc(2*32px),
-      radial-gradient(35.36% 35.36% at 0 75%, #0000 66%, #1e293b 68% 70%, #0000 72%) 0 0/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 100% 25%, #0000 66%, #020617 68% 70%, #0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 0 75%, #0000 66%, #020617 68% 70%, #0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 100% 25%, #0000 66%, #020617 68% 70%, #0000 72%) 0 0/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 0 75%, #0000 66%, #020617 68% 70%, #0000 72%) 0 0/calc(2*32px) calc(2*32px),
       repeating-conic-gradient(#0f172a 0 25%, #0000 0 50%) 0 0/calc(2*32px) calc(2*32px),
-      radial-gradient(#0000 66%, #1e293b 68% 70%, #0000 72%) 0 calc(32px/2)/32px 32px #0f172a;
+      radial-gradient(#0000 66%, #020617 68% 70%, #0000 72%) 0 calc(32px/2)/32px 32px #0f172a;
   }
 }

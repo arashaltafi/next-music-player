@@ -1,8 +1,7 @@
 import React from 'react'
-import MusicComponent from './MusicComponent'
 import RoutesAddress from '@/utils/Routes'
-import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 
 const CategoryComponent = () => {
     const router = useRouter()
@@ -38,7 +37,13 @@ const CategoryComponent = () => {
         const key = targetDiv.getAttribute('data-key')
         if (!key) return
 
-        router.push(RoutesAddress.MUSIC + "/" + key.replaceAll(' ', '-'))
+        key.replaceAll(' ', '-')
+        router.push({
+            pathname: RoutesAddress.CATEGORY,
+            query: {
+                category: key.replaceAll(' ', '-')
+            }
+        })
     }
 
     return (
@@ -50,6 +55,7 @@ const CategoryComponent = () => {
                 data.map((item) => (
                     <div
                         key={item.id}
+                        data-key={item.type}
                         className='flex flex-col gap-2 items-center justify-center cursor-pointer group *:transition-all *:duration-200'
                     >
                         <Image
