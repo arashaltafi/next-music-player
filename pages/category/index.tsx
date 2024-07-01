@@ -6,6 +6,8 @@ import MusicsComponent from '@/components/MusicsComponent'
 import { MusicCategory, MusicVideoCategory } from '@/utils/Type'
 import DividerImage from '@/components/DividerImage'
 import SingerImage from '@/components/SingerImage'
+import RoutesAddress from '@/utils/Routes'
+import HeadOfTitle from '@/components/HeadOfTitle'
 
 interface PropsType {
     data: {
@@ -25,12 +27,12 @@ const Category = (props: PropsType) => {
                 <h3 className='self-start font-bold text-4xl'>دسته بندی:</h3>
                 <h2 className='self-start font-medium text-xl'>{props.data.category}</h2>
 
-                <h3 className='mt-16 self-start font-bold text-4xl'>موزیک ها:</h3>
+                <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_ALL} title="موزیک ها:" />
                 <MusicsComponent category={MusicCategory.ALL} />
 
                 <DividerImage src='/images/music-divider-1.png' className='my-20' />
 
-                <h3 className='self-start font-bold text-4xl'>موزیک ویدیوها:</h3>
+                <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_VIDEO_ALL} title="موزیک ویدیوها:" />
                 <MusicVideosComponent category={MusicVideoCategory.ALL} />
             </div>
         </>
