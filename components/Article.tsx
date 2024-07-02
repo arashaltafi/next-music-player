@@ -9,12 +9,14 @@ import RoutesAddress from '@/utils/Routes';
 import CategoryComponent from './CategoryComponent';
 import ImageHomePageComponent from './ImageHomePageComponent';
 import BannerHomePage from './BannerHomePage';
+import LottieComponent from './LottieComponent';
 
 const Article = () => {
     return (
         <article className='mt-8 select-none w-full h-full flex flex-col gap-6 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
             <CategoryComponent />
             <ImageHomePageComponent src='/images/music_3.png' />
+            <LottieComponent src='anim1' />
 
             <BannerHomePage
                 src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
@@ -30,6 +32,7 @@ const Article = () => {
             <MusicsComponent category={MusicCategory.ALL} />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_1.png' />
+            <LottieComponent src='anim2' />
 
             <BannerHomePage
                 src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
@@ -45,6 +48,7 @@ const Article = () => {
             <MusicsComponent category={MusicCategory.BEST} />
             <DividerImage src='/images/music-divider-2.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_2.png' />
+            <LottieComponent src='anim3' />
 
             <BannerHomePage
                 src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
@@ -60,6 +64,7 @@ const Article = () => {
             <MusicsComponent category={MusicCategory.NEW} />
             <DividerImage src='/images/music-divider-1.png' className='my-8' />
             <ImageHomePageComponent src='/images/music_4.png' />
+            <LottieComponent src='anim4' />
 
             <BannerHomePage
                 src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
