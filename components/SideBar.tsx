@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
 import { HiMenu } from "react-icons/hi";
 import MenuItems from './MenuItems';
+import { useParams } from 'next/navigation';
 
 const SideBar = () => {
+    const params = useParams()
+
     // close menu on back click 
     useEffect(() => {
         window.addEventListener('popstate', () => {
@@ -33,7 +36,7 @@ const SideBar = () => {
     return (
         <>
             <aside className="overflow-y-auto hidden lg:flex select-none py-4 px-4 *:px-4 *:py-4 w-80 flex-col gap-10 items-center justify-start bg-pattern-5">
-                <MenuItems />
+                <MenuItems activeSinger={typeof (params?.category) === 'string' ? decodeURIComponent(params?.category) : ''} />
             </aside>
 
             <div className='absolute top-4 right-4 lg:hidden z-20 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-150'>
@@ -45,7 +48,7 @@ const SideBar = () => {
             <div
                 id='menu'
                 className='overflow-y-auto py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 right-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 lg:hidden transition-all duration-300 translate-x-[1000px]'>
-                <MenuItems />
+                <MenuItems activeSinger={typeof (params?.name) === 'string' ? decodeURIComponent(params?.name) : ''} />
             </div>
 
             <div

@@ -16,7 +16,7 @@ const RoutesAddress = {
     MUSIC_VIDEO_ALL: '/music-videos/تمامی-موزیک-ویدیوها',
     MUSIC_VIDEO_BEST: '/music-videos/برترین-موزیک-ویدیوها',
     MUSIC_VIDEO_SUGGESTED: '/music-videos/موزیک-ویدیوهای-پیشنهادی',
-    MUSIC_VIDEO_NEW: '/music-videos/آخرین-موزیک-ویدیو',
+    MUSIC_VIDEO_NEW: '/music-videos/آخرین-موزیک-ویدیوها',
 
     MUSIC_FAV: '/musics/موزیک-های-مورد-علاقه',
     MUSIC_VIDEO_FAV: '/music-videos/موزیک-ویدیوهای-مورد-علاقه',

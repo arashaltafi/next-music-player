@@ -15,7 +15,11 @@ import { FaUserCheck } from "react-icons/fa";
 import Link from 'next/link';
 import RoutesAddress from '@/utils/Routes';
 
-const MenuItems = () => {
+interface PropsType {
+    activeSinger: string
+}
+
+const MenuItems = (props: PropsType) => {
     return (
         <>
             <Link href={RoutesAddress.HOME} className='w-full flex items-center justify-between cursor-pointer rounded-xl hover:scale-[101%] hover:bg-gradient1 active:scale-[99%] transition-all duration-200'>
@@ -35,7 +39,7 @@ const MenuItems = () => {
             <div className='w-full flex flex-col items-start justify-start gap-4 sm:gap-6 *:px-2 *:py-2'>
                 <Link
                     href={RoutesAddress.MUSIC_ALL}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'تمامی موزیک ها' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <FaMusic className='sideBar__item__items' />
@@ -43,7 +47,7 @@ const MenuItems = () => {
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_BEST}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'برترین موزیک ها' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <GiMusicalNotes className='sideBar__item__items' />
@@ -51,7 +55,7 @@ const MenuItems = () => {
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_NEW}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'آخرین موزیک ها' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <BsMusicNoteList className='sideBar__item__items' />
@@ -59,7 +63,7 @@ const MenuItems = () => {
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_SUGGESTED}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'موزیک های پیشنهادی' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <TbMusicHeart className='sideBar__item__items' />
@@ -70,7 +74,7 @@ const MenuItems = () => {
 
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_ALL}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'تمامی موزیک ویدیوها' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <FaVideo className='sideBar__item__items' />
@@ -78,7 +82,7 @@ const MenuItems = () => {
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_BEST}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'برترین موزیک ویدیوها' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <AiFillVideoCamera className='sideBar__item__items' />
@@ -86,7 +90,7 @@ const MenuItems = () => {
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_NEW}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'آخرین موزیک ویدیوها' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <BiSolidVideoRecording className='sideBar__item__items' />
@@ -94,7 +98,7 @@ const MenuItems = () => {
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_SUGGESTED}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'موزیک ویدیوهای پیشنهادی' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <ImVideoCamera className='sideBar__item__items' />
@@ -105,7 +109,7 @@ const MenuItems = () => {
 
                 <Link
                     href={RoutesAddress.MUSIC_FAV}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'موزیک های مورد علاقه' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <MdFavorite className='sideBar__item__items' />
@@ -113,7 +117,7 @@ const MenuItems = () => {
                 </Link>
                 <Link
                     href={RoutesAddress.MUSIC_VIDEO_FAV}
-                    className='group sideBar__item'
+                    className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'موزیک ویدیوهای مورد علاقه' && 'text-rose-400'}`}
                     prefetch={false}
                 >
                     <MdFavorite className='sideBar__item__items' />
