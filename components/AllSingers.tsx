@@ -24,11 +24,23 @@ const AllSingers = (props: PropsType) => {
             id: 4,
             name: "یوسف زمانی",
             image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg"
+        }, {
+            id: 5,
+            name: 'محسن چاوشی',
+            image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg"
+        }, {
+            id: 6,
+            name: 'علیرضا طلیسچی',
+            image: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg"
+        }, {
+            id: 7,
+            name: "یوسف زمانی",
+            image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg"
         }
     ]
 
     return (
-        <div className='pt-12 w-full h-full grid grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
+        <div className='w-full h-full grid grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
             {
                 data.map((item) => (
                     <Singer

@@ -4,10 +4,17 @@ import { MusicVideoType } from '@/utils/Type'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ResponsivePagination from 'react-responsive-pagination';
+import 'react-responsive-pagination/themes/classic.css';
 
 const MusicVideos = ({ data, category }: { data: MusicVideoType[], category: string }) => {
+    const [page, setPage] = useState(1)
     const router = useRouter()
+
+    useEffect(() => {
+        router.push(RoutesAddress.MUSIC_VIDEOS + "/" + category + "?page=" + page)
+    }, [page])
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLDivElement
@@ -35,7 +42,7 @@ const MusicVideos = ({ data, category }: { data: MusicVideoType[], category: str
                 <title>{category} | موزیک آنلاین</title>
                 <meta name="description" content={`${category} موزیک آنلاین`} />
             </Head>
-            <div onClick={(e) => handleClick(e)} className='mt-10 w-full flex flex-col gap-12 items-center justify-start px-8'>
+            <div onClick={(e) => handleClick(e)} className='-mb-52 mt-10 w-full flex flex-col gap-12 items-center justify-start px-8'>
                 <h2 className='self-start font-bold text-4xl'>{category}:</h2>
 
                 {
@@ -51,6 +58,16 @@ const MusicVideos = ({ data, category }: { data: MusicVideoType[], category: str
                         />
                     ))
                 }
+
+                <div className='w-full flex items-center justify-center gap-8'>
+                    <ResponsivePagination
+                        current={page}
+                        total={20}
+                        onPageChange={(page) => {
+                            setPage(page)
+                        }}
+                    />
+                </div>
             </div>
         </>
     )
