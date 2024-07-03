@@ -9,7 +9,7 @@ const MusicVideoItem = (props: MusicVideoType) => {
         if (props.isFav) {
             showConfetti()
         }
-    }, [])
+    }, [props.isFav])
 
     return (
         <div className={`w-full flex flex-col gap-4 items-center justify-between px-8 py-4 rounded-xl bg-slate-600 shadow-boxShadow ${props.isFav && 'bg-pattern-3 rounded-boxRadius py-4'}`}>

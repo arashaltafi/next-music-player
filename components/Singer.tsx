@@ -10,7 +10,7 @@ const Singer = (props: SingerType) => {
         if (props.isFav) {
             showConfetti()
         }
-    }, [])
+    }, [props.isFav])
 
     return (
         <div className={`select-none w-full flex flex-col gap-7 items-center justify-center px-2 ${props.isFav && 'bg-pattern-1 rounded-boxRadius py-4'}`}>
