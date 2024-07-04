@@ -2,11 +2,28 @@ import Footer from '@/components/Footer';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
 const Music = ({ data, name }: { data: any, name: string }) => {
+    const [isPlaying, setIsPlaying] = useState(false)
+
+    const handlePlay = () => {
+        setIsPlaying(!isPlaying)
+    }
+
+    const handleDownload = () => {
+        const url = data.path
+        const name = data.singer + '___' + data.name + '.mp3'
+        const link = document.createElement('a')
+        link.href = url
+        link.download = name
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
+
     const handleChangeMusic = (isNext: boolean) => {
         if (isNext) {
             console.log('change music next')
@@ -31,11 +48,13 @@ const Music = ({ data, name }: { data: any, name: string }) => {
 
                         <button
                             className='btn btn-green'
+                            onClick={handleDownload}
                         >
                             دانلود موزیک
                         </button>
                         <button
                             className='btn btn-sky'
+                            onClick={handlePlay}
                         >
                             پخش موزیک
                         </button>
@@ -70,14 +89,18 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                     </button>
                 </div>
 
-                <Footer
-                    img='https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg'
-                    src='https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3'
-                    name='آمد بهار جان ها'
-                    singer='محسن چاوشی'
-                    onNextClick={() => handleChangeMusic(true)}
-                    onBackClick={() => handleChangeMusic(false)}
-                />
+                {
+                    isPlaying && (
+                        <Footer
+                            img='https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg'
+                            src='https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3'
+                            name='آمد بهار جان ها'
+                            singer='محسن چاوشی'
+                            onNextClick={() => handleChangeMusic(true)}
+                            onBackClick={() => handleChangeMusic(false)}
+                        />
+                    )
+                }
             </div>
         </>
     )

@@ -72,6 +72,8 @@ const Footer = (props: PropsType) => {
             audioRef.current.src = props.src
             audioRef.current.load()
             setCurrentTime(0)
+            setDuration(0)
+            playMusic()
         }
         if (timerRef.current) {
             clearInterval(timerRef.current)
