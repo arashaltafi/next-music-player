@@ -30,25 +30,27 @@ const VideoPlayer = (props: PropsType) => {
 
     // update time video
     useEffect(() => {
+        const videoElement = videoRef.current;
+
         const handleTimeUpdate = () => {
-            if (videoRef.current) {
-                setCurrentTime(videoRef.current.currentTime)
+            if (videoElement) {
+                setCurrentTime(videoElement.currentTime)
             }
         }
 
         const handleLoadedMetadata = () => {
-            if (videoRef.current) {
-                setDuration(videoRef.current.duration)
+            if (videoElement) {
+                setDuration(videoElement.duration)
             }
         }
 
-        if (videoRef.current) {
-            videoRef.current.addEventListener('timeupdate', handleTimeUpdate)
-            videoRef.current.addEventListener('loadedmetadata', handleLoadedMetadata)
+        if (videoElement) {
+            videoElement.addEventListener('timeupdate', handleTimeUpdate)
+            videoElement.addEventListener('loadedmetadata', handleLoadedMetadata)
             return () => {
-                if (videoRef.current) {
-                    videoRef.current.removeEventListener('timeupdate', handleTimeUpdate)
-                    videoRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata)
+                if (videoElement) {
+                    videoElement.removeEventListener('timeupdate', handleTimeUpdate)
+                    videoElement.removeEventListener('loadedmetadata', handleLoadedMetadata)
                 }
             }
         }

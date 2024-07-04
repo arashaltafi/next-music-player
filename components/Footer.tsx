@@ -39,27 +39,29 @@ const Footer = (props: PropsType) => {
 
     // update time video
     useEffect(() => {
+        const audioElement = audioRef.current;
+
         const handleTimeUpdate = () => {
-            if (audioRef.current) {
-                console.log('duration handleTimeUpdate:', audioRef.current.duration)
-                setCurrentTime(audioRef.current.currentTime)
+            if (audioElement) {
+                console.log('duration handleTimeUpdate:', audioElement.duration)
+                setCurrentTime(audioElement.currentTime)
             }
         }
 
         const handleLoadedMetadata = () => {
-            if (audioRef.current) {
-                console.log('duration handleLoadedMetadata:', audioRef.current.duration)
-                setDuration(audioRef.current.duration)
+            if (audioElement) {
+                console.log('duration handleLoadedMetadata:', audioElement.duration)
+                setDuration(audioElement.duration)
             }
         }
 
-        if (audioRef.current) {
-            audioRef.current.addEventListener('timeupdate', handleTimeUpdate)
-            audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata)
+        if (audioElement) {
+            audioElement.addEventListener('timeupdate', handleTimeUpdate)
+            audioElement.addEventListener('loadedmetadata', handleLoadedMetadata)
             return () => {
-                if (audioRef.current) {
-                    audioRef.current.removeEventListener('timeupdate', handleTimeUpdate)
-                    audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata)
+                if (audioElement) {
+                    audioElement.removeEventListener('timeupdate', handleTimeUpdate)
+                    audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata)
                 }
             }
         }
