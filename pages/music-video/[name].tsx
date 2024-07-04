@@ -28,11 +28,17 @@ const MusicVideo = ({ data, name }: { data: any, name: string }) => {
                 </div>
 
                 <div className='mt-8 w-full flex items-center justify-center gap-8'>
-                    <button className='flex gap-2 items-center justify-center btn btn-yellow'>
+                    <button
+                        onClick={() => handleChangeMusicVideo(true)}
+                        className='flex gap-2 items-center justify-center btn btn-yellow'
+                    >
                         <IoIosArrowForward />
                         موزیک ویدیو بعدی
                     </button>
-                    <button className='flex gap-2 items-center justify-center btn btn-rose'>
+                    <button
+                        onClick={() => handleChangeMusicVideo(false)}
+                        className='flex gap-2 items-center justify-center btn btn-rose'
+                    >
                         موزیک ویدیو قبلی
                         <IoIosArrowBack />
                     </button>
