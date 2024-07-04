@@ -13,18 +13,21 @@ import { GoUnmute } from "react-icons/go";
 import { IoVolumeMuteOutline } from "react-icons/io5";
 import { FiDownloadCloud } from "react-icons/fi";
 import Image from 'next/image';
+import { deleteIdFromStorage, LocalStorageRoutes, saveToLocalStorage } from '@/utils/LocalStorage';
 
 interface PropsType {
+    id: number
     src: string
     singer: string
     name: string
     img: string,
+    isFav: boolean,
     onNextClick: () => void,
     onBackClick: () => void
 }
 
 const Footer = (props: PropsType) => {
-    const [isFav, setIsFav] = useState<boolean>(false)
+    const [isFav, setIsFav] = useState<boolean>(props.isFav)
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [isMute, setIsMute] = useState<boolean>(false)
     const [isRepeat, setIsRepeat] = useState<boolean>(false)
@@ -96,8 +99,19 @@ const Footer = (props: PropsType) => {
     }
 
     const handleFav = () => {
-        setIsFav(!isFav)
-        console.log('isFav', isFav)
+        if (isFav) {
+            setIsFav(false)
+            deleteIdFromStorage(LocalStorageRoutes.MUSIC, props.id)
+        } else {
+            setIsFav(true)
+            saveToLocalStorage(LocalStorageRoutes.MUSIC, {
+                id: props.id,
+                name: props.name,
+                singer: props.singer,
+                src: props.src,
+                img: props.img
+            })
+        }
     }
 
     const handleRepeat = () => {
@@ -179,9 +193,9 @@ const Footer = (props: PropsType) => {
                     <div onClick={handleFav} className='cursor-pointer'>
                         {
                             isFav ? (
-                                <MdFavoriteBorder className='text-2xl' />
-                            ) : (
                                 <MdFavorite className='text-2xl' />
+                            ) : (
+                                <MdFavoriteBorder className='text-2xl' />
                             )
                         }
                     </div>

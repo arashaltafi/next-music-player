@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer';
+import { isHaveIdInStorage, LocalStorageRoutes } from '@/utils/LocalStorage';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image'
@@ -92,10 +93,12 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                 {
                     isPlaying && (
                         <Footer
-                            img='https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg'
-                            src='https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3'
-                            name='آمد بهار جان ها'
-                            singer='محسن چاوشی'
+                            id={data.id}
+                            img={data.image}
+                            src={data.path}
+                            name={data.name}
+                            singer={data.singer}
+                            isFav={isHaveIdInStorage(LocalStorageRoutes.MUSIC, data.id)}
                             onNextClick={() => handleChangeMusic(true)}
                             onBackClick={() => handleChangeMusic(false)}
                         />
