@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Script src="/scripts/script.js" />
       <BackgroundColorHome />
-      <main className={`${iranYekan.className} w-full min-h-screen overflow-x-hidden bg-slate-900 border-x-[1px] border-solid border-slate-700/50 flex`}>
+      <main className={`${iranYekan.className} max-w-screen-maxW mx-auto w-full min-h-screen overflow-x-hidden bg-slate-900 border-x-[1px] border-solid border-slate-700/50 flex`}>
         <SideBar />
         <div className="flex-1 pb-64 w-full flex flex-col items-center justify-start bg-gradient-to-b from-slate-800 to-slate-700">
           <Component {...pageProps} />
