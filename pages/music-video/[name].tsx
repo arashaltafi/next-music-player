@@ -21,12 +21,12 @@ const MusicVideo = ({ data, name }: { data: any, name: string }) => {
                 <title>{name} | موزیک آنلاین</title>
                 <meta name="description" content={`${name} موزیک آنلاین`} />
             </Head>
-            <div className='mt-10 w-full flex flex-col gap-8 items-center justify-start px-8'>
-                <h2 className='self-start font-normal text-3xl'>موزیک ویدیو <span className='font-bold text-4xl'>{data.name}</span></h2>
-                <h6 className='self-end font-normal text-lg'>{new Date().toLocaleDateString('fa-IR')}</h6>
-                <div className='my-4 w-full flex flex-col gap-8 items-center justify-center p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
-                    <h5 className='text-lg self-start'>خواننده: <span className='text-xl'>{data.singer}</span></h5>
-                    <h5 className='text-lg self-start -mt-4'>موزیک: <span className='text-xl'>{data.name}</span></h5>
+            <div className='mt-10 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
+                <h2 className='self-start font-normal text-lg sm:text-xl md:text-2xl lg:text-3xl'>موزیک ویدیو <span className='font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>{data.name}</span></h2>
+                <h6 className='self-end font-normal text-xs sm:text-sm md:text-base lg:text-lg'>{new Date().toLocaleDateString('fa-IR')}</h6>
+                <div className='my-4 w-full flex flex-col gap-8 items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
+                    <h5 className='text-xs sm:text-sm md:text-base lg:text-lg self-start'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.singer}</span></h5>
+                    <h5 className='text-xs sm:text-sm md:text-base lg:text-lg self-start -mt-4'>موزیک: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.name}</span></h5>
 
                     <VideoPlayer
                         id={data.id}
@@ -43,7 +43,7 @@ const MusicVideo = ({ data, name }: { data: any, name: string }) => {
                         onClick={() => handleChangeMusicVideo(true)}
                         className='flex gap-2 items-center justify-center btn btn-yellow'
                     >
-                        <IoIosArrowForward />
+                        <IoIosArrowForward className='hidden sm:block' />
                         موزیک ویدیو بعدی
                     </button>
                     <button
@@ -51,7 +51,7 @@ const MusicVideo = ({ data, name }: { data: any, name: string }) => {
                         className='flex gap-2 items-center justify-center btn btn-rose'
                     >
                         موزیک ویدیو قبلی
-                        <IoIosArrowBack />
+                        <IoIosArrowBack className='hidden sm:block' />
                     </button>
                 </div>
             </div>

@@ -39,13 +39,13 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                 <title>{name} | موزیک آنلاین</title>
                 <meta name="description" content={`${name} موزیک آنلاین`} />
             </Head>
-            <div className='mt-10 w-full flex flex-col gap-8 items-center justify-start px-8'>
-                <h2 className='self-start font-normal text-3xl'>موزیک <span className='font-bold text-4xl'>{data.name}</span></h2>
-                <h6 className='self-end font-normal text-lg'>{new Date().toLocaleDateString('fa-IR')}</h6>
-                <div className='relative overflow-hidden my-4 w-full flex items-center justify-between p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
+            <div className='mt-10 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
+                <h2 className='self-start font-normal text-lg sm:text-xl md:text-2xl lg:text-3xl'>موزیک <span className='font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>{data.name}</span></h2>
+                <h6 className='self-end font-normal text-xs sm:text-sm md:text-base lg:text-lg'>{new Date().toLocaleDateString('fa-IR')}</h6>
+                <div className='relative overflow-hidden my-4 w-full flex flex-col-reverse sm:flex-row gap-y-8 items-center justify-between p-2 sm:p-4 md:p-6 lg:p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
                     <div className='h-full flex flex-col gap-4 items-stretch justify-between z-10'>
-                        <h5 className='text-lg'>خواننده: <span className='text-xl'>{data.singer}</span></h5>
-                        <h5 className='text-lg'>موزیک: <span className='text-xl'>{data.name}</span></h5>
+                        <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.singer}</span></h5>
+                        <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>موزیک: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.name}</span></h5>
 
                         <button
                             className='btn btn-green'
@@ -76,15 +76,15 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                     />
                 </div>
 
-                <h5 className='self-start font-medium text-2xl'>متن موزیک:</h5>
-                <p className='self-end text-base text-justify'>{data.text}</p>
+                <h5 className='self-start font-medium text-base sm:text-lg md:text-xl lg:text-2xl'>متن موزیک:</h5>
+                <p className='self-end text-xs sm:text-sm md:text-base text-justify'>{data.text}</p>
 
                 <div className='mt-8 w-full flex items-center justify-center gap-8'>
                     <button
                         onClick={() => handleChangeMusic(true)}
                         className='flex gap-2 items-center justify-center btn btn-yellow'
                     >
-                        <IoIosArrowForward />
+                        <IoIosArrowForward className='hidden sm:block' />
                         موزیک بعدی
                     </button>
                     <button
@@ -92,7 +92,7 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                         className='flex gap-2 items-center justify-center btn btn-rose'
                     >
                         موزیک قبلی
-                        <IoIosArrowBack />
+                        <IoIosArrowBack className='hidden sm:block' />
                     </button>
                 </div>
 
