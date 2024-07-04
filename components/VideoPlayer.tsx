@@ -164,7 +164,7 @@ const VideoPlayer = (props: PropsType) => {
     return (
         <div className='w-full gap-8 flex flex-col items-center justify-center'>
             <video
-                className={`h-full md:h-[70vh] rounded-xl`}
+                className={`h-full sm:h-[70vh] rounded-xl`}
                 onClick={handlePlayPause}
                 onDoubleClick={handleMuteUnmute}
                 ref={videoRef}
@@ -178,7 +178,7 @@ const VideoPlayer = (props: PropsType) => {
                 }}
             />
 
-            <div className='w-full flex justify-between items-center gap-8'>
+            <div className='w-full flex flex-col sm:flex-row justify-between items-center gap-8'>
                 <TbRewindForward10
                     onClick={() => handleSkipForward(10)}
                     className='icon-music'
@@ -200,7 +200,7 @@ const VideoPlayer = (props: PropsType) => {
                 />
             </div>
 
-            <div className='w-full flex items-center justify-center gap-8'>
+            <div className='w-full flex flex-wrap items-center justify-center gap-8'>
                 <MdFullscreen
                     onClick={handleFullScreen}
                     className='icon-music'
