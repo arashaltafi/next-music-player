@@ -31,6 +31,7 @@ const MusicVideo = ({ data, name }: { data: any, name: string }) => {
                     <VideoPlayer
                         id={data.id}
                         src={data.path}
+                        image={data.image}
                         isFav={isHaveIdInStorage(LocalStorageRoutes.MUSIC_VIDEO, data.id)}
                         name={data.name}
                         singer={data.singer}
@@ -76,6 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         name: "آمد بهار جان ها",
         singer: "محسن چاوشی",
         path: "https://dl.rozmusic.com/Music/1403/03/13/Novan%20-%20Heyfe%20Man%20Bood%20Video.mp4",
+        image: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg"
     }
 
     return {

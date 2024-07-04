@@ -1,4 +1,6 @@
+import LottieComponent from '@/components/LottieComponent'
 import MusicItem from '@/components/MusicItem'
+import { getFromLocalStorage, LocalStorageRoutes } from '@/utils/LocalStorage'
 import RoutesAddress from '@/utils/Routes'
 import { MusicType } from '@/utils/Type'
 import { GetServerSideProps } from 'next'
@@ -11,6 +13,7 @@ import 'react-responsive-pagination/themes/classic.css';
 const Musics = ({ data, category }: { data: MusicType[], category: string }) => {
     const [page, setPage] = useState(1)
     const router = useRouter()
+    const favMusic = getFromLocalStorage(LocalStorageRoutes.MUSIC)
 
     useEffect(() => {
         router.push(RoutesAddress.MUSICS + "/" + category + "?page=" + page)
@@ -46,29 +49,69 @@ const Musics = ({ data, category }: { data: MusicType[], category: string }) => 
                 <h2 className='self-start font-bold text-4xl'>{category}:</h2>
 
                 {
-                    data.map((item: any) => (
-                        <MusicItem
-                            key={item.id}
-                            id={item.id}
-                            name={item.name}
-                            singer={item.singer}
-                            image={item.image}
-                            text={item.text}
-                            path={item.path}
-                            isFav={category === 'موزیک های مورد علاقه'}
-                        />
-                    ))
+                    category === 'موزیک های مورد علاقه' ? (
+                        favMusic?.map((item: any) => (
+                            <MusicItem
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                singer={item.singer}
+                                image={item.img}
+                                text={item.text}
+                                path={item.src}
+                                isFav={category === 'موزیک های مورد علاقه'}
+                            />
+                        ))
+                    ) : (
+                        data.map((item: any) => (
+                            <MusicItem
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                singer={item.singer}
+                                image={item.image}
+                                text={item.text}
+                                path={item.path}
+                                isFav={category === 'موزیک های مورد علاقه'}
+                            />
+                        ))
+                    )
                 }
 
-                <div className='w-full flex items-center justify-center gap-8'>
-                    <ResponsivePagination
-                        current={page}
-                        total={20}
-                        onPageChange={(page) => {
-                            setPage(page)
-                        }}
-                    />
-                </div>
+                {
+                    (favMusic?.length === 0 && category === 'موزیک های مورد علاقه') || (data?.length === 0) && (
+                        <div className='w-full h-[80vh] flex flex-col items-center justify-center'>
+                            <LottieComponent src='anim5' />
+                            <p className='text-lg'>هیچ موردی برای نمایش وجود ندارد</p>
+                        </div>
+                    )
+                }
+
+                {
+                    category === 'موزیک های مورد علاقه' ? (
+                        favMusic && favMusic?.length > 10 && category === 'موزیک های مورد علاقه' && (
+                            <div className='w-full flex items-center justify-center gap-8'>
+                                <ResponsivePagination
+                                    current={page}
+                                    total={20}
+                                    onPageChange={(page) => {
+                                        setPage(page)
+                                    }}
+                                />
+                            </div>
+                        )
+                    ) : (
+                        <div className='w-full flex items-center justify-center gap-8'>
+                            <ResponsivePagination
+                                current={page}
+                                total={20}
+                                onPageChange={(page) => {
+                                    setPage(page)
+                                }}
+                            />
+                        </div>
+                    )
+                }
             </div>
         </>
     )

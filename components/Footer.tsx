@@ -20,6 +20,7 @@ interface PropsType {
     src: string
     singer: string
     name: string
+    text: string
     img: string,
     isFav: boolean,
     onNextClick: () => void,
@@ -109,7 +110,8 @@ const Footer = (props: PropsType) => {
                 name: props.name,
                 singer: props.singer,
                 src: props.src,
-                img: props.img
+                img: props.img,
+                text: props.text
             })
         }
     }

@@ -19,6 +19,7 @@ interface PropsType {
     id: number,
     src: string,
     singer: string
+    image: string
     name: string
     isFav: boolean,
 }
@@ -154,7 +155,8 @@ const VideoPlayer = (props: PropsType) => {
                 id: props.id,
                 name: props.name,
                 singer: props.singer,
-                src: props.src
+                src: props.src,
+                image: props.image,
             })
         }
     }

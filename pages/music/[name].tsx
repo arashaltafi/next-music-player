@@ -104,6 +104,7 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                             src={data.path}
                             name={data.name}
                             singer={data.singer}
+                            text={data.text}
                             isFav={isHaveIdInStorage(LocalStorageRoutes.MUSIC, data.id)}
                             onNextClick={() => handleChangeMusic(true)}
                             onBackClick={() => handleChangeMusic(false)}
