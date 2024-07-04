@@ -53,10 +53,10 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                             دانلود موزیک
                         </button>
                         <button
-                            className='btn btn-sky'
+                            className={`btn ${isPlaying ? 'btn-red' : 'btn-sky'}`}
                             onClick={handlePlay}
                         >
-                            پخش موزیک
+                            {isPlaying ? 'قطع موزیک' : 'پخش موزیک'}
                         </button>
                     </div>
                     <Image
