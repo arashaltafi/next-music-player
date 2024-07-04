@@ -12,7 +12,7 @@ const MusicVideoItem = (props: MusicVideoType) => {
     }, [props.isFav])
 
     return (
-        <div className={`w-full flex flex-col gap-4 items-center justify-between px-8 py-4 rounded-xl bg-slate-600 shadow-boxShadow ${props.isFav && 'bg-pattern-3 rounded-boxRadius py-4'}`}>
+        <div className={`w-full flex flex-col gap-4 items-center justify-between px-2 sm:px-4 md:px-6 lg:px-8 py-1 sm:py-2 md:py-3 lg:py-4 rounded-xl bg-slate-600 shadow-boxShadow ${props.isFav && 'bg-pattern-3 rounded-boxRadius'}`}>
             <div className='mt-6 mb-8 w-full flex gap-16 items-center justify-between'>
                 <div className='w-full h-full flex flex-col gap-4 items-stretch justify-between'>
                     <h5 className='text-lg'>موزیک ویدیو: <span className='text-xl'>{props.name}</span></h5>

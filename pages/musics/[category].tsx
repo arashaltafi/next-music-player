@@ -46,7 +46,7 @@ const Musics = ({ data, category }: { data: MusicType[], category: string }) => 
                 <meta name="description" content={`${category} موزیک آنلاین`} />
             </Head>
             <div onClick={(e) => handleClick(e)} className='-mb-52 mt-10 w-full flex flex-col gap-12 items-center justify-start px-8'>
-                <h2 className='self-start font-bold text-4xl'>{category}:</h2>
+                <h2 className='self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>{category}:</h2>
 
                 {
                     category === 'موزیک های مورد علاقه' ? (
