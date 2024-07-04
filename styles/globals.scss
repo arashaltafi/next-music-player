@@ -194,7 +194,7 @@
   }
 
   .btn {
-    @apply px-6 py-3 rounded-lg text-center font-medium text-white transition-all duration-200 cursor-pointer;
+    @apply px-2 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 text-sm sm:text-base md:text-lg rounded-lg text-center font-medium text-white transition-all duration-200 cursor-pointer;
   }
 
   .btn-green {
