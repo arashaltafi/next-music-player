@@ -13,14 +13,19 @@ import { MdFavorite } from "react-icons/md";
 import { FaCamera } from "react-icons/fa";
 import { MdFullscreen } from "react-icons/md";
 import html2canvas from 'html2canvas';
+import { deleteIdFromStorage, LocalStorageRoutes, saveToLocalStorage } from '@/utils/LocalStorage';
 
 interface PropsType {
-    src: string
+    id: number,
+    src: string,
+    singer: string
+    name: string
+    isFav: boolean,
 }
 
 const VideoPlayer = (props: PropsType) => {
     const videoRef = useRef<HTMLVideoElement>(null)
-    const [isFav, setIsFav] = useState<boolean>(false)
+    const [isFav, setIsFav] = useState<boolean>(props.isFav)
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
     const [isRepeat, setIsRepeat] = useState<boolean>(false)
     const [volume, setVolume] = useState<number>(1)
@@ -140,8 +145,18 @@ const VideoPlayer = (props: PropsType) => {
     }
 
     const handleFav = () => {
-        setIsFav(!isFav)
-        console.log('isFav', isFav)
+        if (isFav) {
+            setIsFav(false)
+            deleteIdFromStorage(LocalStorageRoutes.MUSIC_VIDEO, props.id)
+        } else {
+            setIsFav(true)
+            saveToLocalStorage(LocalStorageRoutes.MUSIC_VIDEO, {
+                id: props.id,
+                name: props.name,
+                singer: props.singer,
+                src: props.src
+            })
+        }
     }
 
     return (
@@ -238,9 +253,9 @@ const VideoPlayer = (props: PropsType) => {
                 <div onClick={handleFav}>
                     {
                         isFav ? (
-                            <MdFavoriteBorder className='icon-music' />
-                        ) : (
                             <MdFavorite className='icon-music' />
+                        ) : (
+                            <MdFavoriteBorder className='icon-music' />
                         )
                     }
                 </div>

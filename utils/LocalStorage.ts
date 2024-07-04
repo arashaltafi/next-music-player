@@ -1,4 +1,5 @@
 export const saveToLocalStorage = (key: string, value: any) => {
+    if (typeof localStorage === 'undefined' || localStorage === null) return
     localStorage.setItem(key, JSON.stringify(value))
 }
 
@@ -14,18 +15,21 @@ export const isHaveIdInStorage = (key: string, id: number): boolean => {
 }
 
 export const getFromLocalStorage = (key: string) => {
+    if (typeof localStorage === 'undefined' || localStorage === null) return
     const value = localStorage.getItem(key)
-    if (value) {
-        const parsedValue = JSON.parse(value);
-        return Array.isArray(parsedValue) ? parsedValue : [parsedValue];
-    }
+        if (value) {
+            const parsedValue = JSON.parse(value);
+            return Array.isArray(parsedValue) ? parsedValue : [parsedValue];
+        }
 }
 
 export const deleteFromLocalStorage = (key: string) => {
+    if (typeof localStorage === 'undefined' || localStorage === null) return
     localStorage.removeItem(key)
 }
 
 export const deleteAllLocalStorage = () => {
+    if (typeof localStorage === 'undefined' || localStorage === null) return
     localStorage.clear()
 }
 
