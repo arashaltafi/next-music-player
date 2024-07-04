@@ -15,8 +15,8 @@ const MusicItem = (props: MusicType) => {
         <div className={`w-full flex flex-col gap-4 items-center justify-between px-2 sm:px-4 md:px-6 lg:px-8 py-1 sm:py-2 md:py-3 lg:py-4 rounded-xl bg-slate-600 shadow-boxShadow ${props.isFav && 'bg-pattern-2 rounded-boxRadius'}`}>
             <div className='mt-2 sm:mt-3 md:mt-4 lg:mt-6 mb-2 sm:mb-4 md:mb-6 lg:mb-8 w-full flex gap-16 items-center justify-between'>
                 <div className='w-full h-full flex flex-col gap-4 items-stretch justify-between'>
-                    <h5 className='text-lg'>موزیک: <span className='text-xl'>{props.name}</span></h5>
-                    <h5 className='text-lg'>خواننده: <span className='text-xl'>{props.singer}</span></h5>
+                    <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>موزیک: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{props.name}</span></h5>
+                    <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{props.singer}</span></h5>
                     <p className='text-lg line-clamp-3 text-justify'>متن: <span className='text-base'>{props.text}</span></p>
 
                     <button
