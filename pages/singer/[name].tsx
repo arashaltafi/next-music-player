@@ -18,6 +18,7 @@ const Singer = ({ data, name }: { data: any, name: string }) => {
     const router = useRouter()
 
     useEffect(() => {
+        if (name !== 'برترین خواننده ها') return
         router.push(RoutesAddress.SINGER_BEST + "?page=" + page)
     }, [page])
 
