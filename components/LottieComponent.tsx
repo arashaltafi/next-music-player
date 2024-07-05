@@ -16,7 +16,7 @@ const LottieComponent = (props: PropsType) => {
         <Lottie
             className={`
                 h-auto hover:scale-105 hover:brightness-110 active:brightness-90 active:scale-95 cursor-pointer transition-all duration-300
-                ${props.className ? props.className : 'w-1/2 mb-4'}
+                ${props.className ? props.className : 'w-full sm:w-2/3 md:w-1/2 mb-4'}
             `}
             animationData={props.src === 'anim1' ? animationData1 : props.src === 'anim2' ? animationData2 : props.src === 'anim3' ? animationData3 : props.src === 'anim4' ? animationData4 : animationData5}
             loop={true}

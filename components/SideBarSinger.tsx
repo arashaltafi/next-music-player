@@ -35,11 +35,11 @@ const SideBarSinger = () => {
 
     return (
         <>
-            <aside className="overflow-y-auto hidden lg:flex select-none py-4 px-2 *:px-4 *:py-4 w-60 flex-col gap-8 items-center justify-start bg-pattern-6">
+            <aside className="overflow-y-auto hidden xl:flex select-none py-4 px-2 *:px-4 *:py-4 w-60 flex-col gap-8 items-center justify-start bg-pattern-6">
                 <SingerItems activeSinger={typeof (params?.name) === 'string' ? decodeURIComponent(params?.name) : ''} />
             </aside>
 
-            <div className='absolute top-4 left-4 lg:hidden z-20 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-150'>
+            <div className='absolute top-4 left-4 xl:hidden z-20 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-150'>
                 <HiMenu
                     onClick={handleMenu}
                 />
@@ -47,14 +47,14 @@ const SideBarSinger = () => {
 
             <div
                 id='menu-singer'
-                className='overflow-y-auto py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 left-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 lg:hidden transition-all duration-300 -translate-x-[1000px]'>
+                className='overflow-y-auto py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 left-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 xl:hidden transition-all duration-300 -translate-x-[1000px]'>
                 <SingerItems activeSinger={typeof (params?.name) === 'string' ? decodeURIComponent(params?.name) : ''} />
             </div>
 
             <div
                 id='blur-singer'
                 onClick={handleBlur}
-                className='z-40 fixed hidden lg:hidden inset-0 backdrop-blur-sm bg-brown-900/50 dark:bg-slate-800/50'
+                className='z-40 fixed hidden xl:hidden inset-0 backdrop-blur-sm bg-brown-900/50 dark:bg-slate-800/50'
             />
         </>
     )

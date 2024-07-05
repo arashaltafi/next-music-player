@@ -13,9 +13,8 @@ import LottieComponent from './LottieComponent';
 
 const Article = () => {
     return (
-        <article className='mt-8 select-none w-full h-full flex flex-col gap-6 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
+        <article className='mt-8 select-none w-full h-full flex flex-col gap-12 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
             <CategoryComponent />
-            {/* <ImageHomePageComponent src='/images/music_3.png' /> */}
             <LottieComponent src='anim1' />
 
             <BannerHomePage
@@ -30,8 +29,7 @@ const Article = () => {
 
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_ALL} title="تمامی موزیک ها" />
             <MusicsComponent category={MusicCategory.ALL} />
-            <DividerImage src='/images/music-divider-1.png' className='my-8' />
-            {/* <ImageHomePageComponent src='/images/music_1.png' /> */}
+            <DividerImage src='/images/music-divider-1.png' className='my-2 sm:my-4 md:my-8' />
             <LottieComponent src='anim2' />
 
             <BannerHomePage
@@ -46,8 +44,7 @@ const Article = () => {
 
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_BEST} title="برترین موزیک ها" />
             <MusicsComponent category={MusicCategory.BEST} />
-            <DividerImage src='/images/music-divider-2.png' className='my-8' />
-            {/* <ImageHomePageComponent src='/images/music_2.png' /> */}
+            <DividerImage src='/images/music-divider-2.png' className='my-2 sm:my-4 md:my-8' />
             <LottieComponent src='anim3' />
 
             <BannerHomePage
@@ -62,8 +59,7 @@ const Article = () => {
 
             <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_NEW} title="آخرین موزیک ها" />
             <MusicsComponent category={MusicCategory.NEW} />
-            <DividerImage src='/images/music-divider-1.png' className='my-8' />
-            {/* <ImageHomePageComponent src='/images/music_4.png' /> */}
+            <DividerImage src='/images/music-divider-1.png' className='my-2 sm:my-4 md:my-8' />
             <LottieComponent src='anim4' />
 
             <BannerHomePage
@@ -80,7 +76,7 @@ const Article = () => {
             <MusicsComponent category={MusicCategory.SUGGESTED} />
 
             <Image
-                className='w-2/3 my-8 opacity-60 rounded-b-[48px]'
+                className='w-full sm:w-2/3 my-8 opacity-60 rounded-b-[48px]'
                 src={'/icons/svg-wave-1.svg'}
                 width={100}
                 height={100}
@@ -90,8 +86,8 @@ const Article = () => {
             {/* Music Video */}
             <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_VIDEO_ALL} title="تمامی موزیک ویدیوها" />
             <MusicVideosComponent category={MusicVideoCategory.ALL} />
-            <DividerImage src='/images/music-divider-1.png' className='my-8' />
-            <ImageHomePageComponent src='/images/music_video_1.png' />
+            <DividerImage src='/images/music-divider-1.png' className='my-2 sm:my-4 md:my-8' />
+            <ImageHomePageComponent src='/images/music_video_1.png' className='w-2/3 sm:w-1/2 md:w-1/3 mb-4' />
 
             <BannerHomePage
                 src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
@@ -105,8 +101,8 @@ const Article = () => {
 
             <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_VIDEO_BEST} title="برترین موزیک ویدیوها" />
             <MusicVideosComponent category={MusicVideoCategory.BEST} />
-            <DividerImage src='/images/music-divider-1.png' className='my-8' />
-            <ImageHomePageComponent src='/images/music_video_2.png' className='w-1/3' />
+            <DividerImage src='/images/music-divider-1.png' className='my-2 sm:my-4 md:my-8' />
+            <ImageHomePageComponent src='/images/music_video_2.png' className='w-2/3 sm:w-1/2 md:w-1/3 mb-4' />
 
             <BannerHomePage
                 src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
@@ -120,8 +116,8 @@ const Article = () => {
 
             <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_VIDEO_NEW} title="آخرین موزیک ویدیوها" />
             <MusicVideosComponent category={MusicVideoCategory.NEW} />
-            <DividerImage src='/images/music-divider-1.png' className='my-8' />
-            <ImageHomePageComponent src='/images/dj3.png' className='w-1/3 mb-4' />
+            <DividerImage src='/images/music-divider-1.png' className='my-2 sm:my-4 md:my-8' />
+            <ImageHomePageComponent src='/images/dj3.png' className='w-2/3 sm:w-1/2 md:w-1/3 mb-4' />
 
             <BannerHomePage
                 src1='https://arashaltafi.ir/Social_Media/story-01.jpg'

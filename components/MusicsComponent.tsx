@@ -62,7 +62,7 @@ const MusicsComponent = (props: PropsType) => {
 
     return (
         <div
-            className='w-full h-full grid grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden'
+            className='-mt-8 w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden'
             onClick={(e) => handleClick(e)}
         >
             {

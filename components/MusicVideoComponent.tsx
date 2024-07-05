@@ -22,7 +22,7 @@ const MusicVideoComponent = (props: PropsType) => {
                 loading='lazy'
             />
 
-            <h3 className='mx-2 mt-4 z-10 text-base self-start bg-rose-500 px-6 py-2 rounded-lg border border-white border-dashed line-clamp-1'>
+            <h3 className='mx-2 mt-4 z-10 text-base self-start bg-rose-500 px-4 md:px-6 py-1 md:py-2 rounded-lg border border-white border-dashed line-clamp-1'>
                 {props.name}
             </h3>
 
@@ -37,7 +37,7 @@ const MusicVideoComponent = (props: PropsType) => {
 
             <FaVideo className='absolute opacity-0 transition-all duration-300 group-hover:opacity-100 text-rose-600 text-4xl z-10 bg-rose-300 rounded-full p-2' />
 
-            <h4 className='mb-2 w-full bg-slate-800/70 border border-dotted border-slate-500 text-end z-10 text-sm self-end px-6 py-2 line-clamp-1 rounded-lg'>
+            <h4 className='mb-2 w-full bg-slate-800/70 border border-dotted border-slate-500 text-end z-10 text-sm self-end px-2 sm:px-4 md:px-6 py-1 md:py-2 line-clamp-1 rounded-lg'>
                 {props.singer}
             </h4>
         </div>

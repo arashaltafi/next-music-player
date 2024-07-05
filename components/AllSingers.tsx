@@ -40,7 +40,7 @@ const AllSingers = (props: PropsType) => {
     ]
 
     return (
-        <div className='w-full h-full grid grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
+        <div className='w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
             {
                 data.map((item) => (
                     <Singer

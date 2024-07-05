@@ -29,7 +29,7 @@ const Singer = (props: SingerType) => {
                 />
             </Link>
 
-            <h3 className={`text-base ${props.isFav ? 'bg-white text-black border-black' : 'bg-rose-500 text-white border-white'} px-6 py-2 rounded-lg border border-dashed line-clamp-1`}>
+            <h3 className={`text-sm sm:text-base ${props.isFav ? 'bg-white text-black border-black' : 'bg-rose-500 text-white border-white'} px-4 md:px-6 py-1 md:py-2 rounded-lg border border-dashed line-clamp-1`}>
                 {props.name}
             </h3>
         </div>
