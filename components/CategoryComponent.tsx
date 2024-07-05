@@ -65,7 +65,7 @@ const CategoryComponent = () => {
                             height={500}
                             alt={item.type}
                         />
-                        <h3 className='text-2xl group-hover:text-rose-500'>{item.type}</h3>
+                        <h3 className='text-lg sm:text-xl md:text-2xl group-hover:text-rose-500'>{item.type}</h3>
                     </div>
                 ))
             }
