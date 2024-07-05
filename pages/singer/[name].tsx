@@ -27,8 +27,8 @@ const Singer = ({ data, name }: { data: any, name: string }) => {
                     <title>خوانندگان برتر | موزیک آنلاین</title>
                     <meta name="description" content="صفحه تمامی خوانندگان موزیک آنلاین" />
                 </Head>
-                <div className='-mb-52 pt-10 w-full flex flex-col gap-16'>
-                    <h2 className='px-8 self-start font-bold text-4xl'>خوانندگان برتر:</h2>
+                <div className='-mb-52 pt-10 w-full flex flex-col gap-6 sm:gap-8 md:gap-12 lg:gap-16'>
+                    <h2 className='px-8 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl my-4'>خوانندگان برتر:</h2>
                     <AllSingers isFav />
 
                     <div className='w-full flex items-center justify-center gap-8'>
