@@ -13,6 +13,8 @@ const config: Config = {
       },
       spacing: {
         '98': '24.75rem',
+        '22': '5.5rem',
+        '23': '5.75rem',
       },
       backgroundImage: {
         gradient1: 'linear-gradient(0deg, #474bff 0%, #bc48ff 100%)',
