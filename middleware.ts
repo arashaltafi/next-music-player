@@ -7,7 +7,7 @@ const rateLimitMap = new Map();
 export function middleware(request: NextRequest) {
     if (request.nextUrl.pathname.startsWith('/api')) {
         const ip = request.ip ?? "127.0.0.1";
-        const limit = 100;
+        const limit = 1000;
         const windowMs = 15 * 60 * 1000;
         if (!rateLimitMap.has(ip)) {
             rateLimitMap.set(ip, {

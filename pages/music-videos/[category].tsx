@@ -14,6 +14,7 @@ const MusicVideos = ({ data, category }: { data: MusicVideoType[], category: str
     const [page, setPage] = useState(1)
     const router = useRouter()
     const favMusicVideo = getFromLocalStorage(LocalStorageRoutes.MUSIC_VIDEO)
+    console.log(favMusicVideo === undefined || (favMusicVideo?.length === 0 && category === 'موزیک ویدیوهای مورد علاقه') || (data?.length === 0))
 
     useEffect(() => {
         router.push(RoutesAddress.MUSIC_VIDEOS + "/" + category + "?page=" + page)
@@ -77,11 +78,13 @@ const MusicVideos = ({ data, category }: { data: MusicVideoType[], category: str
                 }
 
                 {
-                    (favMusicVideo?.length === 0 && category === 'موزیک ویدیوهای مورد علاقه') || (data?.length === 0) && (
+                    favMusicVideo === undefined || (favMusicVideo?.length === 0 && category === 'موزیک ویدیوهای مورد علاقه') || (data?.length === 0) ? (
                         <div className='w-full h-[80vh] flex flex-col items-center justify-center'>
                             <LottieComponent src='anim5' />
                             <p className='text-lg'>هیچ موردی برای نمایش وجود ندارد</p>
                         </div>
+                    ) : (
+                        <></>
                     )
                 }
 
