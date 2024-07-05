@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
 import RoutesAddress from '@/utils/Routes';
+import HeadOfTitle from '@/components/HeadOfTitle'
 
 const Singer = ({ data, name }: { data: any, name: string }) => {
     const [page, setPage] = useState(1)
@@ -50,21 +51,21 @@ const Singer = ({ data, name }: { data: any, name: string }) => {
                     <title>خواننده: {name} | موزیک آنلاین</title>
                     <meta name="description" content={`صفحه خواننده ${name} موزیک آنلاین`} />
                 </Head>
-                <div className='mt-8 w-full flex flex-col gap-8 items-center justify-start px-8'>
+                <div className='mt-8 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
                     <SingerImage name='arash' src='https://arashaltafi.ir/arash.jpg' />
-                    <h3 className='self-start font-bold text-4xl'>نام:</h3>
-                    <h2 className='self-start font-medium text-xl'>{name}</h2>
+                    <h3 className='self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>نام:</h3>
+                    <h2 className='self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl'>{name}</h2>
 
-                    <h3 className='mt-12 self-start font-bold text-4xl'>بیوگرافی:</h3>
-                    <p className='self-start font-medium text-xl text-justify'>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                    <h3 className='mt-4 sm:mt-8 md:mt-10 lg:mt-12 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>بیوگرافی:</h3>
+                    <p className='mb-8 self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl text-justify'>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
 
-                    <h3 className='mt-16 self-start font-bold text-4xl'>موزیک ها:</h3>
-                    <MusicsComponent category={MusicCategory.ALL} />
+                    <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_BEST} title="موزیک ها:" />
+                    <MusicsComponent category={MusicCategory.ALL} className='mt-0' />
 
-                    <DividerImage src='/images/music-divider-1.png' className='my-20' />
+                    <DividerImage src='/images/music-divider-1.png' className='my-12 sm:my-16 md:my-20' />
 
-                    <h3 className='self-start font-bold text-4xl'>موزیک ویدیوها:</h3>
-                    <MusicVideosComponent category={MusicVideoCategory.ALL} />
+                    <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_BEST} title="موزیک ویدیوها:" />
+                    <MusicVideosComponent category={MusicVideoCategory.ALL} className='mt-0' />
                 </div>
             </>
         )

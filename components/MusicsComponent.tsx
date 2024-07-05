@@ -5,7 +5,8 @@ import RoutesAddress from '@/utils/Routes'
 import { useRouter } from 'next/navigation'
 
 interface PropsType {
-    category: MusicCategory
+    category: MusicCategory,
+    className?: string
 }
 
 const MusicsComponent = (props: PropsType) => {
@@ -62,7 +63,7 @@ const MusicsComponent = (props: PropsType) => {
 
     return (
         <div
-            className='-mt-8 w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden'
+            className={`w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden ${props.className ? props.className : '-mt-8'}`}
             onClick={(e) => handleClick(e)}
         >
             {

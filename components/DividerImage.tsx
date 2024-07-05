@@ -9,7 +9,7 @@ interface PropsType {
 const DividerImage = (props: PropsType) => {
     return (
         <Image
-            className={`invert w-2/3 h-14 ${props.className}`}
+            className={`invert w-full sm:w-2/3 h-14 ${props.className}`}
             src={props.src}
             alt='music-divider'
             width={1000}
