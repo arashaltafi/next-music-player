@@ -11,6 +11,18 @@ const ThreeJsComponent = (props: PropsType) => {
     return (
         <div className={`${props.className}`}>
             <Canvas>
+                <PerspectiveCamera makeDefault position={[0, 0, 4]} />
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[10, 10, 5]} intensity={1} />
+                <ReactFiberComponent path="/3d/headphone_1.glb" />
+                <OrbitControls
+                    enableZoom={true}
+                    minDistance={1}
+                    maxDistance={4}
+                />
+                <ContactShadows />
+            </Canvas>
+            <Canvas>
                 <PerspectiveCamera makeDefault position={[0, 0, 2]} />
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 10, 5]} intensity={1} />
