@@ -11,6 +11,8 @@
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.7",
     "@lottiefiles/react-lottie-player": "^3.5.4",
+    "@react-three/drei": "^9.108.4",
+    "@react-three/fiber": "^8.16.8",
     "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
     "canvas-confetti": "^1.9.3",
@@ -27,7 +29,8 @@
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
     "sass": "^1.77.6",
-    "swiper": "^11.1.4"
+    "swiper": "^11.1.4",
+    "three": "^0.166.1"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.6.4",
