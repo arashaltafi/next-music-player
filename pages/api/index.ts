@@ -1,14 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(
+export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
-  if (req.method === "GET") {
-
-  } else if (req.method === "POST") {
-
-  } else {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
+  res.status(200).json({
+    message: "Welcome to Next GraphQl",
+    document: "http://localhost:3000/document",
+  });
 }

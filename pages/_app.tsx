@@ -9,6 +9,8 @@ import 'nprogress/nprogress.css';
 import { useEffect } from "react";
 import BackgroundColorHome from "@/components/BackgroundColorHome";
 import Script from "next/script";
+import { ApolloProvider } from '@apollo/client';
+import client from "@/libs/ApolloClient";
 
 const iranYekan = localFont({
   src: "../public/fonts/iran-yekan/IRANYekanXVFaNumVF.woff",
@@ -42,17 +44,25 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router])
 
-  return (
-    <>
-      <Script src="/scripts/script.js" />
-      <BackgroundColorHome />
-      <main className={`${iranYekan.className} max-w-screen-maxW mx-auto w-full min-h-screen overflow-x-hidden bg-slate-900 border-x-[1px] border-solid border-slate-700/50 flex`}>
-        <SideBar />
-        <div className="flex-1 pb-64 w-full flex flex-col items-center justify-start bg-gradient-to-b from-slate-800 to-slate-700">
-          <Component {...pageProps} />
-        </div>
-        <SideBarSinger />
-      </main>
-    </>
-  )
+  if (router.pathname === '/graphql') {
+    return (
+      <Component {...pageProps} />
+    )
+  } else {
+    return (
+      <>
+        <Script src="/scripts/script.js" />
+        <BackgroundColorHome />
+        <main className={`${iranYekan.className} max-w-screen-maxW mx-auto w-full min-h-screen overflow-x-hidden bg-slate-900 border-x-[1px] border-solid border-slate-700/50 flex`}>
+          <SideBar />
+          <div className="flex-1 pb-64 w-full flex flex-col items-center justify-start bg-gradient-to-b from-slate-800 to-slate-700">
+            <ApolloProvider client={client}>
+              <Component {...pageProps} />
+            </ApolloProvider>
+          </div>
+          <SideBarSinger />
+        </main>
+      </>
+    )
+  }
 }
