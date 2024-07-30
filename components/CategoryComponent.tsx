@@ -1,33 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import RoutesAddress from '@/utils/Routes'
 import Image from 'next/image'
 import { useRouter } from 'next/router';
+import { useQuery } from '@apollo/client';
+import { GET_CATEGORIES } from '@/graphql/graphql-queries';
 
 const CategoryComponent = () => {
     const router = useRouter()
 
-    const data = [
-        {
-            id: 1,
-            image: 'https://arashaltafi.ir//melodyo/media/app/cat_pop.jpg',
-            type: "پاپ"
-        },
-        {
-            id: 2,
-            image: 'https://arashaltafi.ir//melodyo/media/app/cat_rap.jpg',
-            type: "رپ"
-        },
-        {
-            id: 3,
-            image: 'https://arashaltafi.ir//melodyo/media/app/cat_traditional.jpg',
-            type: "سنتی"
-        },
-        {
-            id: 4,
-            image: 'https://arashaltafi.ir//melodyo/media/app/cat_old.jpg',
-            type: "قدیمی"
-        }
-    ]
+    const [categories, setCategories] = useState<{
+        id: number,
+        image: string,
+        type: string,
+    }[]>([])
+
+    const { data } = useQuery(GET_CATEGORIES);
+
+    useEffect(() => {
+        if (!data) return
+        setCategories(data?.home?.category)
+    }, [data])
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLDivElement
@@ -52,7 +44,7 @@ const CategoryComponent = () => {
             onClick={(e) => handleClick(e)}
         >
             {
-                data.map((item) => (
+                categories?.map((item) => (
                     <div
                         key={item.id}
                         data-key={item.type}

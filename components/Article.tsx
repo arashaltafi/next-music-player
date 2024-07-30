@@ -11,8 +11,12 @@ import ImageHomePageComponent from './ImageHomePageComponent';
 import BannerHomePage from './BannerHomePage';
 import LottieComponent from './LottieComponent';
 import ThreeJsComponent from './ThreeJsComponent';
+import { useQuery } from '@apollo/client';
+import { GET_HOME } from '@/graphql/graphql-queries';
 
 const Article = () => {
+    const { data } = useQuery(GET_HOME);
+
     return (
         <article className='mt-8 select-none w-full h-full flex flex-col gap-12 items-center justify-start py-4 px-1 sm:px-4 md:px-8'>
             <ThreeJsComponent className='hidden lg:flex' />
@@ -21,12 +25,12 @@ const Article = () => {
             <LottieComponent src='anim1' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
-                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
-                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
-                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                src1={data?.home?.bannerAllMusic[0]?.image}
+                src2={data?.home?.bannerAllMusic[1]?.image}
+                src3={data?.home?.bannerAllMusic[2]?.image}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[0]?.title}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[1]?.title}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[2]?.title}
                 isReverce={false}
             />
 
@@ -36,12 +40,12 @@ const Article = () => {
             <LottieComponent src='anim2' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
-                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
-                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
-                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                src1={data?.home?.bannerTopMusic[0]?.image}
+                src2={data?.home?.bannerTopMusic[1]?.image}
+                src3={data?.home?.bannerTopMusic[2]?.image}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[0]?.title}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[1]?.title}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[2]?.title}
                 isReverce={true}
             />
 
@@ -51,12 +55,12 @@ const Article = () => {
             <LottieComponent src='anim3' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
-                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
-                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
-                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                src1={data?.home?.bannerLastMusic[0]?.image}
+                src2={data?.home?.bannerLastMusic[1]?.image}
+                src3={data?.home?.bannerLastMusic[2]?.image}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerLastMusic[0]?.title}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerLastMusic[1]?.title}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerLastMusic[2]?.title}
                 isReverce={false}
             />
 
@@ -66,12 +70,12 @@ const Article = () => {
             <LottieComponent src='anim4' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
-                link1={RoutesAddress.MUSIC + '/' + 'موزیک 1'}
-                link2={RoutesAddress.MUSIC + '/' + 'موزیک 2'}
-                link3={RoutesAddress.MUSIC + '/' + 'موزیک 3'}
+                src1={data?.home?.bannerFavMusic[0]?.image}
+                src2={data?.home?.bannerFavMusic[1]?.image}
+                src3={data?.home?.bannerFavMusic[2]?.image}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerFavMusic[0]?.title}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerFavMusic[1]?.title}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerFavMusic[2]?.title}
                 isReverce={true}
             />
 
@@ -93,12 +97,12 @@ const Article = () => {
             <ImageHomePageComponent src='/images/music_video_1.png' className='w-2/3 sm:w-1/2 md:w-1/3 mb-4' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
-                link1={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 1'}
-                link2={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 2'}
-                link3={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 3'}
+                src1={data?.home?.bannerAllMusicVideo[0]?.image}
+                src2={data?.home?.bannerAllMusicVideo[1]?.image}
+                src3={data?.home?.bannerAllMusicVideo[2]?.image}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusicVideo[0]?.title}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusicVideo[1]?.title}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusicVideo[2]?.title}
                 isReverce={false}
             />
 
@@ -108,12 +112,12 @@ const Article = () => {
             <ImageHomePageComponent src='/images/music_video_2.png' className='w-2/3 sm:w-1/2 md:w-1/3 mb-4' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
-                link1={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 1'}
-                link2={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 2'}
-                link3={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 3'}
+                src1={data?.home?.bannerTopMusicVideo[0]?.image}
+                src2={data?.home?.bannerTopMusicVideo[1]?.image}
+                src3={data?.home?.bannerTopMusicVideo[2]?.image}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusicVideo[0]?.title}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusicVideo[1]?.title}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusicVideo[2]?.title}
                 isReverce={true}
             />
 
@@ -123,12 +127,12 @@ const Article = () => {
             <ImageHomePageComponent src='/images/dj3.png' className='w-2/3 sm:w-1/2 md:w-1/3 mb-4' />
 
             <BannerHomePage
-                src1='https://arashaltafi.ir/Social_Media/story-01.jpg'
-                src2='https://arashaltafi.ir/Social_Media/story-02.jpg'
-                src3='https://arashaltafi.ir/Social_Media/story-03.jpg'
-                link1={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 1'}
-                link2={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 2'}
-                link3={RoutesAddress.MUSIC_VIDEO + '/' + 'موزیک 3'}
+                src1={data?.home?.bannerLastMusicVideo[0]?.image}
+                src2={data?.home?.bannerLastMusicVideo[1]?.image}
+                src3={data?.home?.bannerLastMusicVideo[2]?.image}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerLastMusicVideo[0]?.title}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerLastMusicVideo[1]?.title}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerLastMusicVideo[2]?.title}
                 isReverce={false}
             />
 

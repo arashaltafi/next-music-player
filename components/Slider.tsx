@@ -7,6 +7,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, Mousewheel, EffectFade } from 'swiper/modules';
 import Image from 'next/image';
 import { FaCirclePlay } from "react-icons/fa6";
+import { GET_SLIDER } from '@/graphql/graphql-queries';
+import { useQuery } from '@apollo/client';
 
 const Slider = () => {
     const [slides, setSlides] = useState<{
@@ -16,26 +18,22 @@ const Slider = () => {
         image: string,
     }[]>([])
 
+    const { data } = useQuery(GET_SLIDER);
+
     useEffect(() => {
-        setSlides([
-            {
-                id: 1,
-                image: 'https://arashaltafi.ir/Social_Media/story-01.jpg',
-                singer: 'محسن یگانه',
-                musicName: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ 1',
-            }, {
-                id: 2,
-                image: 'https://arashaltafi.ir/Social_Media/story-02.jpg',
-                singer: 'محسن یگانه',
-                musicName: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ 2',
-            }, {
-                id: 3,
-                image: 'https://arashaltafi.ir/Social_Media/story-03.jpg',
-                singer: 'محسن یگانه',
-                musicName: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ 3',
+        if (!data) return
+        
+        const sliderListMap = data?.home?.slider?.map((slide: any) => {
+            return {
+                id: slide.id,
+                singer: slide.singer,
+                musicName: slide.title,
+                image: slide.image
             }
-        ])
-    }, [])
+        })
+
+        setSlides(sliderListMap)
+    }, [data])
 
     const handleClickSlider = (e: MouseEvent | TouchEvent | PointerEvent) => {
         const target = e.target as HTMLDivElement
