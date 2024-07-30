@@ -1,13 +1,14 @@
 import AllSingers from '@/components/AllSingers'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
 import RoutesAddress from '@/utils/Routes';
+import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 
-const Singers = () => {
-    const [page, setPage] = useState(1)
+const Singers = ({ pageServer }: { pageServer: number }) => {
+    const [page, setPage] = useState(pageServer)
     const router = useRouter()
 
     useEffect(() => {
@@ -36,5 +37,15 @@ const Singers = () => {
         </>
     )
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { query } = context;
+
+    return {
+        props: {
+            pageServer: query.page || 1
+        }
+    }
+};
 
 export default Singers

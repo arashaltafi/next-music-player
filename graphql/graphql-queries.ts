@@ -37,13 +37,12 @@ export const GET_USER = gql`
   }
 `;
 
-export const GET_STUDENTS = gql`
-  query getStudents {
-    students(page: 1, page_size: 5) {
+export const GET_SINGERS = gql`
+  query singers {
+    singers {
       id
       name
-      family
-      age
+      image
     }
   }
 `;

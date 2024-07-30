@@ -69,20 +69,26 @@ const typeDefs = gql`
     suggestedMusicVideo: [MusicVideo],
   }
 
+  type Singer {
+    id: Int
+    image: String
+    name: String
+  }
+
   type Token {
     token: String
     message: String
   }
 
   type Query {
-    home: Home
-    users: [User]
-    user(id: Int!): User
+    home: Home,
+    singer(id: Int!): Singer,
+    singers: [Singer],
   }
 
   type Mutation {
     createUser(name: String!, family: String, age: Int): User,
-    loginUser(email: String!, password: String!): Token
+    loginUser(email: String!, password: String!): Token,
   }
 `;
 
@@ -634,27 +640,7 @@ const resolvers = {
         ],
       }
     },
-    users: async () => {
-      return [
-        {
-          _id: '1',
-          name: 'name1',
-          family: 'family1',
-          age: 1
-        }, {
-          _id: '2',
-          name: 'name2',
-          family: 'family2',
-          age: 2
-        }, {
-          _id: '3',
-          name: 'name3',
-          family: 'family3',
-          age: 3
-        }
-      ]
-    },
-    user: async (obj: any, args: any, context: any) => {
+    singer: async (obj: any, args: any, context: any) => {
       console.log('obj:', obj)
       console.log('args:', args)
       console.log('token:', context.token)
@@ -665,6 +651,81 @@ const resolvers = {
         name: 'name1',
         family: 'family1',
         age: 1
+      }
+    },
+    singers: async (obj: any, args: any) => {
+      const { page, page_size } = args;
+      const startIndex = (page - 1) * page_size;
+      const endIndex = page * page_size;
+
+      const singersData = [
+        {
+          id: 1,
+          name: 'محسن یگانه',
+          image: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg"
+        },
+        {
+          id: 2,
+          name: 'محسن چاوشی',
+          image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg"
+        },
+        {
+          id: 3,
+          name: 'علیرضا طلیسچی',
+          image: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg"
+        },
+        {
+          id: 4,
+          name: "یوسف زمانی",
+          image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg"
+        },
+        {
+          id: 5,
+          name: 'محسن چاوشی',
+          image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg"
+        },
+        {
+          id: 6,
+          name: 'علیرضا طلیسچی',
+          image: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg"
+        },
+        {
+          id: 7,
+          name: "یوسف زمانی",
+          image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg"
+        },
+        {
+          id: 8,
+          name: 'علیرضا طلیسچی',
+          image: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg"
+        },
+        {
+          id: 9,
+          name: "یوسف زمانی",
+          image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg"
+        },
+        {
+          id: 10,
+          name: 'محسن چاوشی',
+          image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg"
+        },
+        {
+          id: 11,
+          name: 'علیرضا طلیسچی',
+          image: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg"
+        },
+        {
+          id: 12,
+          name: "یوسف زمانی",
+          image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg"
+        }
+      ];
+
+      return singersData
+      
+      return {
+        total: singersData.length,
+        data: singersData.slice(startIndex, endIndex)
       }
     },
   },
