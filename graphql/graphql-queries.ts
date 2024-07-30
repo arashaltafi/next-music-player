@@ -73,6 +73,146 @@ export const GET_CATEGORIES = gql`
   }
 `;
 
+export const GET_ALL_MUSIC = gql`
+  query allMusic {
+    home {
+      allMusic {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_TOP_MUSIC = gql`
+  query topMusic {
+    home {
+      topMusic {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_LAST_MUSIC = gql`
+  query lastMusic {
+    home {
+      lastMusic {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_SUGGESTED_MUSIC = gql`
+  query suggestedMusic {
+    home {
+      suggestedMusic {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_FAV_MUSIC = gql`
+  query favMusic {
+    home {
+      favMusic {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_ALL_MUSIC_VIDEO = gql`
+  query allMusicVideo {
+    home {
+      allMusicVideo {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_TOP_MUSIC_VIDEO = gql`
+  query topMusicVideo {
+    home {
+      topMusicVideo {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_LAST_MUSIC_VIDEO = gql`
+  query lastMusicVideo {
+    home {
+      lastMusicVideo {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_SUGGESTED_MUSIC_VIDEO = gql`
+  query suggestedMusicVideo {
+    home {
+      suggestedMusicVideo {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
+export const GET_FAV_MUSIC_VIDEO = gql`
+  query favMusicVideo {
+    home {
+      favMusicVideo {
+        id,
+        image,
+        path,
+        singer,
+        name,
+      }
+    }
+  }
+`;
+
 export const GET_HOME = gql`
   query home {
     home {
@@ -80,81 +220,41 @@ export const GET_HOME = gql`
         title,
         image,
       }
-      allMusic {
-        id,
-        image,
-        singer,
-        title,
-      }
       bannerTopMusic {
         title,
         image,
-      }
-      topMusic {
-        id,
-        image,
-        singer,
-        title,
       }
       bannerLastMusic {
         title,
         image,
       }
-      lastMusic {
-        id,
-        image,
-        singer,
-        title,
-      }
       bannerFavMusic {
         title,
         image,
       }
-      favMusic {
-        id,
-        image,
-        singer,
+      bannerSuggestedMusic {
         title,
+        image,
       }
       bannerAllMusicVideo {
         title,
         image,
       }
-      allMusicVideo {
-        id,
-        image,
-        singer,
-        title,
-      }
       bannerTopMusicVideo {
         title,
         image,
-      }
-      topMusicVideo {
-        id,
-        image,
-        singer,
-        title,
       }
       bannerLastMusicVideo {
         title,
         image,
       }
-      lastMusicVideo {
-        id,
-        image,
-        singer,
-        title,
-      }
       bannerFavMusicVideo {
         title,
         image,
       }
-      favMusicVideo {
-        id,
-        image,
-        singer,
+      bannerSuggestedMusicVideo {
         title,
+        image,
       }
     }
   }

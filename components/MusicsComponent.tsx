@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MusicComponent from './MusicComponent'
 import { MusicCategory } from '@/utils/Type'
 import RoutesAddress from '@/utils/Routes'
 import { useRouter } from 'next/navigation'
+import { useQuery } from '@apollo/client'
+import { GET_ALL_MUSIC, GET_FAV_MUSIC, GET_LAST_MUSIC, GET_SUGGESTED_MUSIC, GET_TOP_MUSIC } from '@/graphql/graphql-queries'
 
 interface PropsType {
     category: MusicCategory,
@@ -12,43 +14,52 @@ interface PropsType {
 const MusicsComponent = (props: PropsType) => {
     const router = useRouter()
 
-    const data = [
-        {
-            id: 1,
-            name: "آمد بهار جان ها",
-            path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
-            singer: "محسن چاوشی"
-        },
-        {
-            id: 2,
-            name: "شیک",
-            path: "https://dls.music-fa.com/tagdl/downloads/Yousef%20Zamani%20-%20Shik%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg",
-            singer: "یوسف زمانی"
-        },
-        {
-            id: 3,
-            name: "بهت قول میدم",
-            path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Yeganeh%20-%20Behet%20Ghol%20Midam%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2018/12/M-yegane83658723567456837456986745867509673452355.jpg",
-            singer: "محسن یگانه"
-        },
-        {
-            id: 4,
-            name: "نشکن دلمو",
-            path: "https://dls.music-fa.com/tagdl/downloads/Yegane%20Chavoshi%20Hakan%20-%20Nashkan%20Delamo%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg",
-            singer: "محسن یگانه"
-        },
-        {
-            id: 5,
-            name: "آخرش قشنگه",
-            path: "https://dls.music-fa.com/tagdl/downloads/Alireza%20Talischi%20-%20Akharesh%20Ghashange%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg",
-            singer: "علیرضا طلیسچی"
+    const [musics, setMusics] = useState<{
+        id: number,
+        name: string,
+        path: string,
+        image: string,
+        singer: string,
+    }[]>([])
+
+    let requestType: any;
+    
+    if (props.category === MusicCategory.ALL) {
+        requestType = GET_ALL_MUSIC
+    } else if (props.category === MusicCategory.BEST) {
+        requestType = GET_TOP_MUSIC
+    } else if (props.category === MusicCategory.FAVORITE) {
+        requestType = GET_FAV_MUSIC
+    } else if (props.category === MusicCategory.NEW) {
+        requestType = GET_LAST_MUSIC
+    } else if (props.category === MusicCategory.SUGGESTED) {
+        requestType = GET_SUGGESTED_MUSIC
+    } else {
+        requestType = GET_ALL_MUSIC
+    }
+
+    const { data } = useQuery(requestType);
+
+    useEffect(() => {
+        let response: any;
+
+        if (props.category === MusicCategory.ALL) {
+            response = data?.home?.allMusic
+        } else if (props.category === MusicCategory.BEST) {
+            response = data?.home?.topMusic
+        } else if (props.category === MusicCategory.FAVORITE) {
+            response = data?.home?.favMusic
+        } else if (props.category === MusicCategory.NEW) {
+            response = data?.home?.lastMusic
+        } else if (props.category === MusicCategory.SUGGESTED) {
+            response = data?.home?.suggestedMusic
+        } else {
+            response = data?.home?.allMusic
         }
-    ]
+
+        if (!data) return
+        setMusics(response)
+    }, [data])
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLDivElement
@@ -67,7 +78,7 @@ const MusicsComponent = (props: PropsType) => {
             onClick={(e) => handleClick(e)}
         >
             {
-                data.map((item) => (
+                musics?.map((item) => (
                     <MusicComponent
                         key={item.id}
                         id={item.id}
