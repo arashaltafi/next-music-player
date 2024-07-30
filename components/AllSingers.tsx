@@ -1,19 +1,20 @@
 import React from 'react'
 import Singer from './Singer'
-import { useQuery } from '@apollo/client'
-import { GET_SINGERS } from '@/graphql/graphql-queries'
 
 interface PropsType {
-    isFav?: boolean
+    isFav?: boolean,
+    data?: {
+        id: number,
+        name: number,
+        image: number,
+    }[]
 }
 
 const AllSingers = (props: PropsType) => {
-    const { data } = useQuery(GET_SINGERS);
-
     return (
         <div className='w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
             {
-                data?.singers?.map((item: any) => (
+                props?.data?.map((item: any) => (
                     <Singer
                         key={item.id}
                         id={item.id}

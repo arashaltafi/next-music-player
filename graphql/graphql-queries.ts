@@ -38,11 +38,14 @@ export const GET_USER = gql`
 `;
 
 export const GET_SINGERS = gql`
-  query singers {
-    singers {
-      id
-      name
-      image
+  query singers($page: Int!, $page_size: Int!) {
+    singers(page: $page, page_size: $page_size) {
+      total,
+      data {
+        id
+        name
+        image
+      }
     }
   }
 `;

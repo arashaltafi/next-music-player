@@ -75,6 +75,11 @@ const typeDefs = gql`
     name: String
   }
 
+  type Singers {
+    total: Int
+    data: [Singer]
+  }
+
   type Token {
     token: String
     message: String
@@ -83,7 +88,7 @@ const typeDefs = gql`
   type Query {
     home: Home,
     singer(id: Int!): Singer,
-    singers: [Singer],
+    singers(page: Int!, page_size: Int!): Singers,
   }
 
   type Mutation {
@@ -721,8 +726,6 @@ const resolvers = {
         }
       ];
 
-      return singersData
-      
       return {
         total: singersData.length,
         data: singersData.slice(startIndex, endIndex)
