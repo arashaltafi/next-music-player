@@ -12,8 +12,12 @@ import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
 import RoutesAddress from '@/utils/Routes';
 import HeadOfTitle from '@/components/HeadOfTitle'
+import { GET_SINGER } from '@/graphql/graphql-queries'
+import { useQuery } from '@apollo/client'
+import MusicComponent from '@/components/MusicComponent'
+import MusicVideoComponent from '@/components/MusicVideoComponent'
 
-const Singer = ({ data, name }: { data: any, name: string }) => {
+const Singer = ({ name }: { name: string }) => {
     const [page, setPage] = useState(1)
     const router = useRouter()
 
@@ -21,6 +25,29 @@ const Singer = ({ data, name }: { data: any, name: string }) => {
         if (name !== 'برترین خواننده ها') return
         router.push(RoutesAddress.SINGER_BEST + "?page=" + page)
     }, [page])
+
+    const { data } = useQuery(GET_SINGER, {
+        variables: {
+            name
+        }
+    });
+
+    console.log(data)
+
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, isVideo: boolean) => {
+        const target = e.target as HTMLDivElement
+        const targetDiv = target.closest('div')
+        if (!targetDiv) return
+
+        const key = targetDiv.getAttribute('data-key')
+        if (!key) return
+
+        if (isVideo) {
+            router.push(RoutesAddress.MUSIC_VIDEO + "/" + key.replaceAll(' ', '-'))
+        } else {
+            router.push(RoutesAddress.MUSIC + "/" + key.replaceAll(' ', '-'))
+        }
+    }
 
     if (name === 'برترین خواننده ها') {
         return (
@@ -53,20 +80,52 @@ const Singer = ({ data, name }: { data: any, name: string }) => {
                     <meta name="description" content={`صفحه خواننده ${name} موزیک آنلاین`} />
                 </Head>
                 <div className='mt-8 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
-                    <SingerImage name='arash' src='https://arashaltafi.ir/arash.jpg' />
+                    <SingerImage name='arash' src={data?.singer?.image} />
                     <h3 className='self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>نام:</h3>
-                    <h2 className='self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl'>{name}</h2>
+                    <h2 className='self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl'>{data?.singer?.name}</h2>
 
                     <h3 className='mt-4 sm:mt-8 md:mt-10 lg:mt-12 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>بیوگرافی:</h3>
-                    <p className='mb-8 self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl text-justify'>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                    <p className='mb-8 self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl text-justify'>{data?.singer?.bio}</p>
 
                     <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_BEST} title="موزیک ها:" />
-                    <MusicsComponent category={MusicCategory.ALL} className='mt-0' />
+                    <div
+                        className={`w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden mt-0`}
+                        onClick={(e) => handleClick(e, false)}
+                    >
+                        {
+                            data?.singer?.music?.map((item: any) => (
+                                <MusicComponent
+                                    key={item.id}
+                                    id={item.id}
+                                    name={item.name}
+                                    singer={item.singer}
+                                    path={item.path}
+                                    image={item.image}
+                                />
+                            ))
+                        }
+                    </div>
 
                     <DividerImage src='/images/music-divider-1.png' className='my-12 sm:my-16 md:my-20' />
 
                     <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_BEST} title="موزیک ویدیوها:" />
-                    <MusicVideosComponent category={MusicVideoCategory.ALL} className='mt-0' />
+                    <div
+                        className={`w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden mt-0`}
+                        onClick={(e) => handleClick(e, true)}
+                    >
+                        {
+                            data?.singer?.musicVideo?.map((item: any) => (
+                                <MusicVideoComponent
+                                    key={item.id}
+                                    id={item.id}
+                                    name={item.name}
+                                    singer={item.singer}
+                                    path={item.path}
+                                    image={item.image}
+                                />
+                            ))
+                        }
+                    </div>
                 </div>
             </>
         )
@@ -86,17 +145,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const name = typeof (params?.name) === 'string' ? decodeURIComponent(params.name).replaceAll('-', ' ') : ''
 
-    const list = {
-        id: 1,
-        name: "محسن چاوشی",
-        path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
-        image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
-        singer: "محسن چاوشی"
-    }
-
     return {
         props: {
-            data: list,
             name: name
         }
     }

@@ -75,6 +75,15 @@ const typeDefs = gql`
     name: String
   }
 
+  type SingerInfo {
+    id: Int
+    name: String
+    image: String
+    bio: String
+    music: [Music]
+    musicVideo: [MusicVideo]
+  }
+
   type Singers {
     total: Int
     data: [Singer]
@@ -87,7 +96,7 @@ const typeDefs = gql`
 
   type Query {
     home: Home,
-    singer(id: Int!): Singer,
+    singer(name: String!): SingerInfo,
     singers(page: Int!, page_size: Int!): Singers,
   }
 
@@ -651,11 +660,56 @@ const resolvers = {
       console.log('token:', context.token)
       console.log('theme:', context.theme)
       console.log('-------------------')
+
+      const { name } = args;
+
       return {
-        _id: args.id,
-        name: 'name1',
-        family: 'family1',
-        age: 1
+        id: 1,
+        name: name,
+        image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
+        bio: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ',
+        music: [
+          {
+            id: 1,
+            image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
+            path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
+            singer: 'محسن چاوشی',
+            name: 'آمد بهار جان ها'
+          }, {
+            id: 2,
+            image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
+            path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
+            singer: 'محسن چاوشی',
+            name: 'آمد بهار جان ها'
+          }, {
+            id: 3,
+            image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
+            path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
+            singer: 'محسن چاوشی',
+            name: 'آمد بهار جان ها'
+          }
+        ],
+        musicVideo: [
+          {
+            id: 1,
+            image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
+            path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
+            singer: 'محسن چاوشی',
+            name: 'آمد بهار جان ها'
+          }, {
+            id: 2,
+            image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
+            path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
+            singer: 'محسن چاوشی',
+            name: 'آمد بهار جان ها'
+          }, {
+            id: 3,
+            image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
+            path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
+            singer: 'محسن چاوشی',
+            name: 'آمد بهار جان ها'
+          }
+        ]
       }
     },
     singers: async (obj: any, args: any) => {

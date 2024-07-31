@@ -50,6 +50,31 @@ export const GET_SINGERS = gql`
   }
 `;
 
+export const GET_SINGER = gql`
+  query singer($name: String!) {
+    singer(name: $name) {
+      id
+      name
+      image
+      bio
+      music {
+        id
+        name
+        image
+        path
+        singer
+      }
+      musicVideo {
+        id
+        name
+        image
+        path
+        singer
+      }
+    }
+  }
+`;
+
 export const GET_SLIDER = gql`
   query slider {
     home {
