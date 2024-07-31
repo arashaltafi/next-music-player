@@ -16,24 +16,18 @@ import { GET_SINGER } from '@/graphql/graphql-queries'
 import { useQuery } from '@apollo/client'
 import MusicComponent from '@/components/MusicComponent'
 import MusicVideoComponent from '@/components/MusicVideoComponent'
+import PaginationComponent from '@/components/PaginationComponent'
 
 const Singer = ({ name }: { name: string }) => {
     const [page, setPage] = useState(1)
     const router = useRouter()
-
-    useEffect(() => {
-        if (name !== 'برترین خواننده ها') return
-        router.push(RoutesAddress.SINGER_BEST + "?page=" + page)
-    }, [page])
 
     const { data } = useQuery(GET_SINGER, {
         variables: {
             name
         }
     });
-
-    console.log(data)
-
+    
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, isVideo: boolean) => {
         const target = e.target as HTMLDivElement
         const targetDiv = target.closest('div')
@@ -49,24 +43,40 @@ const Singer = ({ name }: { name: string }) => {
         }
     }
 
+
+    useEffect(() => {
+        if (name !== 'برترین خواننده ها') return
+        router.push(RoutesAddress.SINGER_BEST + "?page=" + page)
+    }, [page])
+
     if (name === 'برترین خواننده ها') {
+        const favData = [
+            {
+                id: 1,
+                name: 'name1',
+                image: 'https://arashaltafi.ir/Social_Media/story-02.jpg',
+            }, {
+                id: 2,
+                name: 'name2',
+                image: 'https://arashaltafi.ir/Social_Media/story-01.jpg',
+            }
+        ]
+
         return (
             <>
                 <Head>
                     <title>خوانندگان برتر | موزیک آنلاین</title>
                     <meta name="description" content="صفحه تمامی خوانندگان موزیک آنلاین" />
                 </Head>
-                <div className='-mb-52 pt-10 w-full flex flex-col gap-6 sm:gap-8 md:gap-12 lg:gap-16'>
+                <div className='-mb-52 pt-10 w-full flex flex-col'>
                     <h2 className='px-8 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl my-4'>خوانندگان برتر:</h2>
-                    <AllSingers isFav />
+                    <AllSingers isFav data={favData} />
 
                     <div className='w-full flex items-center justify-center gap-8'>
-                        <ResponsivePagination
-                            current={page}
-                            total={20}
-                            onPageChange={(page) => {
-                                setPage(page)
-                            }}
+                        <PaginationComponent
+                            currentPage={page}
+                            totalPage={Math.max(1, Math.ceil(favData?.length / 5))}
+                            setPageNumber={(pageNumber) => setPage(pageNumber)}
                         />
                     </div>
                 </div>

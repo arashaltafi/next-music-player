@@ -15,8 +15,8 @@ const Singers = ({ pageServer }: { pageServer: number }) => {
     const router = useRouter()
     const [singersResponse, setSingerResponse] = useState<{
         id: number,
-        name: number,
-        image: number,
+        name: string,
+        image: string,
     }[]>()
 
     const { data } = useQuery(GET_SINGERS, {
@@ -50,7 +50,6 @@ const Singers = ({ pageServer }: { pageServer: number }) => {
                     <PaginationComponent
                         currentPage={page}
                         totalPage={Math.max(1, Math.ceil(data?.singers?.total / 5))}
-                        // totalPage={2}
                         setPageNumber={(pageNumber) => setPage(pageNumber)}
                     />
                 </div>

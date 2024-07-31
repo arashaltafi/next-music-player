@@ -5,8 +5,8 @@ interface PropsType {
     isFav?: boolean,
     data?: {
         id: number,
-        name: number,
-        image: number,
+        name: string,
+        image: string,
     }[]
 }
 
