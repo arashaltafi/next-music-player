@@ -12,7 +12,7 @@ interface PropsType {
 
 const AllSingers = (props: PropsType) => {
     return (
-        <div className='w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
+        <div className='pt-4 sm:pt-8 md:pt-12 lg:pt-16 w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-8 overflow-hidden'>
             {
                 props?.data?.map((item: any) => (
                     <Singer
