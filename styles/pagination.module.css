@@ -1,0 +1,34 @@
+.paginationParent {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  width: 100%;
+}
+.paginationParent .paginationNumber {
+  color: #1e1e1e;
+  background-color: #fff;
+  border: solid 1px #e6e6e6;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  border-radius: 12px;
+  margin: 0 3px;
+  font-weight: 600;
+}
+.paginationParent .paginationNumber.currentPage {
+  color: #5494b0;
+  background-color: #e5f7ff;
+  cursor: default;
+  border: solid 1px #5494b0;
+}
+.paginationParent .paginationNumber.betweenPages {
+  font-size: 14px;
+  color: #1e1e1e;
+  cursor: default;
+  border: none;
+}

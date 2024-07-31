@@ -8,6 +8,7 @@ import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client'
 import { GET_SINGERS } from '@/graphql/graphql-queries'
+import PaginationComponent from '@/components/PaginationComponent';
 
 const Singers = ({ pageServer }: { pageServer: number }) => {
     const [page, setPage] = useState(pageServer)
@@ -44,6 +45,12 @@ const Singers = ({ pageServer }: { pageServer: number }) => {
             <div className='-mb-52 pt-10 w-full flex flex-col gap-6 sm:gap-8 md:gap-12 lg:gap-16'>
                 <h2 className='px-8 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl my-4'>تمامی خوانندگان:</h2>
                 <AllSingers data={singersResponse} />
+
+                <PaginationComponent
+                    currentPage={page}
+                    totalPage={10}
+                    setPageNumber={(pageNumber) => setPage(pageNumber)}
+                />
                 <div className='w-full flex items-center justify-center gap-8 mt-16'>
                     <ResponsivePagination
                         current={page}
