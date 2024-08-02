@@ -13,7 +13,7 @@ const Singer = (props: SingerType) => {
     }, [props.isFav])
 
     return (
-        <div className={`select-none w-full flex flex-col gap-7 items-center justify-center px-2 ${props.isFav && 'bg-pattern-1 rounded-boxRadius py-4'}`}>
+        <div className={`select-none w-full flex flex-col gap-7 items-center justify-center px-2 ${props.isFav && 'bg-pattern-2 rounded-boxRadius py-4'}`}>
             <Link
                 href={'/singer/' + props.name.replaceAll(' ', '-')}
                 className='w-full flex items-center justify-center'

@@ -289,4 +289,10 @@
       repeating-conic-gradient(#0f172a 0 25%, #0000 0 50%) 0 0/calc(2*32px) calc(2*32px),
       radial-gradient(#0000 66%, #020617 68% 70%, #0000 72%) 0 calc(32px/2)/32px 32px #0f172a;
   }
+
+  .bg-pattern-7 {
+    background-image: radial-gradient(circle at center center, rgba(0, 0, 0, 0), #334155), repeating-radial-gradient(circle at center center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), 32px, transparent 64px, transparent 32px);
+    background-blend-mode: multiply;
+    background-color: #334155;
+  }
 }
