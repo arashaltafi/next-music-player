@@ -39,3 +39,9 @@ export type MusicVideoType = {
     singer: string,
     isFav?: boolean
 }
+
+export type SingersType = {
+    id: number,
+    name: string,
+    image: string,
+}[]

@@ -1,13 +1,10 @@
 import React from 'react'
 import Singer from './Singer'
+import { SingersType } from '@/utils/Type'
 
 interface PropsType {
     isFav?: boolean,
-    data?: {
-        id: number,
-        name: string,
-        image: string,
-    }[]
+    data?: SingersType
 }
 
 const AllSingers = (props: PropsType) => {

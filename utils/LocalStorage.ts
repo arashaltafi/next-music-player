@@ -17,10 +17,10 @@ export const isHaveIdInStorage = (key: string, id: number): boolean => {
 export const getFromLocalStorage = (key: string) => {
     if (typeof localStorage === 'undefined' || localStorage === null) return
     const value = localStorage.getItem(key)
-        if (value) {
-            const parsedValue = JSON.parse(value);
-            return Array.isArray(parsedValue) ? parsedValue : [parsedValue];
-        }
+    if (value) {
+        const parsedValue = JSON.parse(value);
+        return Array.isArray(parsedValue) ? parsedValue : [parsedValue];
+    }
 }
 
 export const deleteFromLocalStorage = (key: string) => {
@@ -36,4 +36,5 @@ export const deleteAllLocalStorage = () => {
 export const LocalStorageRoutes = {
     MUSIC: 'music',
     MUSIC_VIDEO: 'music_video',
+    SINGER: 'singer',
 }

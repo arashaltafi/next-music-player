@@ -3,7 +3,7 @@ import DividerImage from '@/components/DividerImage'
 import MusicsComponent from '@/components/MusicsComponent'
 import MusicVideosComponent from '@/components/MusicVideosComponent'
 import SingerImage from '@/components/SingerImage'
-import { MusicCategory, MusicVideoCategory } from '@/utils/Type'
+import { MusicCategory, MusicVideoCategory, SingersType } from '@/utils/Type'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
@@ -17,6 +17,7 @@ import { useQuery } from '@apollo/client'
 import MusicComponent from '@/components/MusicComponent'
 import MusicVideoComponent from '@/components/MusicVideoComponent'
 import PaginationComponent from '@/components/PaginationComponent'
+import { deleteIdFromStorage, getFromLocalStorage, isHaveIdInStorage, LocalStorageRoutes, saveToLocalStorage } from '@/utils/LocalStorage'
 
 const Singer = ({ name }: { name: string }) => {
     const [page, setPage] = useState(1)
@@ -43,25 +44,38 @@ const Singer = ({ name }: { name: string }) => {
         }
     }
 
+    const favSinger = getFromLocalStorage(LocalStorageRoutes.SINGER)
+
+    const [favSingerData, setFavSingerData] = useState<SingersType>([])
 
     useEffect(() => {
         if (name !== 'برترین خواننده ها') return
         router.push(RoutesAddress.SINGER_BEST + "?page=" + page)
+        
+        setFavSingerData(favSinger?.splice((page - 1) * 5, 5) || [])
     }, [page])
 
-    if (name === 'برترین خواننده ها') {
-        const favData = [
-            {
-                id: 1,
-                name: 'name1',
-                image: 'https://arashaltafi.ir/Social_Media/story-02.jpg',
-            }, {
-                id: 2,
-                name: 'name2',
-                image: 'https://arashaltafi.ir/Social_Media/story-01.jpg',
-            }
-        ]
+    const [isFavSinger, setIsFavSinger] = useState<boolean>()
 
+    useEffect(() => {
+        setIsFavSinger(isHaveIdInStorage(LocalStorageRoutes.SINGER, data?.singer?.id))
+    }, [data?.singer?.id])
+
+    const handleFav = (isFav: boolean, id: number, name: string, image: string) => {
+        if (isFav) {
+            deleteIdFromStorage(LocalStorageRoutes.SINGER, id)
+            setIsFavSinger(false)
+        } else {
+            saveToLocalStorage(LocalStorageRoutes.SINGER, {
+                id,
+                name,
+                image,
+            })
+            setIsFavSinger(true)
+        }
+    }
+
+    if (name === 'برترین خواننده ها') {
         return (
             <>
                 <Head>
@@ -70,12 +84,12 @@ const Singer = ({ name }: { name: string }) => {
                 </Head>
                 <div className='-mb-52 pt-10 w-full flex flex-col'>
                     <h2 className='px-8 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl my-4'>خوانندگان برتر:</h2>
-                    <AllSingers isFav data={favData} />
+                    <AllSingers isFav data={favSingerData} />
 
                     <div className='w-full flex items-center justify-center gap-8'>
                         <PaginationComponent
                             currentPage={page}
-                            totalPage={Math.max(1, Math.ceil(favData?.length / 5))}
+                            totalPage={Math.max(1, Math.ceil((favSingerData?.length || 0) / 5))}
                             setPageNumber={(pageNumber) => setPage(pageNumber)}
                         />
                     </div>
@@ -90,7 +104,12 @@ const Singer = ({ name }: { name: string }) => {
                     <meta name="description" content={`صفحه خواننده ${name} موزیک آنلاین`} />
                 </Head>
                 <div className='mt-8 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
-                    <SingerImage name='arash' src={data?.singer?.image} />
+                    <SingerImage 
+                        name={name} 
+                        src={data?.singer?.image}
+                        isFav={isFavSinger}
+                        handleFav={(isFav) => handleFav(isFav, data?.singer?.id, data?.singer?.name, data?.singer?.image)}
+                     />
                     <h3 className='self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>نام:</h3>
                     <h2 className='self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl'>{data?.singer?.name}</h2>
 
