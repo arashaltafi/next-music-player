@@ -20,7 +20,7 @@ const Singer = (props: SingerType) => {
             >
                 <Image
                     data-key={props.id}
-                    className={`cursor-pointer w-[calc(100%-64px)] h-64 ${props.isFav ? 'rounded-singerFav' : 'rounded-full'} border border-rose-500 shadow-musicShadow border-dotted hover:scale-105 active:scale-95 hover:brightness-125 transition-all duration-300`}
+                    className={`cursor-pointer ${props.isFav ? 'rounded-singerFav' : 'rounded-full'} border border-rose-500 shadow-musicShadow border-dotted hover:scale-105 active:scale-95 hover:brightness-125 transition-all duration-300`}
                     src={props.image || ''}
                     alt={props.name}
                     width={500}
