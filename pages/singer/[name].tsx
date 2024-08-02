@@ -55,7 +55,7 @@ const Singer = ({ name }: { name: string }) => {
         setFavSingerData(favSinger?.splice((page - 1) * 5, 5) || [])
     }, [page])
 
-    const [isFavSinger, setIsFavSinger] = useState<boolean>()
+    const [isFavSinger, setIsFavSinger] = useState<boolean>(false)
 
     useEffect(() => {
         setIsFavSinger(isHaveIdInStorage(LocalStorageRoutes.SINGER, data?.singer?.id))
@@ -89,7 +89,7 @@ const Singer = ({ name }: { name: string }) => {
                     <div className='w-full flex items-center justify-center gap-8'>
                         <PaginationComponent
                             currentPage={page}
-                            totalPage={Math.max(1, Math.ceil((favSingerData?.length || 0) / 5))}
+                            totalPage={Math.max(1, Math.ceil((favSinger?.length || 0) / 5))}
                             setPageNumber={(pageNumber) => setPage(pageNumber)}
                         />
                     </div>
