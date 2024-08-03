@@ -124,6 +124,22 @@ export const GET_CATEGORY = gql`
   }
 `;
 
+export const GET_ALL_MUSICS = gql`
+  query musics($name: String!, $page: Int!, $page_size: Int!) {
+    musics(name: $name, page: $page, page_size: $page_size) {
+      total,
+      data {
+        id
+        name
+        image
+        singer
+        path
+        text
+      }
+    }
+  }
+`;
+
 export const GET_ALL_MUSIC = gql`
   query allMusic {
     home {
