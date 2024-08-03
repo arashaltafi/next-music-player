@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 
 const NotFound = () => {
@@ -9,6 +9,24 @@ const NotFound = () => {
             favicon.href = '/images/logo-grayscale.png';
         }
     }, []);
+
+    const [displayText, setDisplayText] = useState<string>('');
+    const [text] = useState<string>('صففحه مورد نظر یافت نشد !!!');
+    const [speed] = useState<number>(100);
+
+    useEffect(() => {
+        let currentIndex = 0;
+        const intervalId = setInterval(() => {
+            if (currentIndex < text.length - 1) {
+                setDisplayText((prev) => prev + text[currentIndex]);
+                currentIndex++;
+            } else {
+                clearInterval(intervalId);
+            }
+        }, speed);
+
+        return () => clearInterval(intervalId);
+    }, [text, speed]);
 
     return (
         <>
@@ -33,9 +51,7 @@ const NotFound = () => {
                         <h2 className='text-7xl sm:text-8xl md:text-9xl text-brown-200'>4</h2>
                     </div>
 
-                    <h1 dir='rtl' className='text-md sm:text-lg md:text-xl lg:text-2xl'>
-                        صفحه مورد نظر یافت نشد !!!
-                    </h1>
+                    <h1 dir='rtl' className='typewriter text-md sm:text-lg md:text-xl lg:text-2xl'>{displayText}</h1>
                 </div>
             </div>
         </>

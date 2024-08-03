@@ -295,4 +295,22 @@
     background-blend-mode: multiply;
     background-color: #334155;
   }
+
+
+  .typewriter {
+    @apply inline-block overflow-hidden border-l-2 border-current whitespace-pre-wrap;
+    animation: blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+
+    from,
+    to {
+      border-color: transparent;
+    }
+
+    50% {
+      border-color: currentColor;
+    }
+  }
 }
