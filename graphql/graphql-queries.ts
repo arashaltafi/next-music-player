@@ -140,6 +140,21 @@ export const GET_ALL_MUSICS = gql`
   }
 `;
 
+export const GET_ALL_MUSIC_VIDEOS = gql`
+  query musicVideos($name: String!, $page: Int!, $page_size: Int!) {
+    musicVideos(name: $name, page: $page, page_size: $page_size) {
+      total,
+      data {
+        id
+        name
+        image
+        singer
+        path
+      }
+    }
+  }
+`;
+
 export const GET_ALL_MUSIC = gql`
   query allMusic {
     home {

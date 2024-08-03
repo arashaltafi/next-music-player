@@ -1,9 +1,11 @@
 import LottieComponent from '@/components/LottieComponent'
 import MusicVideoItem from '@/components/MusicVideoItem'
 import PaginationComponent from '@/components/PaginationComponent'
+import { GET_ALL_MUSIC_VIDEOS } from '@/graphql/graphql-queries'
 import { getFromLocalStorage, LocalStorageRoutes } from '@/utils/LocalStorage'
 import RoutesAddress from '@/utils/Routes'
 import { MusicVideoType } from '@/utils/Type'
+import { useQuery } from '@apollo/client'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useParams, useRouter } from 'next/navigation'
@@ -17,45 +19,15 @@ const MusicVideos = () => {
     const params = useParams()
     const category = typeof (params?.category) === 'string' ? decodeURIComponent(params.category).replaceAll('-', ' ') : ''
 
-    const favMusicVideo = getFromLocalStorage(LocalStorageRoutes.MUSIC_VIDEO)
-
-    const data: MusicVideoType[] = [
-        {
-            id: 1,
-            name: "آمد بهار جان ها",
-            path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
-            singer: "محسن چاوشی"
-        },
-        {
-            id: 2,
-            name: "شیک",
-            path: "https://dls.music-fa.com/tagdl/downloads/Yousef%20Zamani%20-%20Shik%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2019/03/Y-zamani9856293865884752493.jpg",
-            singer: "یوسف زمانی"
-        },
-        {
-            id: 3,
-            name: "بهت قول میدم",
-            path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Yeganeh%20-%20Behet%20Ghol%20Midam%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2018/12/M-yegane83658723567456837456986745867509673452355.jpg",
-            singer: "محسن یگانه"
-        },
-        {
-            id: 4,
-            name: "نشکن دلمو",
-            path: "https://dls.music-fa.com/tagdl/downloads/Yegane%20Chavoshi%20Hakan%20-%20Nashkan%20Delamo%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg",
-            singer: "محسن یگانه"
-        },
-        {
-            id: 5,
-            name: "آخرش قشنگه",
-            path: "https://dls.music-fa.com/tagdl/downloads/Alireza%20Talischi%20-%20Akharesh%20Ghashange%20(128).mp3",
-            image: "https://music-fa.com/wp-content/uploads/2018/10/A-talischi243264y235634.jpg",
-            singer: "علیرضا طلیسچی"
+    const { data } = useQuery(GET_ALL_MUSIC_VIDEOS, {
+        variables: {
+            name: category,
+            page,
+            page_size: 5
         }
-    ]
+    });
+
+    const favMusicVideo = getFromLocalStorage(LocalStorageRoutes.MUSIC_VIDEO)
 
     const [favMusicVideoData, setFavMusicVideoData] = useState<MusicVideoType[]>(favMusicVideo?.splice((page - 1) * 5, 5) || [])
 
@@ -111,7 +83,7 @@ const MusicVideos = () => {
                             />
                         ))
                     ) : (
-                        data.map((item: any) => (
+                        data?.musicVideos?.data?.map((item: any) => (
                             <MusicVideoItem
                                 key={item.id}
                                 id={item.id}
@@ -151,7 +123,7 @@ const MusicVideos = () => {
                         <div className='w-full flex items-center justify-center gap-8'>
                             <PaginationComponent
                                 currentPage={page}
-                                totalPage={20}
+                                totalPage={Math.max(1, Math.ceil(data?.musicVideos?.total / 5))}
                                 setPageNumber={(pageNumber) => setPage(pageNumber)}
                             />
                         </div>

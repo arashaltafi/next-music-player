@@ -25,8 +25,6 @@ const Musics = () => {
         }
     });
 
-    console.log('1111111111111111', data)
-
     const favMusic = getFromLocalStorage(LocalStorageRoutes.MUSIC)
 
     const [favMusicData, setFavMusicData] = useState<MusicType[]>(favMusic?.splice((page - 1) * 5, 5) || [])
