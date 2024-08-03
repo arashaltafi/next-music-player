@@ -106,6 +106,20 @@ export const GET_CATEGORY = gql`
       id,
       image,
       type,
+      music {
+        id
+        name
+        image
+        path
+        singer
+      }
+      musicVideo {
+        id
+        name
+        image
+        path
+        singer
+      }
     }
   }
 `;
