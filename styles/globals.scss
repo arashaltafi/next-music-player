@@ -199,14 +199,17 @@
 
   .btn-green {
     @apply bg-green-500 hover:bg-green-400 active:bg-green-600 hover:scale-[101%] active:scale-[99%];
+    box-shadow: 1px 1px 5px 1px #94A3B8;
   }
 
   .btn-red {
     @apply bg-red-500 hover:bg-red-400 active:bg-red-600 hover:scale-[101%] active:scale-[99%];
+    box-shadow: 1px 1px 5px 1px #94A3B8;
   }
 
   .btn-sky {
     @apply bg-sky-500 hover:bg-sky-400 active:bg-sky-600 hover:scale-[101%] active:scale-[99%];
+    box-shadow: 1px 1px 5px 1px #94A3B8;
   }
 
   .btn-sky-outline {
@@ -215,6 +218,7 @@
 
   .btn-rose {
     @apply bg-rose-500 hover:bg-rose-400 active:bg-rose-600 hover:scale-[101%] active:scale-[99%];
+    box-shadow: 1px 1px 5px 1px #94A3B8;
   }
 
   .btn-rose-outline {
@@ -223,6 +227,7 @@
 
   .btn-yellow {
     @apply bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-600 hover:scale-[101%] active:scale-[99%];
+    box-shadow: 1px 1px 5px 1px #94A3B8;
   }
 
   .bg-pattern-0 {

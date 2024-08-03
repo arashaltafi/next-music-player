@@ -3,6 +3,8 @@ import { MusicVideoType } from '@/utils/Type';
 import Image from 'next/image'
 import React, { useEffect } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { FaPlayCircle } from "react-icons/fa";
 
 const MusicVideoItem = (props: MusicVideoType) => {
     useEffect(() => {
@@ -18,18 +20,22 @@ const MusicVideoItem = (props: MusicVideoType) => {
                     <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>موزیک ویدیو: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{props.name}</span></h5>
                     <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{props.singer}</span></h5>
 
-                    <button
-                        className='btn btn-green'
-                        data-download={props.name}
-                    >
-                        دانلود موزیک ویدیو
-                    </button>
-                    <button
-                        className='btn btn-sky'
-                        data-play={props.name}
-                    >
-                        پخش موزیک ویدیو
-                    </button>
+                    <div className='w-full flex items-center justify-between gap-4'>
+                        <div
+                            className='btn btn-green flex-1 flex items-center justify-center gap-4'
+                            data-download={props.name}
+                        >
+                            <button>دانلود</button>
+                            <FaCloudDownloadAlt className='text-2xl' />
+                        </div>
+                        <div
+                            className='btn btn-sky flex-1 flex items-center justify-center gap-4'
+                            data-play={props.name}
+                        >
+                            <button>پخش</button>
+                            <FaPlayCircle className='text-2xl' />
+                        </div>
+                    </div>
                 </div>
                 <Image
                     className='w-1/3 h-auto rounded-boxRadius border border-dashed border-rose-500 shadow-musicShadow'
@@ -41,7 +47,7 @@ const MusicVideoItem = (props: MusicVideoType) => {
             </div>
             <div className='my-1 sm:my-2 md:my-3 lg:my-4 w-full flex items-center justify-end gap-2 sm:gap-4 md:gap-6 lg:gap-8'>
                 <button
-                    className='flex gap-2 items-center justify-center btn btn-sky-outline'
+                    className='flex gap-2 items-center justify-center btn btn-sky-outline px-2 md:px-3 lg:px-4 py-1 md:py-2 text-xs sm:text-sm'
                     data-click={props.name}
                 >
                     ادامه مطلب
