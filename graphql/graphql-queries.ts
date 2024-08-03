@@ -89,13 +89,23 @@ export const GET_SLIDER = gql`
 `;
 
 export const GET_CATEGORIES = gql`
-  query category {
+  query categories {
     home {
-      category {
+      categories {
         id,
         image,
         type,
       }
+    }
+  }
+`;
+
+export const GET_CATEGORY = gql`
+  query category($category: String!) {
+    category(category: $category) {
+      id,
+      image,
+      type,
     }
   }
 `;

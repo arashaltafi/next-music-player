@@ -9,10 +9,18 @@ import SingerImage from '@/components/SingerImage'
 import RoutesAddress from '@/utils/Routes'
 import HeadOfTitle from '@/components/HeadOfTitle'
 import { useRouter } from 'next/router'
+import { GET_CATEGORY } from '@/graphql/graphql-queries'
+import { useQuery } from '@apollo/client'
 
 const Category = () => {
     const router = useRouter()
     const category = typeof (router.query.category) === 'string' ? decodeURIComponent(router.query.category).replaceAll('-', ' ') : ''
+
+    const { data } = useQuery(GET_CATEGORY, {
+        variables: {
+            category
+        }
+    });
 
     return (
         <>
@@ -23,10 +31,10 @@ const Category = () => {
             <div className='mt-8 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
                 <SingerImage 
                     name={category}
-                    src='https://arashaltafi.ir//melodyo/media/app/cat_pop.jpg'
+                    src={data?.category?.image}
                 />
                 <h3 className='self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>دسته بندی:</h3>
-                <h2 className='mb-8 self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl'>{category}</h2>
+                <h2 className='mb-8 self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl'>{data?.category?.type}</h2>
 
                 <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_ALL} title="موزیک ها:" />
                 <MusicsComponent category={MusicCategory.ALL} className='mt-0' />

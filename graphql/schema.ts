@@ -46,7 +46,7 @@ const typeDefs = gql`
 
   type Home {
     slider: [Slider],
-    category: [Category],
+    categories: [Category],
     bannerAllMusic: [Banner],
     allMusic: [Music],
     bannerTopMusic: [Banner],
@@ -98,6 +98,7 @@ const typeDefs = gql`
     home: Home,
     singer(name: String!): SingerInfo,
     singers(page: Int!, page_size: Int!): Singers,
+    category(category: String!): Category
   }
 
   type Mutation {
@@ -123,7 +124,7 @@ const resolvers = {
             title: 'عنوان 2',
           }
         ],
-        category: [
+        categories: [
           {
             id: 1,
             image: 'https://arashaltafi.ir//melodyo/media/app/cat_pop.jpg',
@@ -652,6 +653,15 @@ const resolvers = {
             name: 'آمد بهار جان ها'
           }
         ],
+      }
+    },
+    category: async (obj: any, args: any, context: any) => {
+      const { category } = args;
+
+      return {
+        id: 1,
+        image: 'https://arashaltafi.ir//melodyo/media/app/cat_pop.jpg',
+        type: category
       }
     },
     singer: async (obj: any, args: any, context: any) => {

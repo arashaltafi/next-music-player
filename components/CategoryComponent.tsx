@@ -18,7 +18,7 @@ const CategoryComponent = () => {
 
     useEffect(() => {
         if (!data) return
-        setCategories(data?.home?.category)
+        setCategories(data?.home?.categories)
     }, [data])
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
