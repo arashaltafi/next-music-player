@@ -7,13 +7,15 @@ import { MdFavoriteBorder } from "react-icons/md";
 interface PropsType {
     name: string,
     src: string,
-    isFav: boolean,
-    handleFav: (isFav: boolean) => void
+    isFav?: boolean,
+    handleFav?: (isFav: boolean) => void
 }
 
 const SingerImage = (props: PropsType) => {
     const handleFav = () => {
-        props.handleFav(props.isFav)
+        if (props.isFav && props.handleFav) {
+            props.handleFav(props.isFav)
+        }
     }
 
     return (
@@ -27,17 +29,19 @@ const SingerImage = (props: PropsType) => {
                 height={500}
                 loading='lazy'
             />
-            <div
-                onClick={handleFav}
-            >
-                {
-                    props.isFav ? (
-                        <MdFavorite className='text-2xl' />
-                    ) : (
-                        <MdFavoriteBorder className='text-2xl' />
-                    )
-                }
-            </div>
+            {
+                props.isFav != undefined && props.handleFav && (
+                    <div onClick={handleFav}>
+                        {
+                            props.isFav ? (
+                                <MdFavorite className='text-2xl' />
+                            ) : (
+                                <MdFavoriteBorder className='text-2xl' />
+                            )
+                        }
+                    </div>
+                )
+            }
         </div>
     )
 }
