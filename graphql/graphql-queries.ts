@@ -350,3 +350,30 @@ export const GET_HOME = gql`
     }
   }
 `;
+
+export const GET_MUSIC = gql`
+  query music($id: Int!) {
+    music(id: $id) {
+      id,
+      image,
+      path,
+      singer,
+      name,
+      text,
+      date
+    }
+  }
+`;
+
+export const GET_MUSIC_VIDEO = gql`
+  query musicVideo($id: Int!) {
+    musicVideo(id: $id) {
+      id,
+      image,
+      path,
+      singer,
+      name,
+      date
+    }
+  }
+`;

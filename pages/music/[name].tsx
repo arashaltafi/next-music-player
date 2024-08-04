@@ -41,7 +41,7 @@ const Music = ({ data, name }: { data: any, name: string }) => {
             </Head>
             <div className='mt-10 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
                 <h2 className='self-start font-normal text-lg sm:text-xl md:text-2xl lg:text-3xl'>موزیک <span className='font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>{data.name}</span></h2>
-                <h6 className='self-end font-normal text-xs sm:text-sm md:text-base lg:text-lg'>{new Date().toLocaleDateString('fa-IR')}</h6>
+                <h6 className='self-end font-normal text-xs sm:text-sm md:text-base lg:text-lg'>{data.date}</h6>
                 <div className='relative overflow-hidden my-4 w-full flex flex-col-reverse sm:flex-row gap-y-8 items-center justify-between p-2 sm:p-4 md:p-6 lg:p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
                     <div className='h-full flex flex-col gap-4 items-stretch justify-between z-10'>
                         <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.singer}</span></h5>
@@ -127,46 +127,50 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     }
 
-    const name = typeof (params?.name) === 'string' ? decodeURIComponent(params.name).replaceAll('-', ' ') : ''
-
-    const list = {
-        id: 1,
-        name: "آمد  ddd بهار جان ها",
-        path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
-        image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
-        singer: "محسن چاوشی",
-        text: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.'
-    }
-
-    return {
-        props: {
-            data: list,
-            name: name
-        }
-    }
+    const id = typeof (params?.name) === 'string' ? decodeURIComponent(params.name).replaceAll('-', ' ') : ''
 
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/news/${params?.name}`);
-        const products = await response.json()
-
-        if (response.status !== 200) {
-            return {
-                notFound: true
+        const res = await fetch(
+            "http://localhost:3000/api/graphql",
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    query: `{
+                    music(id: ${id}) {
+                      id,
+                      image,
+                      path,
+                      singer,
+                      name,
+                      text,
+                      date
+                    }
+                }`,
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
-        }
+        )
 
-        if (!products.data) {
-            return {
-                redirect: {
-                    destination: '/',
-                    permanent: false
-                }
-            }
+        const data1 = await res.json()
+
+        const { data } = data1;
+
+        const resMusic = {
+            id: data?.music?.id,
+            name: data?.music?.name,
+            path: data?.music?.path,
+            image: data?.music?.image,
+            singer: data?.music?.singer,
+            text: data?.music?.text,
+            date: data?.music?.date
         }
 
         return {
             props: {
-                data: products.data
+                data: resMusic,
+                name: data?.music?.name
             }
         }
     } catch (error) {

@@ -38,6 +38,7 @@ const typeDefs = gql`
     singer: String
     name: String
     text: String
+    date: String
   }
 
   type MusicVideo {
@@ -46,6 +47,7 @@ const typeDefs = gql`
     path: String
     singer: String
     name: String
+    date: String
   }
 
   type Home {
@@ -113,7 +115,9 @@ const typeDefs = gql`
     singer(name: String!): SingerInfo,
     singers(page: Int!, page_size: Int!): Singers,
     musics(name: String!, page: Int!, page_size: Int!): Musics,
+    music(id: Int!): Music,
     musicVideos(name: String!, page: Int!, page_size: Int!): MusicVideos,
+    musicVideo(id: Int!): MusicVideo,
     category(category: String!): Category
   }
 
@@ -983,6 +987,31 @@ const resolvers = {
         data: singersData.slice(startIndex, endIndex)
       }
     },
+    music: async (obj: any, args: any, context: any) => {
+      const { id } = args;
+
+      return {
+        id: id,
+        name: 'آمد بهار جان ها',
+        path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
+        image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
+        singer: "محسن چاوشی",
+        text: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.',
+        date: '1403/05/14'
+      }
+    },
+    musicVideo: async (obj: any, args: any, context: any) => {
+      const { id } = args;
+
+      return {
+        id: id,
+        name: 'آمد بهار جان ها',
+        path: "https://dl.rozmusic.com/Music/1403/03/13/Novan%20-%20Heyfe%20Man%20Bood%20Video.mp4",
+        image: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg",
+        singer: 'محسن چاوشی',
+        date: '1403/05/14'
+      }
+    }
   },
   Mutation: {
     createUser: async (obj: any, args: any, context: any) => {

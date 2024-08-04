@@ -23,7 +23,7 @@ const MusicVideo = ({ data, name }: { data: any, name: string }) => {
             </Head>
             <div className='mt-10 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
                 <h2 className='self-start font-normal text-lg sm:text-xl md:text-2xl lg:text-3xl'>موزیک ویدیو <span className='font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>{data.name}</span></h2>
-                <h6 className='self-end font-normal text-xs sm:text-sm md:text-base lg:text-lg'>{new Date().toLocaleDateString('fa-IR')}</h6>
+                <h6 className='self-end font-normal text-xs sm:text-sm md:text-base lg:text-lg'>{data.date}</h6>
                 <div className='my-4 w-full flex flex-col gap-8 items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 rounded-xl bg-slate-600 shadow-boxShadow'>
                     <h5 className='text-xs sm:text-sm md:text-base lg:text-lg self-start'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.singer}</span></h5>
                     <h5 className='text-xs sm:text-sm md:text-base lg:text-lg self-start -mt-4'>موزیک: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.name}</span></h5>
@@ -70,45 +70,48 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     }
 
-    const name = typeof (params?.name) === 'string' ? decodeURIComponent(params.name).replaceAll('-', ' ') : ''
-
-    const list = {
-        id: 1,
-        name: "آمد بهار جان ها",
-        singer: "محسن چاوشی",
-        path: "https://dl.rozmusic.com/Music/1403/03/13/Novan%20-%20Heyfe%20Man%20Bood%20Video.mp4",
-        image: "https://music-fa.com/wp-content/uploads/2019/01/hakan-chavoshi-yegane9385239857243987524527.jpg"
-    }
-
-    return {
-        props: {
-            data: list,
-            name: name
-        }
-    }
+    const id = typeof (params?.name) === 'string' ? decodeURIComponent(params.name).replaceAll('-', ' ') : ''
 
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/news/${params?.name}`);
-        const products = await response.json()
-
-        if (response.status !== 200) {
-            return {
-                notFound: true
+        const res = await fetch(
+            "http://localhost:3000/api/graphql",
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    query: `{
+                    musicVideo(id: ${id}) {
+                        id,
+                        name,
+                        singer,
+                        path,
+                        image,
+                        date
+                    }
+                }`,
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
-        }
+        )
 
-        if (!products.data) {
-            return {
-                redirect: {
-                    destination: '/',
-                    permanent: false
-                }
-            }
+        const data1 = await res.json()
+
+        const { data } = data1;
+
+        const resMusicVideo = {
+            id: data?.musicVideo?.id,
+            name: data?.musicVideo?.name,
+            path: data?.musicVideo?.path,
+            image: data?.musicVideo?.image,
+            singer: data?.musicVideo?.singer,
+            date: data?.musicVideo?.date
         }
 
         return {
             props: {
-                data: products.data
+                data: resMusicVideo,
+                name: data?.musicVideo?.name
             }
         }
     } catch (error) {
