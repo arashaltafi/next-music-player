@@ -27,7 +27,6 @@ export type MusicType = {
     path: string
     image: string
     singer: string,
-    text: string,
     isFav?: boolean
 }
 

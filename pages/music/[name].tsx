@@ -131,7 +131,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const list = {
         id: 1,
-        name: "آمد بهار جان ها",
+        name: "آمد  ddd بهار جان ها",
         path: "https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3",
         image: "https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg",
         singer: "محسن چاوشی",

@@ -19,7 +19,6 @@ const MusicItem = (props: MusicType) => {
                 <div className='w-full h-full flex flex-col gap-4 items-stretch justify-between'>
                     <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>موزیک: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{props.name}</span></h5>
                     <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{props.singer}</span></h5>
-                    <p className='text-lg line-clamp-3 text-justify'>متن: <span className='text-base'>{props.text}</span></p>
 
                     <div className='w-full flex items-center justify-between gap-4'>
                         <div
@@ -49,7 +48,7 @@ const MusicItem = (props: MusicType) => {
             <div className='my-1 sm:my-2 md:my-3 lg:my-4 w-full flex items-center justify-end gap-2 sm:gap-4 md:gap-6 lg:gap-8'>
                 <button
                     className='flex gap-2 items-center justify-center btn btn-sky-outline px-4 py-2 text-sm'
-                    data-click={props.name}
+                    data-click={props.id}
                 >
                     ادامه مطلب
                     <IoIosArrowBack className='hidden sm:block' />

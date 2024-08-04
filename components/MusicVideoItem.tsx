@@ -48,7 +48,7 @@ const MusicVideoItem = (props: MusicVideoType) => {
             <div className='my-1 sm:my-2 md:my-3 lg:my-4 w-full flex items-center justify-end gap-2 sm:gap-4 md:gap-6 lg:gap-8'>
                 <button
                     className='flex gap-2 items-center justify-center btn btn-sky-outline px-2 md:px-3 lg:px-4 py-1 md:py-2 text-xs sm:text-sm'
-                    data-click={props.name}
+                    data-click={props.id}
                 >
                     ادامه مطلب
                     <IoIosArrowBack className='hidden sm:block' />

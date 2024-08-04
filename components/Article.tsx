@@ -30,9 +30,9 @@ const Article = () => {
                 src1={data?.home?.bannerAllMusic[0]?.image}
                 src2={data?.home?.bannerAllMusic[1]?.image}
                 src3={data?.home?.bannerAllMusic[2]?.image}
-                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[0]?.title}
-                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[1]?.title}
-                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[2]?.title}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[0]?.id}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[1]?.id}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerAllMusic[2]?.id}
                 isReverce={false}
             />
 
@@ -45,9 +45,9 @@ const Article = () => {
                 src1={data?.home?.bannerTopMusic[0]?.image}
                 src2={data?.home?.bannerTopMusic[1]?.image}
                 src3={data?.home?.bannerTopMusic[2]?.image}
-                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[0]?.title}
-                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[1]?.title}
-                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[2]?.title}
+                link1={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[0]?.id}
+                link2={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[1]?.id}
+                link3={RoutesAddress.MUSIC + '/' + data?.home?.bannerTopMusic[2]?.id}
                 isReverce={true}
             />
 

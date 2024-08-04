@@ -134,7 +134,6 @@ export const GET_ALL_MUSICS = gql`
         image
         singer
         path
-        text
       }
     }
   }
@@ -299,42 +298,52 @@ export const GET_HOME = gql`
   query home {
     home {
       bannerAllMusic {
+        id,
         title,
         image,
       }
       bannerTopMusic {
+        id,
         title,
         image,
       }
       bannerLastMusic {
+        id,
         title,
         image,
       }
       bannerFavMusic {
+        id,
         title,
         image,
       }
       bannerSuggestedMusic {
+        id,
         title,
         image,
       }
       bannerAllMusicVideo {
+        id,
         title,
         image,
       }
       bannerTopMusicVideo {
+        id,
         title,
         image,
       }
       bannerLastMusicVideo {
+        id,
         title,
         image,
       }
       bannerFavMusicVideo {
+        id,
         title,
         image,
       }
       bannerSuggestedMusicVideo {
+        id,
         title,
         image,
       }

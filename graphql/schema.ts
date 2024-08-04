@@ -26,6 +26,7 @@ const typeDefs = gql`
   }
 
   type Banner {
+    id: Int
     title: String
     image: String
   }
@@ -160,12 +161,15 @@ const resolvers = {
         ],
         bannerAllMusic: [
           {
+            id: 1,
             title: 'موزیک 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
+            id: 2,
             title: 'موزیک 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
+            id: 3,
             title: 'موزیک 3',
             image: 'https://arashaltafi.ir/Social_Media/story-02.jpg'
           }
@@ -211,12 +215,15 @@ const resolvers = {
         ],
         bannerTopMusic: [
           {
+            id: 1,
             title: 'موزیک 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
+            id: 2,
             title: 'موزیک 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
+            id: 3,
             title: 'موزیک 3',
             image: 'https://arashaltafi.ir/Social_Media/story-01.jpg'
           }
@@ -262,12 +269,15 @@ const resolvers = {
         ],
         bannerLastMusic: [
           {
+            id: 1,
             title: 'موزیک 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
+            id: 2,
             title: 'موزیک 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
+            id: 3,
             title: 'موزیک 3',
             image: 'https://arashaltafi.ir/Social_Media/story-01.jpg'
           }
@@ -314,12 +324,15 @@ const resolvers = {
         bannerFavMusic: [
           {
             id: 1,
+            title: 'موزیک 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
             id: 2,
+            title: 'موزیک 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
             id: 3,
+            title: 'موزیک 3',
             image: 'https://arashaltafi.ir/Social_Media/story-02.jpg'
           }
         ],
@@ -365,12 +378,15 @@ const resolvers = {
         bannerSuggestedMusic: [
           {
             id: 1,
+            title: 'موزیک 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
             id: 2,
+            title: 'موزیک 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
             id: 3,
+            title: 'موزیک 3',
             image: 'https://arashaltafi.ir/Social_Media/story-02.jpg'
           }
         ],
@@ -415,12 +431,15 @@ const resolvers = {
         ],
         bannerAllMusicVideo: [
           {
+            id: 1,
             title: 'موزیک ویدیو 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
+            id: 2,
             title: 'موزیک ویدیو 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
+            id: 3,
             title: 'موزیک ویدیو 3',
             image: 'https://arashaltafi.ir/Social_Media/story-01.jpg'
           }
@@ -466,12 +485,15 @@ const resolvers = {
         ],
         bannerTopMusicVideo: [
           {
+            id: 1,
             title: 'موزیک ویدیو 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
+            id: 2,
             title: 'موزیک ویدیو 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
+            id: 3,
             title: 'موزیک ویدیو 3',
             image: 'https://arashaltafi.ir/Social_Media/story-01.jpg'
           }
@@ -517,12 +539,15 @@ const resolvers = {
         ],
         bannerLastMusicVideo: [
           {
+            id: 1,
             title: 'موزیک ویدیو 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
+            id: 2,
             title: 'موزیک ویدیو 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
+            id: 3,
             title: 'موزیک ویدیو 3',
             image: 'https://arashaltafi.ir/Social_Media/story-02.jpg'
           }
@@ -568,12 +593,15 @@ const resolvers = {
         ],
         bannerFavMusicVideo: [
           {
+            id: 1,
             title: 'موزیک ویدیو 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
+            id: 2,
             title: 'موزیک ویدیو 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
+            id: 3,
             title: 'موزیک ویدیو 3',
             image: 'https://arashaltafi.ir/Social_Media/story-02.jpg'
           }
@@ -620,12 +648,15 @@ const resolvers = {
         bannerSuggestedMusicVideo: [
           {
             id: 1,
+            title: 'موزیک ویدیو 1',
             image: 'https://arashaltafi.ir/Social_Media/story-03.jpg'
           }, {
             id: 2,
+            title: 'موزیک ویدیو 2',
             image: 'https://arashaltafi.ir/Social_Media/story-04.jpg'
           }, {
             id: 3,
+            title: 'موزیک ویدیو 3',
             image: 'https://arashaltafi.ir/Social_Media/story-02.jpg'
           }
         ],
@@ -733,42 +764,36 @@ const resolvers = {
           path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
           singer: 'محسن چاوشی',
           name: 'آمد بهار جان ها',
-          text: "توضیحات این موسیقی"
         }, {
           id: 2,
           image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
           path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
           singer: 'محسن چاوشی',
           name: 'آمد بهار جان ها',
-          text: "توضیحات این موسیقی"
         }, {
           id: 3,
           image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
           path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
           singer: 'محسن چاوشی',
           name: 'آمد بهار جان ها',
-          text: "توضیحات این موسیقی"
         }, {
           id: 4,
           image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
           path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
           singer: 'محسن چاوشی',
           name: 'آمد بهار جان ها',
-          text: "توضیحات این موسیقی"
         }, {
           id: 5,
           image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
           path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
           singer: 'محسن چاوشی',
           name: 'آمد بهار جان ها',
-          text: "توضیحات این موسیقی"
         }, {
           id: 6,
           image: 'https://music-fa.com/wp-content/uploads/2018/12/M-chavoshi4956439822146524268375268572682365.jpg',
           path: '"https://dls.music-fa.com/tagdl/downloads/Mohsen%20Chavoshi%20-%20Beraghsa%20(128).mp3"',
           singer: 'محسن چاوشی',
           name: 'آمد بهار جان ها',
-          text: "توضیحات این موسیقی"
         }
       ]
 

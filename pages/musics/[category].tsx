@@ -4,7 +4,7 @@ import PaginationComponent from '@/components/PaginationComponent'
 import { GET_ALL_MUSICS } from '@/graphql/graphql-queries'
 import { getFromLocalStorage, LocalStorageRoutes } from '@/utils/LocalStorage'
 import RoutesAddress from '@/utils/Routes'
-import {  MusicType } from '@/utils/Type'
+import { MusicType } from '@/utils/Type'
 import { useQuery } from '@apollo/client'
 import Head from 'next/head'
 import { useParams, useRouter } from 'next/navigation'
@@ -64,7 +64,10 @@ const Musics = () => {
                 <title>{category} | موزیک آنلاین</title>
                 <meta name="description" content={`${category} موزیک آنلاین`} />
             </Head>
-            <div onClick={(e) => handleClick(e)} className='-mb-52 mt-10 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'>
+            <div
+                onClick={(e) => handleClick(e)}
+                className='-mb-52 mt-10 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'
+            >
                 <h2 className='self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl my-4'>{category}:</h2>
 
                 {
@@ -76,7 +79,6 @@ const Musics = () => {
                                 name={item.name}
                                 singer={item.singer}
                                 image={item.img}
-                                text={item.text}
                                 path={item.src}
                                 isFav={true}
                             />
@@ -89,7 +91,6 @@ const Musics = () => {
                                 name={item.name}
                                 singer={item.singer}
                                 image={item.image}
-                                text={item.text}
                                 path={item.path}
                                 isFav={false}
                             />

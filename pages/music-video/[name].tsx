@@ -13,7 +13,7 @@ const MusicVideo = ({ data, name }: { data: any, name: string }) => {
         } else {
             console.log('change music back')
         }
-    }
+    } 
 
     return (
         <>

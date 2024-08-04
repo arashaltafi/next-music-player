@@ -12,7 +12,10 @@ interface PropsType {
 
 const MusicVideoComponent = (props: PropsType) => {
     return (
-        <div data-key={props.name} className='relative w-full flex flex-col items-center justify-center gap-2 px-2 group'>
+        <div
+            data-key={props.id}
+            className='relative w-full flex flex-col items-center justify-center gap-2 px-2 group'
+        >
             <Image
                 className='absolute inset-0 z-0 w-full h-full blur-[3px] rounded-lg border border-rose-500 border-solid delay-100 group-hover:brightness-90 group-hover:blur-[4px] group-hover:rounded-xl transition-all duration-300'
                 src={props.image}
