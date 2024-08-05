@@ -8,9 +8,12 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { FaPlayCircle } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
+import RoutesAddress from '@/utils/Routes';
 
 const Music = ({ data, name }: { data: any, name: string }) => {
     const [isPlaying, setIsPlaying] = useState(false)
+    const router = useRouter()
 
     const handlePlay = () => {
         setIsPlaying(!isPlaying)
@@ -29,9 +32,10 @@ const Music = ({ data, name }: { data: any, name: string }) => {
 
     const handleChangeMusic = (isNext: boolean) => {
         if (isNext) {
-            console.log('change music next')
+            router.push(RoutesAddress.MUSIC + "/" + (data.id + 1))
         } else {
-            console.log('change music back')
+            if (data.id <= 1) return
+            router.push(RoutesAddress.MUSIC + "/" + (data.id - 1))
         }
     }
 
