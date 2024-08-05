@@ -1,14 +1,10 @@
 import AllSingers from '@/components/AllSingers'
 import DividerImage from '@/components/DividerImage'
-import MusicsComponent from '@/components/MusicsComponent'
-import MusicVideosComponent from '@/components/MusicVideosComponent'
 import SingerImage from '@/components/SingerImage'
-import { MusicCategory, MusicVideoCategory, SingersType } from '@/utils/Type'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
 import RoutesAddress from '@/utils/Routes';
 import HeadOfTitle from '@/components/HeadOfTitle'
@@ -16,11 +12,9 @@ import { GET_SINGER } from '@/graphql/graphql-queries'
 import { useQuery } from '@apollo/client'
 import MusicComponent from '@/components/MusicComponent'
 import MusicVideoComponent from '@/components/MusicVideoComponent'
-import PaginationComponent from '@/components/PaginationComponent'
 import { deleteIdFromStorage, getFromLocalStorage, isHaveIdInStorage, LocalStorageRoutes, saveToLocalStorage } from '@/utils/LocalStorage'
 
 const Singer = ({ name }: { name: string }) => {
-    const [page, setPage] = useState(1)
     const router = useRouter()
 
     const { data } = useQuery(GET_SINGER, {
@@ -44,16 +38,7 @@ const Singer = ({ name }: { name: string }) => {
         }
     }
 
-    const favSinger = getFromLocalStorage(LocalStorageRoutes.SINGER)
-
-    const [favSingerData, setFavSingerData] = useState<SingersType>([])
-
-    useEffect(() => {
-        if (name !== 'برترین خواننده ها') return
-        router.push(RoutesAddress.SINGER_BEST + "?page=" + page)
-        
-        setFavSingerData(favSinger?.splice((page - 1) * 5, 5) || [])
-    }, [page])
+    const favSingerData = getFromLocalStorage(LocalStorageRoutes.SINGER)
 
     const [isFavSinger, setIsFavSinger] = useState<boolean>(false)
 
@@ -85,14 +70,6 @@ const Singer = ({ name }: { name: string }) => {
                 <div className='-mb-52 pt-10 w-full flex flex-col'>
                     <h2 className='px-8 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl my-4'>خوانندگان برتر:</h2>
                     <AllSingers isFav data={favSingerData} />
-
-                    <div className='w-full flex items-center justify-center gap-8'>
-                        <PaginationComponent
-                            currentPage={page}
-                            totalPage={Math.max(1, Math.ceil((favSinger?.length || 0) / 5))}
-                            setPageNumber={(pageNumber) => setPage(pageNumber)}
-                        />
-                    </div>
                 </div>
             </>
         )

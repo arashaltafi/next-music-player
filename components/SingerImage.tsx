@@ -13,7 +13,7 @@ interface PropsType {
 
 const SingerImage = (props: PropsType) => {
     const handleFav = () => {
-        if (props.isFav && props.handleFav) {
+        if (props.isFav != undefined && props.handleFav) {
             props.handleFav(props.isFav)
         }
     }
