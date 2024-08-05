@@ -6,6 +6,8 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { FaPlayCircle } from "react-icons/fa";
 
 const Music = ({ data, name }: { data: any, name: string }) => {
     const [isPlaying, setIsPlaying] = useState(false)
@@ -47,18 +49,22 @@ const Music = ({ data, name }: { data: any, name: string }) => {
                         <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>خواننده: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.singer}</span></h5>
                         <h5 className='text-xs sm:text-sm md:text-base lg:text-lg'>موزیک: <span className='text-sm sm:text-base md:text-lg lg:text-xl'>{data.name}</span></h5>
 
-                        <button
-                            className='btn btn-green'
-                            onClick={handleDownload}
-                        >
-                            دانلود موزیک
-                        </button>
-                        <button
-                            className={`btn ${isPlaying ? 'btn-red' : 'btn-sky'}`}
-                            onClick={handlePlay}
-                        >
-                            {isPlaying ? 'قطع موزیک' : 'پخش موزیک'}
-                        </button>
+                        <div className='w-full flex items-center justify-between gap-4'>
+                            <div
+                                className='btn btn-green flex-1 flex items-center justify-center gap-4'
+                                onClick={handleDownload}
+                            >
+                                <button>دانلود</button>
+                                <FaCloudDownloadAlt className='text-2xl' />
+                            </div>
+                            <div
+                                className={`btn ${isPlaying ? 'btn-red' : 'btn-sky'} flex-1 flex items-center justify-center gap-4`}
+                                onClick={handlePlay}
+                            >
+                                <button>{isPlaying ? 'قطع' : 'پخش'}</button>
+                                <FaPlayCircle className='text-2xl' />
+                            </div>
+                        </div>
                     </div>
                     <Image
                         className='w-1/3 h-auto rounded-boxRadius border border-dashed border-rose-500 shadow-musicShadow z-10'
