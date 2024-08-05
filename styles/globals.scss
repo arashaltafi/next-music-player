@@ -193,6 +193,10 @@
     @apply text-xl hover:text-rose-500 hover:scale-125 active:scale-90 cursor-pointer transition-all duration-200;
   }
 
+  .btn-small {
+    @apply px-1 sm:px-2 md:px-4 py-0.5 sm:py-1 md:py-2 text-xs sm:text-sm md:text-base rounded-lg text-center font-medium text-white transition-all duration-200 cursor-pointer;
+  }
+
   .btn {
     @apply px-2 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 text-sm sm:text-base md:text-lg rounded-lg text-center font-medium text-white transition-all duration-200 cursor-pointer;
   }

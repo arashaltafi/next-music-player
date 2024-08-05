@@ -1,3 +1,4 @@
+import FavMusicItem from '@/components/FavMusicItem'
 import LottieComponent from '@/components/LottieComponent'
 import MusicVideoItem from '@/components/MusicVideoItem'
 import PaginationComponent from '@/components/PaginationComponent'
@@ -6,11 +7,9 @@ import { getFromLocalStorage, LocalStorageRoutes } from '@/utils/LocalStorage'
 import RoutesAddress from '@/utils/Routes'
 import { MusicVideoType } from '@/utils/Type'
 import { useQuery } from '@apollo/client'
-import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
 
 const MusicVideos = () => {
@@ -27,15 +26,10 @@ const MusicVideos = () => {
         }
     });
 
-    const favMusicVideo = getFromLocalStorage(LocalStorageRoutes.MUSIC_VIDEO)
-
-    const [favMusicVideoData, setFavMusicVideoData] = useState<MusicVideoType[]>(favMusicVideo?.splice((page - 1) * 5, 5) || [])
+    const favMusicVideoData = getFromLocalStorage(LocalStorageRoutes.MUSIC_VIDEO)
 
     useEffect(() => {
-        if (category === 'موزیک ویدیوهای مورد علاقه') {
-            setFavMusicVideoData(favMusicVideo?.splice((page - 1) * 5, 5) || [])
-            router.push(RoutesAddress.MUSIC_VIDEO_FAV + "/" + "?page=" + page)
-        } else {
+        if (category !== 'موزیک ویدیوهای مورد علاقه') {
             router.push(RoutesAddress.MUSIC_VIDEOS + "/" + category + "?page=" + page)
         }
     }, [page])
@@ -75,7 +69,7 @@ const MusicVideos = () => {
                 {
                     category === 'موزیک ویدیوهای مورد علاقه' ? (
                         favMusicVideoData?.map((item: any) => (
-                            <MusicVideoItem
+                            <FavMusicItem
                                 key={item.id}
                                 id={item.id}
                                 name={item.name}
@@ -112,17 +106,7 @@ const MusicVideos = () => {
                 }
 
                 {
-                    category === 'موزیک ویدیوهای مورد علاقه' ? (
-                        favMusicVideo && favMusicVideo?.length > 5 && category === 'موزیک ویدیوهای مورد علاقه' && (
-                            <div className='w-full flex items-center justify-center gap-8'>
-                                <PaginationComponent
-                                    currentPage={page}
-                                    totalPage={Math.max(1, Math.ceil((favMusicVideo?.length || 0) / 5))}
-                                    setPageNumber={(pageNumber) => setPage(pageNumber)}
-                                />
-                            </div>
-                        )
-                    ) : (
+                    category !== 'موزیک ویدیوهای مورد علاقه' ? (
                         <div className='w-full flex items-center justify-center gap-8'>
                             <PaginationComponent
                                 currentPage={page}
@@ -130,6 +114,8 @@ const MusicVideos = () => {
                                 setPageNumber={(pageNumber) => setPage(pageNumber)}
                             />
                         </div>
+                    ) : (
+                        <></>
                     )
                 }
             </div>

@@ -1,10 +1,10 @@
+import FavMusicItem from '@/components/FavMusicItem'
 import LottieComponent from '@/components/LottieComponent'
 import MusicItem from '@/components/MusicItem'
 import PaginationComponent from '@/components/PaginationComponent'
 import { GET_ALL_MUSICS } from '@/graphql/graphql-queries'
 import { getFromLocalStorage, LocalStorageRoutes } from '@/utils/LocalStorage'
 import RoutesAddress from '@/utils/Routes'
-import { MusicType } from '@/utils/Type'
 import { useQuery } from '@apollo/client'
 import Head from 'next/head'
 import { useParams, useRouter } from 'next/navigation'
@@ -25,15 +25,10 @@ const Musics = () => {
         }
     });
 
-    const favMusic = getFromLocalStorage(LocalStorageRoutes.MUSIC)
-
-    const [favMusicData, setFavMusicData] = useState<MusicType[]>(favMusic?.splice((page - 1) * 5, 5) || [])
+    const favMusicData = getFromLocalStorage(LocalStorageRoutes.MUSIC)
 
     useEffect(() => {
-        if (category === 'موزیک های مورد علاقه') {
-            setFavMusicData(favMusic?.splice((page - 1) * 5, 5) || [])
-            router.push(RoutesAddress.MUSIC_FAV + "/" + "?page=" + page)
-        } else {
+        if (category !== 'موزیک های مورد علاقه') {
             router.push(RoutesAddress.MUSICS + "/" + category + "?page=" + page)
         }
     }, [page])
@@ -66,14 +61,14 @@ const Musics = () => {
             </Head>
             <div
                 onClick={(e) => handleClick(e)}
-                className='-mb-52 mt-10 w-full flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8'
+                className={`-mb-52 mt-10 w-full flex flex-col ${category === 'موزیک های مورد علاقه' ? 'gap-1 sm:gap-2 md:gap-3 lg:gap-4' : 'gap-4 sm:gap-6 md:gap-8 lg:gap-12'} items-center justify-start px-2 sm:px-4 md:px-6 lg:px-8`}
             >
                 <h2 className='self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl my-4'>{category}:</h2>
 
                 {
                     category === 'موزیک های مورد علاقه' ? (
                         favMusicData?.map((item: any) => (
-                            <MusicItem
+                            <FavMusicItem
                                 key={item.id}
                                 id={item.id}
                                 name={item.name}
@@ -110,17 +105,7 @@ const Musics = () => {
                 }
 
                 {
-                    category === 'موزیک های مورد علاقه' ? (
-                        favMusic && favMusic?.length > 5 && category === 'موزیک های مورد علاقه' && (
-                            <div className='w-full flex items-center justify-center gap-8'>
-                                <PaginationComponent
-                                    currentPage={page}
-                                    totalPage={Math.max(1, Math.ceil((favMusic?.length || 0) / 5))}
-                                    setPageNumber={(pageNumber) => setPage(pageNumber)}
-                                />
-                            </div>
-                        )
-                    ) : (
+                    category !== 'موزیک های مورد علاقه' ? (
                         <div className='w-full flex items-center justify-center gap-8'>
                             <PaginationComponent
                                 currentPage={page}
@@ -128,6 +113,8 @@ const Musics = () => {
                                 setPageNumber={(pageNumber) => setPage(pageNumber)}
                             />
                         </div>
+                    ) : (
+                        <></>
                     )
                 }
             </div>

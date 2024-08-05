@@ -1,6 +1,12 @@
 export const saveToLocalStorage = (key: string, value: any) => {
     if (typeof localStorage === 'undefined' || localStorage === null) return
-    localStorage.setItem(key, JSON.stringify(value))
+    const getLocalStorage = getFromLocalStorage(key)
+    if (getLocalStorage) {
+        const newList = [...getLocalStorage, value]
+        localStorage.setItem(key, JSON.stringify(newList))
+    } else {
+        localStorage.setItem(key, JSON.stringify(value))
+    }
 }
 
 export const deleteIdFromStorage = (key: string, id: number) => {
