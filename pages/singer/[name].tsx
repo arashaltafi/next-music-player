@@ -93,7 +93,7 @@ const Singer = ({ name }: { name: string }) => {
                     <h3 className='mt-4 sm:mt-8 md:mt-10 lg:mt-12 self-start font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl'>بیوگرافی:</h3>
                     <p className='mb-8 self-start font-medium text-sm sm:text-base md:text-lg lg:text-xl text-justify'>{data?.singer?.bio}</p>
 
-                    <HeadOfTitle fileType='music' route={RoutesAddress.MUSIC_BEST} title="موزیک ها:" />
+                    <HeadOfTitle fileType='music' route={`${RoutesAddress.MUSICS}/${name}`} title="موزیک ها:" />
                     <div
                         className={`w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden mt-0`}
                         onClick={(e) => handleClick(e, false)}
@@ -114,7 +114,7 @@ const Singer = ({ name }: { name: string }) => {
 
                     <DividerImage src='/images/music-divider-1.png' className='my-12 sm:my-16 md:my-20' />
 
-                    <HeadOfTitle fileType='video' route={RoutesAddress.MUSIC_BEST} title="موزیک ویدیوها:" />
+                    <HeadOfTitle fileType='video' route={`${RoutesAddress.MUSIC_VIDEOS}/${name}`}  title="موزیک ویدیوها:" />
                     <div
                         className={`w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-x-8 gap-y-6 overflow-hidden mt-0`}
                         onClick={(e) => handleClick(e, true)}
@@ -154,38 +154,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
         props: {
             name: name
-        }
-    }
-
-    try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/news/${params?.name}`);
-        const products = await response.json()
-
-        if (response.status !== 200) {
-            return {
-                notFound: true
-            }
-        }
-
-        if (!products.data) {
-            return {
-                redirect: {
-                    destination: '/',
-                    permanent: false
-                }
-            }
-        }
-
-        return {
-            props: {
-                data: products.data
-            }
-        }
-    } catch (error) {
-        console.log("error: ", error)
-
-        return {
-            props: {}
         }
     }
 }
