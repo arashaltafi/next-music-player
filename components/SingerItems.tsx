@@ -6,7 +6,8 @@ import Image from 'next/image';
 import RoutesAddress from '@/utils/Routes';
 
 interface PropsType {
-    activeSinger: string
+    activeSinger: string,
+    onClick?: () => void
 }
 
 const SingerItems = (props: PropsType) => {
@@ -28,7 +29,10 @@ const SingerItems = (props: PropsType) => {
                 />
             </Link>
 
-            <div className='w-full flex flex-col items-start justify-start gap-2 sm:gap-4 *:px-2 *:py-2'>
+            <div
+                className='w-full flex flex-col items-start justify-start gap-2 sm:gap-4 *:px-2 *:py-2'
+                onClick={() => props.onClick && props.onClick()}
+            >
                 {
                     data.map((item) => (
                         <Link

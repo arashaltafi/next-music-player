@@ -16,7 +16,8 @@ import Link from 'next/link';
 import RoutesAddress from '@/utils/Routes';
 
 interface PropsType {
-    activeSinger: string
+    activeSinger: string,
+    onClick?: () => void
 }
 
 const MenuItems = (props: PropsType) => {
@@ -36,7 +37,10 @@ const MenuItems = (props: PropsType) => {
                 />
             </Link>
 
-            <div className='w-full flex flex-col items-start justify-start gap-4 sm:gap-6 *:px-2 *:py-2'>
+            <div
+                className='w-full flex flex-col items-start justify-start gap-4 sm:gap-6 *:px-2 *:py-2'
+                onClick={() => props.onClick && props.onClick()}
+            >
                 <Link
                     href={RoutesAddress.MUSIC_ALL}
                     className={`group sideBar__item ${props.activeSinger.replaceAll('-', ' ') === 'تمامی موزیک ها' && 'text-rose-400'}`}

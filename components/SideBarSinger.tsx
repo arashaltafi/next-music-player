@@ -48,7 +48,10 @@ const SideBarSinger = () => {
             <div
                 id='menu-singer'
                 className='overflow-y-auto py-3 px-1 *:px-2 *:py-3 z-50 fixed top-0 left-0 bottom-0 w-3/4 flex flex-col gap-4 items-center justify-start bg-slate-900/80 xl:hidden transition-all duration-300 -translate-x-[1000px]'>
-                <SingerItems activeSinger={typeof (params?.name) === 'string' ? decodeURIComponent(params?.name) : ''} />
+                <SingerItems 
+                    activeSinger={typeof (params?.name) === 'string' ? decodeURIComponent(params?.name) : ''}
+                    onClick={() => handleBlur()}
+                />
             </div>
 
             <div
