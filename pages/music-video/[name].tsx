@@ -1,17 +1,22 @@
 import VideoPlayer from '@/components/VideoPlayer';
 import { isHaveIdInStorage, LocalStorageRoutes } from '@/utils/LocalStorage';
+import RoutesAddress from '@/utils/Routes';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
 const MusicVideo = ({ data, name }: { data: any, name: string }) => {
+    const router = useRouter()
+
     const handleChangeMusicVideo = (isNext: boolean) => {
         if (isNext) {
-            console.log('change music next')
+            router.push(RoutesAddress.MUSIC_VIDEO + "/" + (data.id + 1))
         } else {
-            console.log('change music back')
+            if (data.id <= 1) return
+            router.push(RoutesAddress.MUSIC_VIDEO + "/" + (data.id - 1))
         }
     } 
 
